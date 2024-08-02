@@ -1,0 +1,61 @@
+package co.simplon.dnd_heroic_battle_api.services.Impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleView;
+import co.simplon.dnd_heroic_battle_api.mappers.BattleMapper;
+import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
+import co.simplon.dnd_heroic_battle_api.services.BattleService;
+
+@Service
+public class BattleServiceImpl implements BattleService {
+
+    private final BattleRepository repo;
+
+    public BattleServiceImpl(BattleRepository repo) {
+	this.repo = repo;
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<BattleView> getAll() {
+	return BattleMapper.entitiesToBattleViews(repo.findAll());
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public BattleView getOne(Long id) {
+	return BattleMapper.entityToBattleView(repo.findById(id)
+		.orElseThrow(() -> new IllegalArgumentException("Battle with id = " + id + " does not exist")));
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<BattleView> getAllFromCampaign(Long id) {
+	return BattleMapper.entitiesToBattleViews(repo.findAllByCampaignId(id));
+    }
+
+    @Transactional
+    @Override
+    public void deleteOne(Long id) {
+	repo.deleteById(id);
+    }
+
+    @Transactional
+    @Override
+    public void create(BattleCreate input) {
+	repo.save(BattleMapper.battleCreateToEntity(input));
+    }
+
+    @Transactional
+    @Override
+    public void update(BattleUpdate input) {
+	repo.save(BattleMapper.battleUpdateToEntity(input, repo.findcampaignIdByBattleId(input.id())));
+    }
+
+}

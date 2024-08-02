@@ -8,9 +8,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 @Entity
 @Table(name = "campaigns")
+@Builder
+@AllArgsConstructor
 public class Campaign {
 
     @Id
@@ -32,7 +36,8 @@ public class Campaign {
 	return id;
     }
 
-    public void setId(Long id) {
+    @SuppressWarnings("unused")
+    private void setId(Long id) {
 	this.id = id;
     }
 

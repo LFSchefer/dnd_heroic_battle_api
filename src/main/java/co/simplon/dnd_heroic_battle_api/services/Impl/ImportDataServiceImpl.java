@@ -11,9 +11,11 @@ import org.springframework.web.client.RestClient;
 import co.simplon.dnd_heroic_battle_api.entities.Alignment;
 import co.simplon.dnd_heroic_battle_api.entities.Condition;
 import co.simplon.dnd_heroic_battle_api.entities.DamageType;
+import co.simplon.dnd_heroic_battle_api.entities.Language;
 import co.simplon.dnd_heroic_battle_api.repositories.AlignmentRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ConditionRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
+import co.simplon.dnd_heroic_battle_api.repositories.LanguageRepository;
 import co.simplon.dnd_heroic_battle_api.services.ImportDataService;
 
 @Service
@@ -22,24 +24,24 @@ public class ImportDataServiceImpl implements ImportDataService {
     private final DamageTypeRepository damageTypeRepository;
     private final AlignmentRepository alignmentRepository;
     private final ConditionRepository conditionRepository;
+    private final LanguageRepository languageRepository;
+    private final static String BASE_URL = "https://www.dnd5eapi.co";
 
     public ImportDataServiceImpl(DamageTypeRepository damageTypeRepository, AlignmentRepository alignmentRepository,
-	    ConditionRepository conditionRepository) {
+	    ConditionRepository conditionRepository, LanguageRepository languageRepository) {
 	this.damageTypeRepository = damageTypeRepository;
 	this.alignmentRepository = alignmentRepository;
 	this.conditionRepository = conditionRepository;
+	this.languageRepository = languageRepository;
     }
 
-    private final static String BASE_URL = "https://www.dnd5eapi.co";
-
     @Override
-//    @Transactional
     public void importData() {
 	RestClient restClient = RestClient.create();
 	importDamageTypes(restClient, "/api/damage-types");
 	importAlignments(restClient, "/api/alignments");
 	importConditions(restClient, "/api/conditions");
-
+	importLanguages(restClient, "/api/languages");
     }
 
     private void importAlignments(RestClient restClient, String urlType) {
@@ -77,15 +79,29 @@ public class ImportDataServiceImpl implements ImportDataService {
 	List<Condition> conditions = new ArrayList<>();
 	List<String> urls = getUrlList(restClient, urlType);
 	for (String url : urls) {
-	    Map<String, Object> alignmentImport = restClient.get().uri(BASE_URL + url).retrieve()
+	    Map<String, Object> conditionImport = restClient.get().uri(BASE_URL + url).retrieve()
 		    .body(new ParameterizedTypeReference<>() {
 		    });
-	    String name = (String) alignmentImport.get("name");
-	    List<String> desc = (List<String>) alignmentImport.get("desc");
+	    String name = (String) conditionImport.get("name");
+	    List<String> desc = (List<String>) conditionImport.get("desc");
 	    String description = String.join(System.lineSeparator(), desc);
 	    conditions.add(Condition.builder().conditionName(name).description(description).build());
 	}
 	conditionRepository.saveAll(conditions);
+    }
+
+    private void importLanguages(RestClient restClient, String urlType) {
+	languageRepository.deleteAll();
+	List<Language> languages = new ArrayList<>();
+	List<String> urls = getUrlList(restClient, urlType);
+	for (String url : urls) {
+	    Map<String, Object> languageImport = restClient.get().uri(BASE_URL + url).retrieve()
+		    .body(new ParameterizedTypeReference<>() {
+		    });
+	    String name = (String) languageImport.get("name");
+	    languages.add(Language.builder().languagesName(name).build());
+	}
+	languageRepository.saveAll(languages);
     }
 
     private List<String> getUrlList(RestClient restClient, String urlType) {

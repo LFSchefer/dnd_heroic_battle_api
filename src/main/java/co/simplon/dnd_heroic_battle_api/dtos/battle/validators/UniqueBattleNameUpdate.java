@@ -12,8 +12,8 @@ import jakarta.validation.Payload;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Constraint(validatedBy = UniqueBattleNameValidator.class)
-public @interface UniqueBattleName {
+@Constraint(validatedBy = UniqueBattleNameUpdateValidator.class)
+public @interface UniqueBattleNameUpdate {
 
     String message() default "Battle name must be unique";
 

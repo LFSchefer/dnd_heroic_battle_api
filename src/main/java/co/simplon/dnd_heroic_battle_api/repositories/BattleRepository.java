@@ -23,4 +23,19 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
     long findcampaignIdByBattleId(@Param("id") long id);
 
     boolean existsByBattleNameAndCampaignId(String battleName, Long campaignId);
+
+    String BATTLE_NAME_DONT_EXIST_FOR_THIS_CAMPAIGN = """
+    	SELECT CASE WHEN EXISTS (
+    	    SELECT *
+    	    FROM battles b
+    	    WHERE battle_name <> :battleName
+    	    AND id <> :id
+    	    AND campaign_id = (SELECT campaign_id FROM battles WHERE id = :id)
+    	)
+    	THEN TRUE
+    	ELSE FALSE END
+    	""";
+
+    @Query(value = BATTLE_NAME_DONT_EXIST_FOR_THIS_CAMPAIGN, nativeQuery = true)
+    boolean battleNameNotExistForCampaign(@Param("id") long id, @Param("battleName") String battleName);
 }

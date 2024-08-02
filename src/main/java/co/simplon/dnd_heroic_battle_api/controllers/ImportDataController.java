@@ -21,6 +21,6 @@ public class ImportDataController {
     @GetMapping
     public ResponseEntity<Void> importData() {
 	service.importData();
-	return new ResponseEntity<>(HttpStatus.OK);
+	return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

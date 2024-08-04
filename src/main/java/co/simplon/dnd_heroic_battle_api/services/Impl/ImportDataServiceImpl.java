@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import co.simplon.dnd_heroic_battle_api.entities.Alignment;
+import co.simplon.dnd_heroic_battle_api.entities.ArmorClass;
 import co.simplon.dnd_heroic_battle_api.entities.Condition;
 import co.simplon.dnd_heroic_battle_api.entities.DamageType;
 import co.simplon.dnd_heroic_battle_api.entities.Language;
@@ -22,6 +23,7 @@ import co.simplon.dnd_heroic_battle_api.entities.Sense;
 import co.simplon.dnd_heroic_battle_api.entities.Size;
 import co.simplon.dnd_heroic_battle_api.entities.Speed;
 import co.simplon.dnd_heroic_battle_api.repositories.AlignmentRepository;
+import co.simplon.dnd_heroic_battle_api.repositories.ArmorClassRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ConditionRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.LanguageRepository;
@@ -44,11 +46,13 @@ public class ImportDataServiceImpl implements ImportDataService {
 	private final MonsterTypeRepository monsterTypeRepository;
 	private final SenseRepository senseRepository;
 	private final SpeedRepository speedRepository;
+	private final ArmorClassRepository armorClassRepository;
 	private final static String BASE_URL = "https://www.dnd5eapi.co";
 
 	public ImportDataServiceImpl(DamageTypeRepository damageTypeRepository, AlignmentRepository alignmentRepository, ConditionRepository conditionRepository,
 			LanguageRepository languageRepository, ProficiencyRepository proficiencyRepository, SizeRepository sizeRepository,
-			MonsterTypeRepository monsterTypeRepository, SenseRepository senseRepository, SpeedRepository speedRepository) {
+			MonsterTypeRepository monsterTypeRepository, SenseRepository senseRepository, SpeedRepository speedRepository,
+			ArmorClassRepository armorClassRepository) {
 		this.damageTypeRepository = damageTypeRepository;
 		this.alignmentRepository = alignmentRepository;
 		this.conditionRepository = conditionRepository;
@@ -58,6 +62,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 		this.monsterTypeRepository = monsterTypeRepository;
 		this.senseRepository = senseRepository;
 		this.speedRepository = speedRepository;
+		this.armorClassRepository = armorClassRepository;
 	}
 
 	@Override
@@ -148,10 +153,12 @@ public class ImportDataServiceImpl implements ImportDataService {
 		monsterTypeRepository.deleteAll();
 		senseRepository.deleteAll();
 		speedRepository.deleteAll();
+		armorClassRepository.deleteAll();
 		Set<String> sizes = new HashSet<>();
 		Set<String> monsterTypes = new HashSet<>();
 		Set<Pair<Integer, String>> senses = new HashSet<>();
 		Set<Map<String, Short>> speeds = new HashSet<>();
+		Set<Pair<String, Integer>> armorClasses = new HashSet<>();
 		List<String> urls = getUrlList(restClient, urlType);
 		for (String url : urls) {
 			Map<String, Object> monstersImport = restClient.get().uri(BASE_URL + url).retrieve().body(new ParameterizedTypeReference<>() {
@@ -182,6 +189,13 @@ public class ImportDataServiceImpl implements ImportDataService {
 			speed.put("swim", speedApi.get("swim") == null ? null : Short.valueOf(speedApi.get("swim").replace("ft.", "").trim()));
 			speed.put("fly", speedApi.get("fly") == null ? null : Short.valueOf(speedApi.get("fly").replace("ft.", "").trim()));
 			speeds.add(speed);
+			// Armor class
+			List<Map<String, Object>> listArmorClasses = (List<Map<String, Object>>) monstersImport.get("armor_class");
+			Map<String, Object> ArmorClasseApi = listArmorClasses.get(0);
+			String armorType = (String) ArmorClasseApi.get("type");
+			Integer armorValue = (Integer) ArmorClasseApi.get("value");
+			Pair<String, Integer> armorclass = Pair.of(armorType, armorValue);
+			armorClasses.add(armorclass);
 		}
 		sizeRepository.saveAll(sizes.stream().map(s -> Size.builder().sizeName(s).build()).toList());
 		monsterTypeRepository.saveAll(monsterTypes.stream().map(m -> MonsterType.builder().typeName(m).build()).toList());
@@ -190,6 +204,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 						.darkvision(s.getSecond().replace("ft.", "") == "0" ? null : Integer.valueOf(s.getSecond().replace("ft.", "").trim())).build())
 				.toList());
 		speedRepository.saveAll(speeds.stream().map(s -> Speed.builder().walk(s.get("walk")).fly(s.get("fly")).swim(s.get("swim")).build()).toList());
+		armorClassRepository.saveAll(armorClasses.stream().map(a -> ArmorClass.builder().armorType(a.getFirst()).armorValue(a.getSecond()).build()).toList());
 	}
 
 	private List<String> getUrlList(RestClient restClient, String urlType) {

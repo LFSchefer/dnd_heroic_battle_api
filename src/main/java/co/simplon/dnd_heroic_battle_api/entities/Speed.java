@@ -10,20 +10,26 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 @Entity
-@Table(name = "sizes")
+@Table(name = "speeds")
 @Builder
 @AllArgsConstructor
-public class Size {
+public class Speed {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "size_name")
-    private String sizeName;
+    @Column(name = "walk")
+    private Short walk;
 
-    public Size() {
+    @Column(name = "swim")
+    private Short swim;
+
+    @Column(name = "fly")
+    private Short fly;
+
+    public Speed() {
 	// ORM
     }
 
@@ -36,17 +42,33 @@ public class Size {
 	this.id = id;
     }
 
-    public String getSizeName() {
-	return sizeName;
+    public Short getWalk() {
+	return walk;
     }
 
-    public void setSizeName(String sizeName) {
-	this.sizeName = sizeName;
+    public void setWalk(Short walk) {
+	this.walk = walk;
+    }
+
+    public Short getSwim() {
+	return swim;
+    }
+
+    public void setSwim(Short swim) {
+	this.swim = swim;
+    }
+
+    public Short getFly() {
+	return fly;
+    }
+
+    public void setFly(Short fly) {
+	this.fly = fly;
     }
 
     @Override
     public String toString() {
-	return "{id=" + id + ", sizeName=" + sizeName + "}";
+	return "{id=" + id + ", walk=" + walk + ", swim=" + swim + ", fly=" + fly + "}";
     }
 
 }

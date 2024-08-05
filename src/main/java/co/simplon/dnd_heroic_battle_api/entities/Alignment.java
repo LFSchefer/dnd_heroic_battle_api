@@ -15,49 +15,49 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Alignment {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "alignment_id")
+	private long alignmentId;
 
-    @Column(name = "alignments_name")
-    private String alignmentsName;
+	@Column(name = "alignments_name")
+	private String alignmentsName;
 
-    @Column(name = "description")
-    private String description;
+	@Column(name = "description")
+	private String description;
 
-    public Alignment() {
-	// ORM
-    }
+	public Alignment() {
+		// ORM
+	}
 
-    public long getId() {
-	return id;
-    }
+	public String getAlignmentsName() {
+		return alignmentsName;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(long id) {
-	this.id = id;
-    }
+	public void setAlignmentsName(String alignmentsName) {
+		this.alignmentsName = alignmentsName;
+	}
 
-    public String getAlignmentsName() {
-	return alignmentsName;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setAlignmentsName(String alignmentsName) {
-	this.alignmentsName = alignmentsName;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getDescription() {
-	return description;
-    }
+	public long getAlignmentId() {
+		return alignmentId;
+	}
 
-    public void setDescription(String description) {
-	this.description = description;
-    }
+	@SuppressWarnings("unused")
+	private void setAlignmentId(long alignmentId) {
+		this.alignmentId = alignmentId;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", alignmentsName=" + alignmentsName + ", description=" + description + "}";
-    }
+	@Override
+	public String toString() {
+		return "{alignmentId=" + alignmentId + ", alignmentsName=" + alignmentsName + ", description=" + description + "}";
+	}
 
 }

@@ -17,8 +17,8 @@ public class Sense {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "sense_id")
+	private Long senseId;
 
 	@Column(name = "darkvision")
 	private Integer darkvision;
@@ -28,20 +28,6 @@ public class Sense {
 
 	public Sense() {
 		// ORM
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	@SuppressWarnings("unused")
-	private void setId(Long id) {
-		this.id = id;
-	}
-
-	@Override
-	public String toString() {
-		return "{id=" + id + ", darkvision=" + darkvision + ", passivePerception=" + passivePerception + "}";
 	}
 
 	public Integer getPassivePerception() {
@@ -58,6 +44,20 @@ public class Sense {
 
 	public void setDarkvision(Integer darkvision) {
 		this.darkvision = darkvision;
+	}
+
+	public Long getSenseId() {
+		return senseId;
+	}
+
+	@SuppressWarnings("unused")
+	private void setSenseId(Long senseId) {
+		this.senseId = senseId;
+	}
+
+	@Override
+	public String toString() {
+		return "{senseId=" + senseId + ", darkvision=" + darkvision + ", passivePerception=" + passivePerception + "}";
 	}
 
 }

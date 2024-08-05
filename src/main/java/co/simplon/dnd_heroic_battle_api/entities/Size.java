@@ -15,38 +15,38 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Size {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "size_id")
+	private Long sizeId;
 
-    @Column(name = "size_name")
-    private String sizeName;
+	@Column(name = "size_name")
+	private String sizeName;
 
-    public Size() {
-	// ORM
-    }
+	public Size() {
+		// ORM
+	}
 
-    public Long getId() {
-	return id;
-    }
+	public String getSizeName() {
+		return sizeName;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(Long id) {
-	this.id = id;
-    }
+	public void setSizeName(String sizeName) {
+		this.sizeName = sizeName;
+	}
 
-    public String getSizeName() {
-	return sizeName;
-    }
+	public Long getSizeId() {
+		return sizeId;
+	}
 
-    public void setSizeName(String sizeName) {
-	this.sizeName = sizeName;
-    }
+	@SuppressWarnings("unused")
+	private void setSizeId(Long sizeId) {
+		this.sizeId = sizeId;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", sizeName=" + sizeName + "}";
-    }
+	@Override
+	public String toString() {
+		return "{sizeId=" + sizeId + ", sizeName=" + sizeName + "}";
+	}
 
 }

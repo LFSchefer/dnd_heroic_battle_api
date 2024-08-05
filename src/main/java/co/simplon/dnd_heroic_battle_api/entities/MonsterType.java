@@ -15,38 +15,38 @@ import lombok.Builder;
 @AllArgsConstructor
 public class MonsterType {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "monster_type_id")
+	private Long monsterTypesId;
 
-    @Column(name = "type_name")
-    private String typeName;
+	@Column(name = "type_name")
+	private String typeName;
 
-    public MonsterType() {
-	// ORM
-    }
+	public MonsterType() {
+		// ORM
+	}
 
-    public Long getId() {
-	return id;
-    }
+	public String getTypeName() {
+		return typeName;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(Long id) {
-	this.id = id;
-    }
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
 
-    public String getTypeName() {
-	return typeName;
-    }
+	public Long getMonsterTypesId() {
+		return monsterTypesId;
+	}
 
-    public void setTypeName(String typeName) {
-	this.typeName = typeName;
-    }
+	@SuppressWarnings("unused")
+	private void setMonsterTypesId(Long monsterTypesId) {
+		this.monsterTypesId = monsterTypesId;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", typeName=" + typeName + "}";
-    }
+	@Override
+	public String toString() {
+		return "{monsterTypesId=" + monsterTypesId + ", typeName=" + typeName + "}";
+	}
 
 }

@@ -17,8 +17,8 @@ public class ArmorClass {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+	@Column(name = "armor_classe_id")
+	private Long armorClasseId;
 
 	@Column(name = "armor_type")
 	private String armorType;
@@ -31,12 +31,12 @@ public class ArmorClass {
 	}
 
 	public Long getId() {
-		return id;
+		return armorClasseId;
 	}
 
 	@SuppressWarnings("unused")
 	private void setId(Long id) {
-		this.id = id;
+		this.armorClasseId = id;
 	}
 
 	public String getArmorType() {
@@ -57,7 +57,7 @@ public class ArmorClass {
 
 	@Override
 	public String toString() {
-		return "{id=" + id + ", armorType=" + armorType + ", armorValue=" + armorValue + "}";
+		return "{id=" + armorClasseId + ", armorType=" + armorType + ", armorValue=" + armorValue + "}";
 	}
 
 }

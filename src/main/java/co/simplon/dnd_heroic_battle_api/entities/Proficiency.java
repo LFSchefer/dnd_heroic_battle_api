@@ -15,61 +15,61 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Proficiency {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "proficiency_id")
+	private Long proficiencyId;
 
-    @Column(name = "proficiency_name")
-    private String proficiencyName;
+	@Column(name = "proficiency_name")
+	private String proficiencyName;
 
-    @Column(name = "proficiency_type")
-    private String proficiencyType;
+	@Column(name = "proficiency_type")
+	private String proficiencyType;
 
-    @Column(name = "proficiency_attribute")
-    private String proficiencyAttribute;
+	@Column(name = "proficiency_attribute")
+	private String proficiencyAttribute;
 
-    public Proficiency() {
-	// ORM
-    }
+	public Proficiency() {
+		// ORM
+	}
 
-    public Long getId() {
-	return id;
-    }
+	public String getProficiencyName() {
+		return proficiencyName;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(Long id) {
-	this.id = id;
-    }
+	public void setProficiencyName(String proficiencyName) {
+		this.proficiencyName = proficiencyName;
+	}
 
-    public String getProficiencyName() {
-	return proficiencyName;
-    }
+	public String getProficiencyType() {
+		return proficiencyType;
+	}
 
-    public void setProficiencyName(String proficiencyName) {
-	this.proficiencyName = proficiencyName;
-    }
+	public void setProficiencyType(String proficiencyType) {
+		this.proficiencyType = proficiencyType;
+	}
 
-    public String getProficiencyType() {
-	return proficiencyType;
-    }
+	public String getProficiencyAttribute() {
+		return proficiencyAttribute;
+	}
 
-    public void setProficiencyType(String proficiencyType) {
-	this.proficiencyType = proficiencyType;
-    }
+	public void setProficiencyAttribute(String proficiencyAttribute) {
+		this.proficiencyAttribute = proficiencyAttribute;
+	}
 
-    public String getProficiencyAttribute() {
-	return proficiencyAttribute;
-    }
+	public Long getProficiencyId() {
+		return proficiencyId;
+	}
 
-    public void setProficiencyAttribute(String proficiencyAttribute) {
-	this.proficiencyAttribute = proficiencyAttribute;
-    }
+	@SuppressWarnings("unused")
+	private void setProficiencyId(Long proficiencyId) {
+		this.proficiencyId = proficiencyId;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", proficiencyName=" + proficiencyName + ", proficiencyType=" + proficiencyType
-		+ ", proficiencyAttribute=" + proficiencyAttribute + "}";
-    }
+	@Override
+	public String toString() {
+		return "{proficiencyId=" + proficiencyId + ", proficiencyName=" + proficiencyName + ", proficiencyType=" + proficiencyType + ", proficiencyAttribute="
+				+ proficiencyAttribute + "}";
+	}
 
 }

@@ -15,49 +15,49 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Condition {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "condition_id")
+	private long conditionId;
 
-    @Column(name = "condition_name")
-    private String conditionName;
+	@Column(name = "condition_name")
+	private String conditionName;
 
-    @Column(name = "description")
-    private String description;
+	@Column(name = "description")
+	private String description;
 
-    public Condition() {
-	// ORM
-    }
+	public Condition() {
+		// ORM
+	}
 
-    public long getId() {
-	return id;
-    }
+	public long getId() {
+		return conditionId;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(long id) {
-	this.id = id;
-    }
+	@SuppressWarnings("unused")
+	private void setId(long id) {
+		this.conditionId = id;
+	}
 
-    public String getConditionName() {
-	return conditionName;
-    }
+	public String getConditionName() {
+		return conditionName;
+	}
 
-    public void setConditionName(String conditionName) {
-	this.conditionName = conditionName;
-    }
+	public void setConditionName(String conditionName) {
+		this.conditionName = conditionName;
+	}
 
-    public String getDescription() {
-	return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-	this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", conditionName=" + conditionName + ", description=" + description + "}";
-    }
+	@Override
+	public String toString() {
+		return "{id=" + conditionId + ", conditionName=" + conditionName + ", description=" + description + "}";
+	}
 
 }

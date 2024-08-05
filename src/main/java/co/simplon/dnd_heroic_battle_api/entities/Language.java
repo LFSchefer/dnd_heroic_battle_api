@@ -15,37 +15,37 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Language {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "language_id")
+	private long languageId;
 
-    @Column(name = "languages_name")
-    private String languagesName;
+	@Column(name = "languages_name")
+	private String languagesName;
 
-    public Language() {
-	// ORM
-    }
+	public Language() {
+		// ORM
+	}
 
-    public long getId() {
-	return id;
-    }
+	public String getLanguagesName() {
+		return languagesName;
+	}
 
-    public void setId(long id) {
-	this.id = id;
-    }
+	public void setLanguagesName(String languagesName) {
+		this.languagesName = languagesName;
+	}
 
-    public String getLanguagesName() {
-	return languagesName;
-    }
+	public long getLanguageId() {
+		return languageId;
+	}
 
-    public void setLanguagesName(String languagesName) {
-	this.languagesName = languagesName;
-    }
+	public void setLanguageId(long languageId) {
+		this.languageId = languageId;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", languagesName=" + languagesName + "}";
-    }
+	@Override
+	public String toString() {
+		return "{languageId=" + languageId + ", languagesName=" + languagesName + "}";
+	}
 
 }

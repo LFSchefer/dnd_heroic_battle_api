@@ -15,60 +15,60 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Speed {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "speed_id")
+	private Long speedId;
 
-    @Column(name = "walk")
-    private Short walk;
+	@Column(name = "walk")
+	private Short walk;
 
-    @Column(name = "swim")
-    private Short swim;
+	@Column(name = "swim")
+	private Short swim;
 
-    @Column(name = "fly")
-    private Short fly;
+	@Column(name = "fly")
+	private Short fly;
 
-    public Speed() {
-	// ORM
-    }
+	public Speed() {
+		// ORM
+	}
 
-    public Long getId() {
-	return id;
-    }
+	public Short getWalk() {
+		return walk;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(Long id) {
-	this.id = id;
-    }
+	public void setWalk(Short walk) {
+		this.walk = walk;
+	}
 
-    public Short getWalk() {
-	return walk;
-    }
+	public Short getSwim() {
+		return swim;
+	}
 
-    public void setWalk(Short walk) {
-	this.walk = walk;
-    }
+	public void setSwim(Short swim) {
+		this.swim = swim;
+	}
 
-    public Short getSwim() {
-	return swim;
-    }
+	public Short getFly() {
+		return fly;
+	}
 
-    public void setSwim(Short swim) {
-	this.swim = swim;
-    }
+	public void setFly(Short fly) {
+		this.fly = fly;
+	}
 
-    public Short getFly() {
-	return fly;
-    }
+	public Long getSpeedId() {
+		return speedId;
+	}
 
-    public void setFly(Short fly) {
-	this.fly = fly;
-    }
+	@SuppressWarnings("unused")
+	private void setSpeedId(Long speedId) {
+		this.speedId = speedId;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", walk=" + walk + ", swim=" + swim + ", fly=" + fly + "}";
-    }
+	@Override
+	public String toString() {
+		return "{speedId=" + speedId + ", walk=" + walk + ", swim=" + swim + ", fly=" + fly + "}";
+	}
 
 }

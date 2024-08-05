@@ -17,6 +17,7 @@ import co.simplon.dnd_heroic_battle_api.entities.ArmorClass;
 import co.simplon.dnd_heroic_battle_api.entities.Condition;
 import co.simplon.dnd_heroic_battle_api.entities.DamageType;
 import co.simplon.dnd_heroic_battle_api.entities.Language;
+import co.simplon.dnd_heroic_battle_api.entities.Monster;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterType;
 import co.simplon.dnd_heroic_battle_api.entities.Proficiency;
 import co.simplon.dnd_heroic_battle_api.entities.Sense;
@@ -27,6 +28,7 @@ import co.simplon.dnd_heroic_battle_api.repositories.ArmorClassRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ConditionRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.LanguageRepository;
+import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ProficiencyRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.SenseRepository;
@@ -47,12 +49,13 @@ public class ImportDataServiceImpl implements ImportDataService {
 	private final SenseRepository senseRepository;
 	private final SpeedRepository speedRepository;
 	private final ArmorClassRepository armorClassRepository;
+	private final MonsterRepository monsterRepository;
 	private final static String BASE_URL = "https://www.dnd5eapi.co";
 
 	public ImportDataServiceImpl(DamageTypeRepository damageTypeRepository, AlignmentRepository alignmentRepository, ConditionRepository conditionRepository,
 			LanguageRepository languageRepository, ProficiencyRepository proficiencyRepository, SizeRepository sizeRepository,
 			MonsterTypeRepository monsterTypeRepository, SenseRepository senseRepository, SpeedRepository speedRepository,
-			ArmorClassRepository armorClassRepository) {
+			ArmorClassRepository armorClassRepository, MonsterRepository monsterRepository) {
 		this.damageTypeRepository = damageTypeRepository;
 		this.alignmentRepository = alignmentRepository;
 		this.conditionRepository = conditionRepository;
@@ -63,17 +66,19 @@ public class ImportDataServiceImpl implements ImportDataService {
 		this.senseRepository = senseRepository;
 		this.speedRepository = speedRepository;
 		this.armorClassRepository = armorClassRepository;
+		this.monsterRepository = monsterRepository;
 	}
 
 	@Override
 	public void importData() {
 		RestClient restClient = RestClient.create();
 		importDamageTypes(restClient, "/api/damage-types");
-		importAlignments(restClient, "/api/alignments");
 		importConditions(restClient, "/api/conditions");
 		importLanguages(restClient, "/api/languages");
 		importProficiencies(restClient, "/api/proficiencies");
-		importFromMonster(restClient, "/api/monsters");
+		List<String> monsterUrls = getUrlList(restClient, "/api/monsters");
+		importFromMonster(restClient, monsterUrls);
+		importMonsters(restClient, monsterUrls);
 	}
 
 	private void importAlignments(RestClient restClient, String urlType) {
@@ -148,7 +153,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 		proficiencyRepository.saveAll(proficiencies);
 	}
 
-	private void importFromMonster(RestClient restClient, String urlType) {
+	private void importFromMonster(RestClient restClient, List<String> monsterUrls) {
 		sizeRepository.deleteAll();
 		monsterTypeRepository.deleteAll();
 		senseRepository.deleteAll();
@@ -159,9 +164,8 @@ public class ImportDataServiceImpl implements ImportDataService {
 		Set<Pair<Integer, String>> senses = new HashSet<>();
 		Set<Map<String, Short>> speeds = new HashSet<>();
 		Set<Pair<String, Integer>> armorClasses = new HashSet<>();
-		List<String> urls = getUrlList(restClient, urlType);
-		for (String url : urls) {
-			Map<String, Object> monstersImport = restClient.get().uri(BASE_URL + url).retrieve().body(new ParameterizedTypeReference<>() {
+		for (String monsterUrl : monsterUrls) {
+			Map<String, Object> monstersImport = restClient.get().uri(BASE_URL + monsterUrl).retrieve().body(new ParameterizedTypeReference<>() {
 			});
 			// Size
 			String size = (String) monstersImport.get("size");
@@ -205,6 +209,44 @@ public class ImportDataServiceImpl implements ImportDataService {
 				.toList());
 		speedRepository.saveAll(speeds.stream().map(s -> Speed.builder().walk(s.get("walk")).fly(s.get("fly")).swim(s.get("swim")).build()).toList());
 		armorClassRepository.saveAll(armorClasses.stream().map(a -> ArmorClass.builder().armorType(a.getFirst()).armorValue(a.getSecond()).build()).toList());
+	}
+
+	private void importMonsters(RestClient restClient, List<String> monsterUrls) {
+		monsterRepository.deleteAll();
+		importAlignments(restClient, "/api/alignments");
+		List<Monster> monsters = new ArrayList<>();
+		for (String monsterUrl : monsterUrls) {
+			Map<String, Object> monstersImport = restClient.get().uri(BASE_URL + monsterUrl).retrieve().body(new ParameterizedTypeReference<>() {
+			});
+			String name = (String) monstersImport.get("name");
+			Integer hitPoints = (Integer) monstersImport.get("hit_points");
+			String hitDices = (String) monstersImport.get("hit_dice");
+			String hitPointsRoll = (String) monstersImport.get("hit_points_roll");
+			Integer strength = (Integer) monstersImport.get("strength");
+			Integer dexterity = (Integer) monstersImport.get("dexterity");
+			Integer constitution = (Integer) monstersImport.get("constitution");
+			Integer intelligence = (Integer) monstersImport.get("intelligence");
+			Integer wisdom = (Integer) monstersImport.get("wisdom");
+			Integer charisma = (Integer) monstersImport.get("charisma");
+			Double challengeRating;
+			try {
+				challengeRating = (Double) monstersImport.get("challenge_rating");
+			} catch (Exception e) {
+				Integer challengeRatingAsInt = (Integer) monstersImport.get("challenge_rating");
+				challengeRating = Double.valueOf(challengeRatingAsInt);
+			}
+			Integer xp = (Integer) monstersImport.get("xp");
+			String imageUrl = (String) monstersImport.get("image");
+			String dnd5Url = (String) monstersImport.get("url");
+			String alignmentsName = (String) monstersImport.get("alignment");
+			Alignment alignment = alignmentRepository.findByAlignmentsNameIgnoreCase(alignmentsName);
+			monsters.add(Monster.builder().monsterName(name).hitPoints(hitPoints).hitDices(hitDices).hitPointsRoll(hitPointsRoll).strength(strength)
+					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
+					.challengeRating(challengeRating).xp(xp).imageUrl(BASE_URL + imageUrl).dnd5Url(BASE_URL + dnd5Url).dnd5Native(true).alignment(alignment)
+					.build());
+		}
+		monsterRepository.saveAll(monsters);
+
 	}
 
 	private List<String> getUrlList(RestClient restClient, String urlType) {

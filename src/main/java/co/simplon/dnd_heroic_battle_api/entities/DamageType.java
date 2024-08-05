@@ -15,49 +15,49 @@ import lombok.Builder;
 @AllArgsConstructor
 public class DamageType {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "damage_type_id")
+	private Long damageTypeId;
 
-    @Column(name = "damage_type_name")
-    private String damageTypeName;
+	@Column(name = "damage_type_name")
+	private String damageTypeName;
 
-    @Column(name = "description")
-    private String description;
+	@Column(name = "description")
+	private String description;
 
-    public DamageType() {
-	// ORM
-    }
+	public DamageType() {
+		// ORM
+	}
 
-    public Long getId() {
-	return id;
-    }
+	public Long getId() {
+		return damageTypeId;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(Long id) {
-	this.id = id;
-    }
+	@SuppressWarnings("unused")
+	private void setId(Long id) {
+		this.damageTypeId = id;
+	}
 
-    public String getDamageTypeName() {
-	return damageTypeName;
-    }
+	public String getDamageTypeName() {
+		return damageTypeName;
+	}
 
-    public void setDamageTypeName(String damageTypeName) {
-	this.damageTypeName = damageTypeName;
-    }
+	public void setDamageTypeName(String damageTypeName) {
+		this.damageTypeName = damageTypeName;
+	}
 
-    public String getDescription() {
-	return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public void setDescription(String description) {
-	this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", damageTypeName=" + damageTypeName + ", description=" + description + "}";
-    }
+	@Override
+	public String toString() {
+		return "{id=" + damageTypeId + ", damageTypeName=" + damageTypeName + ", description=" + description + "}";
+	}
 
 }

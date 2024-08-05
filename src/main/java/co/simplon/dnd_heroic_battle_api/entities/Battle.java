@@ -17,50 +17,50 @@ import lombok.Builder;
 @AllArgsConstructor
 public class Battle {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "battle_id")
+	private Long battleId;
 
-    @Column(name = "battle_name")
-    private String battleName;
+	@Column(name = "battle_name")
+	private String battleName;
 
-    @ManyToOne
-    @JoinColumn(name = "campaign_id")
-    private Campaign campaign;
+	@ManyToOne
+	@JoinColumn(name = "campaign_id")
+	private Campaign campaign;
 
-    public Battle() {
-	// for ORM
-    }
+	public Battle() {
+		// for ORM
+	}
 
-    public long getId() {
-	return id;
-    }
+	public long getId() {
+		return battleId;
+	}
 
-    @SuppressWarnings("unused")
-    private void setId(long id) {
-	this.id = id;
-    }
+	@SuppressWarnings("unused")
+	private void setId(long id) {
+		this.battleId = id;
+	}
 
-    public String getBattleName() {
-	return battleName;
-    }
+	public String getBattleName() {
+		return battleName;
+	}
 
-    public void setBattleName(String battleName) {
-	this.battleName = battleName;
-    }
+	public void setBattleName(String battleName) {
+		this.battleName = battleName;
+	}
 
-    public Campaign getCampaign() {
-	return campaign;
-    }
+	public Campaign getCampaign() {
+		return campaign;
+	}
 
-    public void setCampaign(Campaign campaign) {
-	this.campaign = campaign;
-    }
+	public void setCampaign(Campaign campaign) {
+		this.campaign = campaign;
+	}
 
-    @Override
-    public String toString() {
-	return "{id=" + id + ", battleName=" + battleName + ", campaign=" + campaign + "}";
-    }
+	@Override
+	public String toString() {
+		return "{id=" + battleId + ", battleName=" + battleName + ", campaign=" + campaign + "}";
+	}
 
 }

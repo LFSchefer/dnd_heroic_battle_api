@@ -8,4 +8,8 @@ import co.simplon.dnd_heroic_battle_api.entities.Alignment;
 @Repository
 public interface AlignmentRepository extends JpaRepository<Alignment, Long> {
 
+	Alignment findByAlignmentsName(String alignmentsName);
+
+	Alignment findByAlignmentsNameIgnoreCase(String alignmentsName);
+
 }

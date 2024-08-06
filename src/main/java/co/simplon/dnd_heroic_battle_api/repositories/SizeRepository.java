@@ -8,4 +8,6 @@ import co.simplon.dnd_heroic_battle_api.entities.Size;
 @Repository
 public interface SizeRepository extends JpaRepository<Size, Long> {
 
+	Size findBySizeName(String sizeName);
+
 }

@@ -71,8 +71,25 @@ public class Monster {
 	@JoinColumn(name = "alignment_id")
 	private Alignment alignment;
 
+	@ManyToOne(targetEntity = MonsterType.class)
+	@JoinColumn(name = "monster_type_id")
+	private MonsterType monsterType;
+
+	@ManyToOne(targetEntity = Size.class)
+	@JoinColumn(name = "size_id")
+	private Size size;
+
 	public Monster() {
 		// ORM
+	}
+
+	public Long getMonsterId() {
+		return monsterId;
+	}
+
+	@SuppressWarnings("unused")
+	private void setMonsterId(Long monsterId) {
+		this.monsterId = monsterId;
 	}
 
 	public String getMonsterName() {
@@ -203,13 +220,20 @@ public class Monster {
 		this.alignment = alignment;
 	}
 
-	public Long getMonsterId() {
-		return monsterId;
+	public MonsterType getMonsterType() {
+		return monsterType;
 	}
 
-	@SuppressWarnings("unused")
-	private void setMonsterId(Long monsterId) {
-		this.monsterId = monsterId;
+	public void setMonsterType(MonsterType monsterType) {
+		this.monsterType = monsterType;
+	}
+
+	public Size getSize() {
+		return size;
+	}
+
+	public void setSize(Size size) {
+		this.size = size;
 	}
 
 	@Override
@@ -217,7 +241,7 @@ public class Monster {
 		return "{monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints + ", hitDices=" + hitDices + ", hitPointsRoll="
 				+ hitPointsRoll + ", strength=" + strength + ", dexterity=" + dexterity + ", constitution=" + constitution + ", intelligence=" + intelligence
 				+ ", wisdom=" + wisdom + ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl=" + imageUrl
-				+ ", dnd5Url=" + dnd5Url + ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + "}";
+				+ ", dnd5Url=" + dnd5Url + ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size + "}";
 	}
 
 }

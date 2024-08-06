@@ -6,4 +6,6 @@ import co.simplon.dnd_heroic_battle_api.entities.MonsterType;
 
 public interface MonsterTypeRepository extends JpaRepository<MonsterType, Long> {
 
+	MonsterType findByTypeName(String monsterTypeName);
+
 }

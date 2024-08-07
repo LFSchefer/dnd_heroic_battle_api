@@ -8,4 +8,6 @@ import co.simplon.dnd_heroic_battle_api.entities.Sense;
 @Repository
 public interface SenseRepository extends JpaRepository<Sense, Long> {
 
+	Sense findByDarkvisionAndPassivePerception(Integer darkvision, Integer passivePerception);
+
 }

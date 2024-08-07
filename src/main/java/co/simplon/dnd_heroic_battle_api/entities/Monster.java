@@ -79,6 +79,10 @@ public class Monster {
 	@JoinColumn(name = "size_id")
 	private Size size;
 
+	@ManyToOne(targetEntity = Sense.class)
+	@JoinColumn(name = "sense_id")
+	private Sense sense;
+
 	public Monster() {
 		// ORM
 	}
@@ -236,12 +240,21 @@ public class Monster {
 		this.size = size;
 	}
 
+	public Sense getSense() {
+		return sense;
+	}
+
+	public void setSense(Sense sense) {
+		this.sense = sense;
+	}
+
 	@Override
 	public String toString() {
 		return "{monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints + ", hitDices=" + hitDices + ", hitPointsRoll="
 				+ hitPointsRoll + ", strength=" + strength + ", dexterity=" + dexterity + ", constitution=" + constitution + ", intelligence=" + intelligence
 				+ ", wisdom=" + wisdom + ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl=" + imageUrl
-				+ ", dnd5Url=" + dnd5Url + ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size + "}";
+				+ ", dnd5Url=" + dnd5Url + ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size
+				+ ", sense=" + sense + "}";
 	}
 
 }

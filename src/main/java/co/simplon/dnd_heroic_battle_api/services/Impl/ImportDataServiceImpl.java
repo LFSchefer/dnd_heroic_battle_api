@@ -251,10 +251,16 @@ public class ImportDataServiceImpl implements ImportDataService {
 			// Size fkey
 			String sizeName = (String) monstersImport.get("size");
 			Size size = sizeRepository.findBySizeName(sizeName);
+			// Sense fkey
+			Map<String, Object> apiSense = (Map<String, Object>) monstersImport.get("senses");
+			Integer passivePerception = (Integer) apiSense.get("passive_perception");
+			String darkvisionApi = (String) apiSense.get("darkvision");
+			Integer darkvision = darkvisionApi == null ? null : Integer.valueOf(darkvisionApi.replace("ft.", "").trim());
+			Sense sense = senseRepository.findByDarkvisionAndPassivePerception(darkvision, passivePerception);
 			monsters.add(Monster.builder().monsterName(name).hitPoints(hitPoints).hitDices(hitDices).hitPointsRoll(hitPointsRoll).strength(strength)
 					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
 					.challengeRating(challengeRating).xp(xp).imageUrl(BASE_URL + imageUrl).dnd5Url(BASE_URL + dnd5Url).dnd5Native(true).alignment(alignment)
-					.monsterType(monsterType).size(size).build());
+					.monsterType(monsterType).sense(sense).size(size).build());
 		}
 		monsterRepository.saveAll(monsters);
 

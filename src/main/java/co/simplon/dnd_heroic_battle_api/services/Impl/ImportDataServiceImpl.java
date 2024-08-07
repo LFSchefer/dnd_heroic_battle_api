@@ -257,10 +257,19 @@ public class ImportDataServiceImpl implements ImportDataService {
 			String darkvisionApi = (String) apiSense.get("darkvision");
 			Integer darkvision = darkvisionApi == null ? null : Integer.valueOf(darkvisionApi.replace("ft.", "").trim());
 			Sense sense = senseRepository.findByDarkvisionAndPassivePerception(darkvision, passivePerception);
+			// Speed fkey
+			Map<String, String> speedApi = (Map<String, String>) monstersImport.get("speed");
+			Short walk = speedApi.get("walk") == null ? null : Short.valueOf(speedApi.get("walk").replace("ft.", "").trim());
+			if (walk != null && walk == 0) {
+				walk = null;
+			}
+			Short swim = speedApi.get("swim") == null ? null : Short.valueOf(speedApi.get("swim").replace("ft.", "").trim());
+			Short fly = speedApi.get("fly") == null ? null : Short.valueOf(speedApi.get("fly").replace("ft.", "").trim());
+			Speed speed = speedRepository.findByWalkAndSwimAndFly(walk, swim, fly);
 			monsters.add(Monster.builder().monsterName(name).hitPoints(hitPoints).hitDices(hitDices).hitPointsRoll(hitPointsRoll).strength(strength)
 					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
 					.challengeRating(challengeRating).xp(xp).imageUrl(BASE_URL + imageUrl).dnd5Url(BASE_URL + dnd5Url).dnd5Native(true).alignment(alignment)
-					.monsterType(monsterType).sense(sense).size(size).build());
+					.monsterType(monsterType).sense(sense).size(size).speed(speed).build());
 		}
 		monsterRepository.saveAll(monsters);
 

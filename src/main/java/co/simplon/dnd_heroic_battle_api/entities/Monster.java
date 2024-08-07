@@ -83,6 +83,10 @@ public class Monster {
 	@JoinColumn(name = "sense_id")
 	private Sense sense;
 
+	@ManyToOne(targetEntity = Speed.class)
+	@JoinColumn(name = "speed_id")
+	private Speed speed;
+
 	public Monster() {
 		// ORM
 	}
@@ -248,13 +252,21 @@ public class Monster {
 		this.sense = sense;
 	}
 
+	public Speed getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(Speed speed) {
+		this.speed = speed;
+	}
+
 	@Override
 	public String toString() {
 		return "{monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints + ", hitDices=" + hitDices + ", hitPointsRoll="
 				+ hitPointsRoll + ", strength=" + strength + ", dexterity=" + dexterity + ", constitution=" + constitution + ", intelligence=" + intelligence
 				+ ", wisdom=" + wisdom + ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl=" + imageUrl
 				+ ", dnd5Url=" + dnd5Url + ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size
-				+ ", sense=" + sense + "}";
+				+ ", sense=" + sense + ", speed=" + speed + "}";
 	}
 
 }

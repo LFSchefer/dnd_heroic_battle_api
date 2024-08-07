@@ -8,4 +8,6 @@ import co.simplon.dnd_heroic_battle_api.entities.Speed;
 @Repository
 public interface SpeedRepository extends JpaRepository<Speed, Long> {
 
+	Speed findByWalkAndSwimAndFly(Short walk, Short swim, Short fly);
+
 }

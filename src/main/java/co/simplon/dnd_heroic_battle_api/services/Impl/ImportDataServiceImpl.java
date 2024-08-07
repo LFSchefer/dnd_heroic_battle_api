@@ -266,10 +266,16 @@ public class ImportDataServiceImpl implements ImportDataService {
 			Short swim = speedApi.get("swim") == null ? null : Short.valueOf(speedApi.get("swim").replace("ft.", "").trim());
 			Short fly = speedApi.get("fly") == null ? null : Short.valueOf(speedApi.get("fly").replace("ft.", "").trim());
 			Speed speed = speedRepository.findByWalkAndSwimAndFly(walk, swim, fly);
+			// Armor class fkey
+			List<Map<String, Object>> listArmorClasses = (List<Map<String, Object>>) monstersImport.get("armor_class");
+			Map<String, Object> ArmorClasseApi = listArmorClasses.get(0);
+			String armorType = (String) ArmorClasseApi.get("type");
+			Integer armorValue = (Integer) ArmorClasseApi.get("value");
+			ArmorClass armorClass = armorClassRepository.findByArmorTypeAndArmorValue(armorType, armorValue);
 			monsters.add(Monster.builder().monsterName(name).hitPoints(hitPoints).hitDices(hitDices).hitPointsRoll(hitPointsRoll).strength(strength)
 					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
 					.challengeRating(challengeRating).xp(xp).imageUrl(BASE_URL + imageUrl).dnd5Url(BASE_URL + dnd5Url).dnd5Native(true).alignment(alignment)
-					.monsterType(monsterType).sense(sense).size(size).speed(speed).build());
+					.monsterType(monsterType).sense(sense).size(size).speed(speed).armorClass(armorClass).build());
 		}
 		monsterRepository.saveAll(monsters);
 

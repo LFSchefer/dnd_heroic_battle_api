@@ -8,4 +8,6 @@ import co.simplon.dnd_heroic_battle_api.entities.ArmorClass;
 @Repository
 public interface ArmorClassRepository extends JpaRepository<ArmorClass, Long> {
 
+	ArmorClass findByArmorTypeAndArmorValue(String armorType, Integer armorValue);
+
 }

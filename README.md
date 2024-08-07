@@ -26,7 +26,7 @@ to connect to your local database.
 You will find instruction to create your local Database [here](https://github.com/LFSchefer/dnd_heroic_battle_data).
 
 ---
-And then call this URL: 
+Launch your api and then call this URL: 
 ```txt
 http://localhost:8080/import-data
 ```

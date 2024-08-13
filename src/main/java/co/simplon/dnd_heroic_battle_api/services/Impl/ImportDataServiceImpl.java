@@ -241,7 +241,6 @@ public class ImportDataServiceImpl implements ImportDataService {
 			}
 			Integer xp = (Integer) monstersImport.get("xp");
 			String imageUrl = (String) monstersImport.get("image");
-			String dnd5Url = (String) monstersImport.get("url");
 			// Alignment fkey
 			String alignmentsName = (String) monstersImport.get("alignment");
 			Alignment alignment = alignmentRepository.findByAlignmentsNameIgnoreCase(alignmentsName);
@@ -274,7 +273,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 			ArmorClass armorClass = armorClassRepository.findByArmorTypeAndArmorValue(armorType, armorValue);
 			monsters.add(Monster.builder().monsterName(name).hitPoints(hitPoints).hitDices(hitDices).hitPointsRoll(hitPointsRoll).strength(strength)
 					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
-					.challengeRating(challengeRating).xp(xp).imageUrl(BASE_URL + imageUrl).dnd5Url(BASE_URL + dnd5Url).dnd5Native(true).alignment(alignment)
+					.challengeRating(challengeRating).xp(xp).imageUrl(imageUrl == null ? null : BASE_URL + imageUrl).dnd5Native(true).alignment(alignment)
 					.monsterType(monsterType).sense(sense).size(size).speed(speed).armorClass(armorClass).build());
 		}
 		monsterRepository.saveAll(monsters);

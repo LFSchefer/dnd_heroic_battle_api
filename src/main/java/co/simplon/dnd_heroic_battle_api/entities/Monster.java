@@ -61,9 +61,6 @@ public class Monster {
 	@Column(name = "image_url")
 	private String imageUrl;
 
-	@Column(name = "dnd5_url")
-	private String dnd5Url;
-
 	@Column(name = "dnd5_native")
 	private boolean dnd5Native;
 
@@ -208,14 +205,6 @@ public class Monster {
 		this.imageUrl = imageUrl;
 	}
 
-	public String getDnd5Url() {
-		return dnd5Url;
-	}
-
-	public void setDnd5Url(String dnd5Url) {
-		this.dnd5Url = dnd5Url;
-	}
-
 	public boolean isDnd5Native() {
 		return dnd5Native;
 	}
@@ -277,8 +266,8 @@ public class Monster {
 		return "{monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints + ", hitDices=" + hitDices + ", hitPointsRoll="
 				+ hitPointsRoll + ", strength=" + strength + ", dexterity=" + dexterity + ", constitution=" + constitution + ", intelligence=" + intelligence
 				+ ", wisdom=" + wisdom + ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl=" + imageUrl
-				+ ", dnd5Url=" + dnd5Url + ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size
-				+ ", sense=" + sense + ", speed=" + speed + ", armorClass=" + armorClass + "}";
+				+ ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size + ", sense=" + sense
+				+ ", speed=" + speed + ", armorClass=" + armorClass + "}";
 	}
 
 }

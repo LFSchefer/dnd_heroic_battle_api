@@ -1,4 +1,5 @@
 # Welcome to DnD Heroic Battle API repository.
+You  can find the project wiki [here](https://github.com/LFSchefer/dnd_heroic_battle/wiki)
 
 ## This is the Api repository to the DnD Heroic Battle application. The API is in Java.
 

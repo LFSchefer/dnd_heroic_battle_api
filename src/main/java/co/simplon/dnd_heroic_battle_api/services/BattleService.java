@@ -4,20 +4,20 @@ import java.util.List;
 
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
-import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleView;
+import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 
 public interface BattleService {
 
-    List<BattleView> getAll();
+	List<BattleModel> getAll();
 
-    BattleView getOne(Long id);
+	BattleModel getOne(Long id);
 
-    List<BattleView> getAllFromCampaign(Long id);
+	List<BattleModel> getAllFromCampaign(Long id);
 
-    void deleteOne(Long id);
+	void deleteOne(Long id);
 
-    void create(BattleCreate input);
+	void create(BattleCreate input);
 
-    void update(BattleUpdate input);
+	void update(BattleUpdate input);
 
 }

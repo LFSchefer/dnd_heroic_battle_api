@@ -2,6 +2,8 @@ package co.simplon.dnd_heroic_battle_api.entities;
 
 import java.sql.Timestamp;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ public class Campaign {
 	@Column(name = "campaign_name")
 	private String campaignName;
 
+	@CreationTimestamp
 	@Column(name = "creation_date")
 	private Timestamp creationDate;
 

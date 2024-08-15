@@ -26,12 +26,12 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
 			SELECT CASE WHEN EXISTS (
 			    SELECT *
 			    FROM battles b
-			    WHERE battle_name <> :battleName
-			    AND battle_id <> :id
+			    WHERE battle_name = :battleName
+			    AND battle_id = :id
 			    AND campaign_id = (SELECT campaign_id FROM battles WHERE battle_id = :id)
 			)
-			THEN TRUE
-			ELSE FALSE END
+			THEN FALSE
+			ELSE TRUE END
 			""";
 
 	@Query(value = BATTLE_NAME_DONT_EXIST_FOR_THIS_CAMPAIGN, nativeQuery = true)

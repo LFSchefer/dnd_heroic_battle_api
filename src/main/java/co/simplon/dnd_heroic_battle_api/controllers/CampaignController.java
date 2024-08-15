@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignUpdate;
-import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignView;
+import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 import co.simplon.dnd_heroic_battle_api.services.CampaignService;
 import jakarta.validation.Valid;
 
@@ -23,38 +23,38 @@ import jakarta.validation.Valid;
 @RequestMapping("/campaigns")
 public class CampaignController {
 
-    private final CampaignService service;
+	private final CampaignService service;
 
-    public CampaignController(CampaignService service) {
-	this.service = service;
-    }
+	public CampaignController(CampaignService service) {
+		this.service = service;
+	}
 
-    @PostMapping
-    public ResponseEntity<Void> create(@Valid @RequestBody CampaignCreate input) {
-	service.create(input);
-	return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+	@PostMapping
+	public ResponseEntity<Void> create(@Valid @RequestBody CampaignCreate input) {
+		service.create(input);
+		return new ResponseEntity<>(HttpStatus.CREATED);
+	}
 
-    @GetMapping
-    public ResponseEntity<List<CampaignView>> getAll() {
-	return ResponseEntity.ok(service.getAll());
-    }
+	@GetMapping
+	public ResponseEntity<List<CampaignModel>> getAll() {
+		return ResponseEntity.ok(service.getAll());
+	}
 
-    @GetMapping("{id}")
-    public ResponseEntity<CampaignView> getone(@PathVariable("id") long id) {
-	return ResponseEntity.ok(service.getOne(id));
-    }
+	@GetMapping("{id}")
+	public ResponseEntity<CampaignModel> getone(@PathVariable("id") long id) {
+		return ResponseEntity.ok(service.getOne(id));
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteOne(@PathVariable("id") long id) {
-	service.deleteOne(id);
-	return new ResponseEntity<>(HttpStatus.OK);
-    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteOne(@PathVariable("id") long id) {
+		service.deleteOne(id);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
-    @PatchMapping
-    public ResponseEntity<Void> update(@Valid @RequestBody CampaignUpdate input) {
-	service.update(input);
-	return new ResponseEntity<>(HttpStatus.OK);
-    }
+	@PatchMapping
+	public ResponseEntity<Void> update(@Valid @RequestBody CampaignUpdate input) {
+		service.update(input);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
 
 }

@@ -4,18 +4,18 @@ import java.util.List;
 
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignUpdate;
-import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignView;
+import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 
 public interface CampaignService {
 
-    void create(CampaignCreate input);
+	void create(CampaignCreate input);
 
-    List<CampaignView> getAll();
+	List<CampaignModel> getAll();
 
-    void deleteOne(long id);
+	void deleteOne(long id);
 
-    CampaignView getOne(long id);
+	CampaignModel getOne(long id);
 
-    void update(CampaignUpdate input);
+	void update(CampaignUpdate input);
 
 }

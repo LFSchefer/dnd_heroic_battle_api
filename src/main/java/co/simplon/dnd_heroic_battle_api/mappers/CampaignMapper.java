@@ -1,12 +1,12 @@
 package co.simplon.dnd_heroic_battle_api.mappers;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignUpdate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignView;
 import co.simplon.dnd_heroic_battle_api.entities.Campaign;
+import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 
 public class CampaignMapper {
 
@@ -15,7 +15,7 @@ public class CampaignMapper {
 	}
 
 	public static Campaign campaignCreateToEntity(CampaignCreate campaign) {
-		return Campaign.builder().campaignName(campaign.campaignName()).creationDate(new Timestamp(System.currentTimeMillis())).build();
+		return Campaign.builder().campaignName(campaign.campaignName()).build();
 	}
 
 	public static CampaignView entityToCampaignView(Campaign campaign) {
@@ -24,5 +24,13 @@ public class CampaignMapper {
 
 	public static Campaign campaignUpdateToEntity(CampaignUpdate input) {
 		return Campaign.builder().campaignId(input.id()).campaignName(input.campaignName()).build();
+	}
+
+	public static List<CampaignModel> entitiesToCampaignModel(List<Campaign> campaigns) {
+		return campaigns.stream().map(c -> new CampaignModel(c.getId(), c.getCampaignName(), c.getCreationDate())).toList();
+	}
+
+	public static CampaignModel entityToCampaignModel(Campaign campaign) {
+		return new CampaignModel(campaign.getId(), campaign.getCampaignName(), campaign.getCreationDate());
 	}
 }

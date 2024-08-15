@@ -7,15 +7,15 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class UniqueBattleNameUpdateValidator implements ConstraintValidator<UniqueBattleNameUpdate, BattleUpdate> {
 
-    private final BattleRepository repo;
+	private final BattleRepository repo;
 
-    public UniqueBattleNameUpdateValidator(BattleRepository repo) {
-	this.repo = repo;
-    }
+	public UniqueBattleNameUpdateValidator(BattleRepository repo) {
+		this.repo = repo;
+	}
 
-    @Override
-    public boolean isValid(BattleUpdate value, ConstraintValidatorContext context) {
-	return repo.battleNameNotExistForCampaign(value.id(), value.battleName());
-    }
+	@Override
+	public boolean isValid(BattleUpdate value, ConstraintValidatorContext context) {
+		return repo.battleNameNotExistForCampaign(value.id(), value.battleName());
+	}
 
 }

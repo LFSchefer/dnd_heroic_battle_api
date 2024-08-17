@@ -15,6 +15,7 @@ import org.springframework.web.client.RestClient;
 import co.simplon.dnd_heroic_battle_api.entities.Alignment;
 import co.simplon.dnd_heroic_battle_api.entities.ArmorClass;
 import co.simplon.dnd_heroic_battle_api.entities.Condition;
+import co.simplon.dnd_heroic_battle_api.entities.Damage;
 import co.simplon.dnd_heroic_battle_api.entities.DamageType;
 import co.simplon.dnd_heroic_battle_api.entities.Dc;
 import co.simplon.dnd_heroic_battle_api.entities.Language;
@@ -29,6 +30,7 @@ import co.simplon.dnd_heroic_battle_api.entities.Usage;
 import co.simplon.dnd_heroic_battle_api.repositories.AlignmentRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ArmorClassRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ConditionRepository;
+import co.simplon.dnd_heroic_battle_api.repositories.DamageRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DcRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.LanguageRepository;
@@ -59,13 +61,14 @@ public class ImportDataServiceImpl implements ImportDataService {
 	private final UsageRepository usageRepository;
 	private final DcRepository dcRepository;
 	private final SpecialAbilityRepository specialAbilityRepository;
+	private final DamageRepository damageRepository;
 	private final static String BASE_URL = "https://www.dnd5eapi.co";
 
 	public ImportDataServiceImpl(DamageTypeRepository damageTypeRepository, AlignmentRepository alignmentRepository, ConditionRepository conditionRepository,
 			LanguageRepository languageRepository, ProficiencyRepository proficiencyRepository, SizeRepository sizeRepository,
 			MonsterTypeRepository monsterTypeRepository, SenseRepository senseRepository, SpeedRepository speedRepository,
 			ArmorClassRepository armorClassRepository, MonsterRepository monsterRepository, UsageRepository usageRepository, DcRepository dcRepository,
-			SpecialAbilityRepository abilityRepository) {
+			SpecialAbilityRepository specialAbilityRepository, DamageRepository damageRepository) {
 		this.damageTypeRepository = damageTypeRepository;
 		this.alignmentRepository = alignmentRepository;
 		this.conditionRepository = conditionRepository;
@@ -79,7 +82,8 @@ public class ImportDataServiceImpl implements ImportDataService {
 		this.monsterRepository = monsterRepository;
 		this.usageRepository = usageRepository;
 		this.dcRepository = dcRepository;
-		this.specialAbilityRepository = abilityRepository;
+		this.specialAbilityRepository = specialAbilityRepository;
+		this.damageRepository = damageRepository;
 	}
 
 	@Override
@@ -99,6 +103,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 	private void deleteExisting() {
 		monsterRepository.deleteAll();
 		alignmentRepository.deleteAll();
+		damageRepository.deleteAll();
 		damageTypeRepository.deleteAll();
 		conditionRepository.deleteAll();
 		languageRepository.deleteAll();
@@ -189,6 +194,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 		Set<Pair<String, Integer>> usages = new HashSet<>();
 		Set<Map<String, Object>> dcs = new HashSet<>();
 		Set<Map<String, Object>> specialAbilities = new HashSet<>();
+		Set<Pair<String, String>> damages = new HashSet<>();
 		for (String monsterUrl : monsterUrls) {
 			Map<String, Object> monstersImport = restClient.get().uri(BASE_URL + monsterUrl).retrieve().body(new ParameterizedTypeReference<>() {
 			});
@@ -226,8 +232,8 @@ public class ImportDataServiceImpl implements ImportDataService {
 			Pair<String, Integer> armorclass = Pair.of(armorType, armorValue);
 			armorClasses.add(armorclass);
 			// Usages
-			List<Map<String, Object>> actions = (List<Map<String, Object>>) monstersImport.get("actions");
-			actions.forEach(action -> {
+			List<Map<String, Object>> actionsApi = (List<Map<String, Object>>) monstersImport.get("actions");
+			actionsApi.forEach(action -> {
 				Map<String, Object> usage = (Map<String, Object>) action.get("usage");
 				if (usage != null) {
 					String usageName = (String) usage.get("type");
@@ -247,12 +253,31 @@ public class ImportDataServiceImpl implements ImportDataService {
 				}
 			});
 			// DCs
-			actions.forEach(action -> {
+			actionsApi.forEach(action -> {
 				Map<String, Object> dc = (Map<String, Object>) action.get("dc");
 				if (dc != null) {
 					Map<String, Object> dcCandidate = new HashMap<>();
 					Map<String, String> dc_type = (Map<String, String>) dc.get("dc_type");
 					String dcType = dc_type.get("index");
+					switch (dcType) {
+					case "cha":
+						dcType = "charisma";
+						break;
+					case "con":
+						dcType = "constitution";
+						break;
+					case "dex":
+						dcType = "dexterity";
+						break;
+					case "str":
+						dcType = "strength";
+						break;
+					case "wis":
+						dcType = "wisdom";
+						break;
+					default:
+						break;
+					}
 					dcCandidate.put("dcType", dcType);
 					dcCandidate.put("dcValue", dc.get("dc_value"));
 					dcCandidate.put("successType", dc.get("success_type"));
@@ -264,14 +289,25 @@ public class ImportDataServiceImpl implements ImportDataService {
 			if (specialAbilitiesApi.size() != 0) {
 				specialAbilitiesApi.forEach(specialAbility -> {
 					Map<String, Object> specialAbilityMap = new HashMap<String, Object>();
-//					String specialAbilityName = (String) specialAbility.get("name");
-//					String specialAbilityDescription = (String) specialAbility.get("desc");
 					specialAbilityMap.put("specialAbilityName", specialAbility.get("name"));
 					specialAbilityMap.put("specialAbilityDescription", specialAbility.get("desc"));
 					specialAbilities.add(specialAbilityMap);
 				});
 
 			}
+			// Damages
+			actionsApi.forEach(action -> {
+				List<Map<String, Object>> damageApi = (List<Map<String, Object>>) action.get("damage");
+				if (damageApi != null) {
+					damageApi.forEach(damage -> {
+						String damageDice = (String) damage.get("damage_dice") == null ? "0" : (String) damage.get("damage_dice");
+						Map<String, String> damageType = (Map<String, String>) damage.get("damage_type");
+						String damageName = damageType == null ? "null" : damageType.get("name");
+						Pair<String, String> damageCandidate = Pair.of(damageName, damageDice);
+						damages.add(damageCandidate);
+					});
+				}
+			});
 		}
 		sizeRepository.saveAll(sizes.stream().map(s -> Size.builder().sizeName(s).build()).toList());
 		monsterTypeRepository.saveAll(monsterTypes.stream().map(m -> MonsterType.builder().typeName(m).build()).toList());
@@ -288,6 +324,8 @@ public class ImportDataServiceImpl implements ImportDataService {
 				.toList());
 		specialAbilityRepository.saveAll(specialAbilities.stream().map(s -> SpecialAbility.builder().specialAbilityName((String) s.get("specialAbilityName"))
 				.specialAbilityDescription((String) s.get("specialAbilityDescription")).build()).toList());
+		damageRepository.saveAll(damages.stream()
+				.map(d -> Damage.builder().damageDices(d.getSecond()).damageType(damageTypeRepository.findByDamageTypeName(d.getFirst())).build()).toList());
 	}
 
 	private void importMonsters(RestClient restClient, List<String> monsterUrls) {

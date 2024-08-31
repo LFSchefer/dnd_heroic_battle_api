@@ -6,6 +6,6 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @UniqueCampaignUpdate
-public record CampaignUpdate(@Positive long id, @NotBlank @Size(min = 5) String campaignName) {
+public record CampaignUpdate(@Positive long campaignId, @NotBlank @Size(min = 5, max = 200) String campaignName) {
 
 }

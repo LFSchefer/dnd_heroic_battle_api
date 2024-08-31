@@ -49,7 +49,7 @@ public class CampaignServiceImpl implements CampaignService {
 	@Transactional
 	@Override
 	public void update(CampaignUpdate input) {
-		repo.update(input.id(), input.campaignName());
+		repo.update(input.campaignId(), input.campaignName());
 	}
 
 }

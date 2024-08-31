@@ -23,7 +23,7 @@ public class CampaignMapper {
 	}
 
 	public static Campaign campaignUpdateToEntity(CampaignUpdate input) {
-		return Campaign.builder().campaignId(input.id()).campaignName(input.campaignName()).build();
+		return Campaign.builder().campaignId(input.campaignId()).campaignName(input.campaignName()).build();
 	}
 
 	public static List<CampaignModel> entitiesToCampaignModel(List<Campaign> campaigns) {

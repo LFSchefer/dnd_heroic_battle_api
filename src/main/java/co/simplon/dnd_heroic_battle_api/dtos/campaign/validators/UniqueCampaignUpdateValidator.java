@@ -7,14 +7,14 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class UniqueCampaignUpdateValidator implements ConstraintValidator<UniqueCampaignUpdate, CampaignUpdate> {
 
-    private final CampaingRepository repo;
+	private final CampaingRepository repo;
 
-    public UniqueCampaignUpdateValidator(CampaingRepository repo) {
-	this.repo = repo;
-    }
+	public UniqueCampaignUpdateValidator(CampaingRepository repo) {
+		this.repo = repo;
+	}
 
-    @Override
-    public boolean isValid(CampaignUpdate value, ConstraintValidatorContext context) {
-	return !repo.existsByCampaignNameAndIdNot(value.campaignName(), value.id());
-    }
+	@Override
+	public boolean isValid(CampaignUpdate value, ConstraintValidatorContext context) {
+		return !repo.existsByCampaignNameAndIdNot(value.campaignName(), value.campaignId());
+	}
 }

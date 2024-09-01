@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleView;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 import co.simplon.dnd_heroic_battle_api.services.BattleService;
 import jakarta.validation.Valid;
@@ -43,7 +44,7 @@ public class BattleController {
 	}
 
 	@GetMapping("/campaign")
-	public ResponseEntity<List<BattleModel>> getAllFromCampaign(@RequestParam("id") Long id) {
+	public ResponseEntity<List<BattleView>> getAllFromCampaign(@RequestParam("id") Long id) {
 		return ResponseEntity.ok(service.getAllFromCampaign(id));
 	}
 

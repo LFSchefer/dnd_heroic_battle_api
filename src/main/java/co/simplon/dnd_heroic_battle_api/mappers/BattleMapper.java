@@ -12,11 +12,11 @@ import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 public class BattleMapper {
 
 	public static List<BattleView> entitiesToBattleViews(List<Battle> battles) {
-		return battles.stream().map(b -> new BattleView(b.getBattleName(), CampaignMapper.entityToCampaignView(b.getCampaign()))).toList();
+		return battles.stream().map(b -> new BattleView(b.getId(), b.getBattleName())).toList();
 	}
 
 	public static BattleView entityToBattleView(Battle battle) {
-		return new BattleView(battle.getBattleName(), CampaignMapper.entityToCampaignView(battle.getCampaign()));
+		return new BattleView(battle.getId(), battle.getBattleName());
 	}
 
 	public static Battle battleCreateToEntity(BattleCreate input) {

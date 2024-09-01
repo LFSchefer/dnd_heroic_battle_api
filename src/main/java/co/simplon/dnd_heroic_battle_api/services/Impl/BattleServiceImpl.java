@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleView;
 import co.simplon.dnd_heroic_battle_api.mappers.BattleMapper;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
@@ -36,8 +37,8 @@ public class BattleServiceImpl implements BattleService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<BattleModel> getAllFromCampaign(Long id) {
-		return BattleMapper.entitiesToBattleModel(repo.findAllByCampaignId(id));
+	public List<BattleView> getAllFromCampaign(Long id) {
+		return BattleMapper.entitiesToBattleViews(repo.findAllByCampaignId(id));
 	}
 
 	@Transactional

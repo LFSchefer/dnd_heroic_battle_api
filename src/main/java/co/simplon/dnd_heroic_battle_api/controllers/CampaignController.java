@@ -43,7 +43,7 @@ public class CampaignController {
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<CampaignModel> getone(@PathVariable("id") long id) {
+	public ResponseEntity<CampaignModel> getOne(@PathVariable("id") long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 

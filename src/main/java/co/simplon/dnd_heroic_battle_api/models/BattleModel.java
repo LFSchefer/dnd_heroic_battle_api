@@ -11,6 +11,8 @@ public class BattleModel {
 
 	private String battleName;
 
+	private int turn;
+
 	private CampaignModel campaign;
 
 	public Long getBattleId() {
@@ -37,9 +39,17 @@ public class BattleModel {
 		this.campaign = campaign;
 	}
 
+	public int getTurn() {
+		return turn;
+	}
+
+	public void setTurn(int turn) {
+		this.turn = turn;
+	}
+
 	@Override
 	public String toString() {
-		return "{battleId=" + battleId + ", battleName=" + battleName + ", campaign=" + campaign + "}";
+		return "{battleId=" + battleId + ", battleName=" + battleName + ", campaign=" + campaign + ", turn=" + turn + "}";
 	}
 
 }

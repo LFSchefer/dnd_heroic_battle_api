@@ -25,6 +25,9 @@ public class Battle {
 	@Column(name = "battle_name")
 	private String battleName;
 
+	@Column(name = "turn")
+	private int turn;
+
 	@ManyToOne
 	@JoinColumn(name = "campaign_id")
 	private Campaign campaign;
@@ -33,13 +36,13 @@ public class Battle {
 		// for ORM
 	}
 
-	public long getId() {
+	public Long getBattleId() {
 		return battleId;
 	}
 
 	@SuppressWarnings("unused")
-	private void setId(long id) {
-		this.battleId = id;
+	private void setBattleId(Long battleId) {
+		this.battleId = battleId;
 	}
 
 	public String getBattleName() {
@@ -48,6 +51,14 @@ public class Battle {
 
 	public void setBattleName(String battleName) {
 		this.battleName = battleName;
+	}
+
+	public int getTurn() {
+		return turn;
+	}
+
+	public void setTurn(int turn) {
+		this.turn = turn;
 	}
 
 	public Campaign getCampaign() {
@@ -60,7 +71,7 @@ public class Battle {
 
 	@Override
 	public String toString() {
-		return "{id=" + battleId + ", battleName=" + battleName + ", campaign=" + campaign + "}";
+		return "{battleId=" + battleId + ", battleName=" + battleName + ", turn=" + turn + ", campaign=" + campaign + "}";
 	}
 
 }

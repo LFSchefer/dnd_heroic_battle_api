@@ -6,6 +6,6 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @UniqueBattleNameUpdate
-public record BattleUpdate(@Positive Long id, @NotBlank @Size(min = 5) String battleName) {
+public record BattleUpdate(@Positive Long id, @NotBlank @Size(min = 5) String battleName, @Positive int turn) {
 
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
-import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleView;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleDto;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 
 public interface BattleService {
@@ -13,7 +13,7 @@ public interface BattleService {
 
 	BattleModel getOne(Long id);
 
-	List<BattleView> getAllFromCampaign(Long id);
+	List<BattleDto> getAllFromCampaign(Long id);
 
 	void deleteOne(Long id);
 

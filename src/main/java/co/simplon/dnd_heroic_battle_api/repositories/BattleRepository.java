@@ -27,7 +27,7 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
 			    SELECT *
 			    FROM battles b
 			    WHERE battle_name = :battleName
-			    AND battle_id = :id
+			    AND battle_id <> :id
 			    AND campaign_id = (SELECT campaign_id FROM battles WHERE battle_id = :id)
 			)
 			THEN FALSE
@@ -42,6 +42,6 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
 			WHERE campaign_id = :id;
 						""";
 
-//	@Query(value = FIND_ALL_BY_CAMPAIGN_ID, nativeQuery = true)
+	@Query(value = FIND_ALL_BY_CAMPAIGN_ID, nativeQuery = true)
 	List<Battle> findAllByCampaignId(@Param("id") Long id);
 }

@@ -11,18 +11,18 @@ import co.simplon.dnd_heroic_battle_api.entities.Campaign;
 @Repository
 public interface CampaingRepository extends JpaRepository<Campaign, Long> {
 
-    String UPDATE_CAMPAIGN = """
-    	UPDATE Campaign
-    		SET campaignName = :campaignName
-    		WHERE id = :id
-    	""";
+	String UPDATE_CAMPAIGN = """
+			UPDATE Campaign
+				SET campaignName = :campaignName
+				WHERE id = :id
+			""";
 
-    boolean existsByCampaignName(String campaignName);
+	boolean existsByCampaignName(String campaignName);
 
-    @Modifying
-    @Query(value = UPDATE_CAMPAIGN)
-    void update(@Param("id") long id, @Param("campaignName") String campaignName);
+	@Modifying
+	@Query(value = UPDATE_CAMPAIGN)
+	void update(@Param("id") long id, @Param("campaignName") String campaignName);
 
-    boolean existsByCampaignNameAndIdNot(String campaignName, long id);
+	boolean existsByCampaignNameAndIdNot(String campaignName, long id);
 
 }

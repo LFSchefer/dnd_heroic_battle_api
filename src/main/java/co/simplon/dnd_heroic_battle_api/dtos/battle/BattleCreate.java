@@ -6,6 +6,6 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 @UniqueBattleNameCreate
-public record BattleCreate(@NotBlank @Size(min = 5) String battleName, @Positive Long campaignId) {
+public record BattleCreate(@NotBlank @Size(min = 5, max = 50) String battleName, @Positive Long campaignId) {
 
 }

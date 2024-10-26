@@ -37,5 +37,5 @@ build/
 
 
 ### LOGS ###
-.log
-logs/
+!**/**.log
+.logs/

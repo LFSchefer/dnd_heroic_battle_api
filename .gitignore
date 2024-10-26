@@ -39,3 +39,4 @@ build/
 ### LOGS ###
 !**/**.log
 .logs/
+logs

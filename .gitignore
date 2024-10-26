@@ -34,3 +34,7 @@ build/
 
 **/application.properties
 **/application-dev.properties
+
+
+### LOGS ###
+./logs/**

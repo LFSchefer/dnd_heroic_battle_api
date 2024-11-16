@@ -9,7 +9,7 @@ import co.simplon.dnd_heroic_battle_api.entities.Battle;
 import co.simplon.dnd_heroic_battle_api.entities.Campaign;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 
-public class BattleMapper {
+public final class BattleMapper {
 
 	public static List<BattleDto> entitiesToBattleViews(List<Battle> battles) {
 		return battles.stream().map(b -> new BattleDto(b.getBattleId(), b.getBattleName(), b.getTurn())).toList();

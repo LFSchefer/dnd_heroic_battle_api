@@ -8,7 +8,7 @@ import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignView;
 import co.simplon.dnd_heroic_battle_api.entities.Campaign;
 import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 
-public class CampaignMapper {
+public final class CampaignMapper {
 
 	public static List<CampaignView> entitiesToCampaignViews(List<Campaign> campaigns) {
 		return campaigns.stream().map(c -> new CampaignView(c.getCampaignName(), c.getCreationDate())).toList();

@@ -15,6 +15,6 @@ public class UserExistValidator implements ConstraintValidator<UserExist, UserLo
 
     @Override
     public boolean isValid(UserLoginDto value, ConstraintValidatorContext context) {
-        return repo.existsByEmailAndUserPassword(value.email(),value.password());
+        return repo.existsByEmail(value.email());
     }
 }

@@ -6,10 +6,10 @@ import co.simplon.dnd_heroic_battle_api.entities.User;
 
 public final class UserMapper {
 
-    public static User createDtoToEntity(UserCreateDto input) {
+    public static User createDtoToEntity(UserCreateDto input, String hashPassword) {
         return User.builder()
                 .userName(input.userName())
-                .userPassword(input.password())
+                .userPassword(hashPassword)
                 .email(input.email())
                 .build();
     }

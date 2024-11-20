@@ -20,13 +20,13 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/create")
+    @PostMapping
     public ResponseEntity<Void> create(@Valid @RequestBody UserCreateDto input) {
         userService.create(input);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PostMapping
+    @PostMapping("/sign-in")
     public ResponseEntity<UserView> get(@Valid @RequestBody UserLoginDto input) {
         return new ResponseEntity<>(userService.login(input), HttpStatus.OK);
     }

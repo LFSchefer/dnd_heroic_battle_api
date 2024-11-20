@@ -6,4 +6,10 @@ import jakarta.validation.constraints.Size;
 
 @UniqueUserCreate
 public record UserCreateDto(@Size(min = 5, max = 50) String userName, @Email String email, @Size(min = 5, max = 255) String password) {
+
+	@Override
+	public String toString() {
+		return "UserCreateDto [userName=" + userName + ", email=" + email + ", password=[PROTECTED] ]";
+	}
+	
 }

@@ -14,7 +14,7 @@ public final class UserMapper {
                 .build();
     }
 
-    public static UserView entityToUserView(User user) {
-        return new UserView(user.getUserName(), user.getEmail());
+    public static UserView entityToUserView(User user, String token) {
+        return new UserView(user.getUserName(), user.getEmail(), token);
     }
 }

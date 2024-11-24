@@ -2,12 +2,13 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import java.util.List;
 
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
-import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleDto;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
 import co.simplon.dnd_heroic_battle_api.mappers.BattleMapper;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
@@ -32,7 +33,8 @@ public class BattleServiceImpl implements BattleService {
 	@Override
 	public BattleModel getOne(Long id) {
 		return BattleMapper
-				.entityToBattleModel(repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Battle with id = " + id + " does not exist")));
+				.entityToBattleModel(repo.findById(id)
+						.orElseThrow(() -> new BadCredentialsException("Battle with id = " + id + " does not exist")));
 	}
 
 	@Transactional(readOnly = true)

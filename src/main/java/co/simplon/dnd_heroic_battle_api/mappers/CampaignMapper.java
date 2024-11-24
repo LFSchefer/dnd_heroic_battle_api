@@ -6,6 +6,7 @@ import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignUpdate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignView;
 import co.simplon.dnd_heroic_battle_api.entities.Campaign;
+import co.simplon.dnd_heroic_battle_api.entities.User;
 import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 
 public final class CampaignMapper {
@@ -14,8 +15,8 @@ public final class CampaignMapper {
 		return campaigns.stream().map(c -> new CampaignView(c.getCampaignName(), c.getCreationDate())).toList();
 	}
 
-	public static Campaign campaignCreateToEntity(CampaignCreate campaign) {
-		return Campaign.builder().campaignName(campaign.campaignName()).build();
+	public static Campaign campaignCreateToEntity(CampaignCreate campaign, String userId) {
+		return Campaign.builder().campaignName(campaign.campaignName()).user(User.builder().userId(Long.valueOf(userId)).build()).build();
 	}
 
 	public static CampaignView entityToCampaignView(Campaign campaign) {

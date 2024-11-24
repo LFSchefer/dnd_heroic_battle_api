@@ -8,14 +8,14 @@ import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 
 public interface CampaignService {
 
-	void create(CampaignCreate input);
+	void create(CampaignCreate input, String token);
 
-	List<CampaignModel> getAll();
+	List<CampaignModel> getAllByUserId(String token);
 
 	void deleteOne(long id);
 
 	CampaignModel getOne(long id);
 
-	void update(CampaignUpdate input);
+	void update(CampaignUpdate input, String token);
 
 }

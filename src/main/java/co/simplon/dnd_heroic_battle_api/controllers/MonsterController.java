@@ -2,6 +2,7 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,13 +14,10 @@ import co.simplon.dnd_heroic_battle_api.services.MonsterService;
 
 @RestController
 @RequestMapping("/monsters")
+@RequiredArgsConstructor
 public class MonsterController {
 
 	MonsterService service;
-
-	public MonsterController(MonsterService service) {
-		this.service = service;
-	}
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)

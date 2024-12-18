@@ -1,5 +1,6 @@
 package co.simplon.dnd_heroic_battle_api.mappers;
 
+import co.simplon.dnd_heroic_battle_api.dtos.user.Tokens;
 import co.simplon.dnd_heroic_battle_api.dtos.user.UserCreateDto;
 import co.simplon.dnd_heroic_battle_api.dtos.user.UserView;
 import co.simplon.dnd_heroic_battle_api.entities.User;
@@ -14,7 +15,7 @@ public final class UserMapper {
                 .build();
     }
 
-    public static UserView entityToUserView(User user, String token) {
+    public static UserView entityToUserView(User user, Tokens token) {
         return new UserView(user.getUserName(), user.getEmail(), token);
     }
 }

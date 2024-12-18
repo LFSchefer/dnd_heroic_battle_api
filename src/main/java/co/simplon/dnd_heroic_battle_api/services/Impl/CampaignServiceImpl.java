@@ -17,10 +17,10 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class CampaignServiceImpl implements CampaignService {
 
 	private final CampaingRepository repo;
-		
 	private final JwtUtils jwtUtils;
 
 

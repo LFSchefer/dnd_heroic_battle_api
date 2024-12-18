@@ -2,6 +2,7 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,13 +24,10 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/campaigns")
+@RequiredArgsConstructor
 public class CampaignController {
 
 	private final CampaignService service;
-
-	public CampaignController(CampaignService service) {
-		this.service = service;
-	}
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)

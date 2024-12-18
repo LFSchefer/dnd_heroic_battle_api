@@ -17,6 +17,6 @@ public interface MonsterRepository extends JpaRepository<Monster, Long> {
 			""";
 
 	@Query(value = FIND_ALL)
-	List<MonsterPreviewDto> findAllPreviewDtos();
+	List<MonsterPreviewDto> findAllPreviewDto();
 
 }

@@ -12,8 +12,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder.BCryptVersion;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.core.OAuth2TokenValidator;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.jwt.JwtValidators;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -26,15 +29,16 @@ public class SecurityConfig {
 	
 	@Value("${dnd_heroic_battle.cors}")
 	private String origins;
-	
 	@Value("${dnd_heroic_battle.bcrypt.cost}")
 	private int cost;
-	
 	@Value("${dnd_heroic_battle.jwt.secret}")
 	private String secret;
-	
 	@Value("${dnd_heroic_battle.jwt.expire}")
 	private int expire;
+	@Value("${dnd_heroic_battle.jwt.refresh.expire}")
+	private int refreshExpire;
+	@Value("${dnd_heroic_battle.jwt.issuer}")
+	private String issuer;
 
 	@Bean
 	WebMvcConfigurer corsConfigurer() {
@@ -57,10 +61,11 @@ public class SecurityConfig {
 	@Bean
 	JwtProvider jwtProvider() {
 		Algorithm algorithm = Algorithm.HMAC256(secret);
-		return new JwtProvider(algorithm, expire);
+		return new JwtProvider(algorithm, expire, issuer , refreshExpire);
 	}
 	
-	@Bean JwtUtils jwtUtils() {
+	@Bean 
+	JwtUtils jwtUtils() {
 		return new JwtUtils(jwtDecoder());
 	}
 	// Resources server configuration
@@ -70,18 +75,23 @@ public class SecurityConfig {
 		SecretKey secretKey = new SecretKeySpec(secret.getBytes(), "HMACSHA256");
 		NimbusJwtDecoder decoder = NimbusJwtDecoder.withSecretKey(secretKey)
 				.macAlgorithm(MacAlgorithm.HS256).build();
+		OAuth2TokenValidator<Jwt> validator = JwtValidators.createDefaultWithIssuer(issuer);
+		decoder.setJwtValidator(validator);
 		return decoder;
 	}
 	
 	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	SecurityFilterChain filterChain(HttpSecurity http, CustomAuthenticationEntryPoint entryPoint) throws Exception {
 		http.cors(Customizer.withDefaults())
 		.csrf( csrf -> csrf.disable())
-		.authorizeHttpRequests( request -> 
-			request.requestMatchers(HttpMethod.POST, "/users", "/users/sign-in").anonymous()
+		.authorizeHttpRequests( request -> request
+			.requestMatchers(HttpMethod.POST, "/users/token-renewal").permitAll()
+			.requestMatchers(HttpMethod.GET, "/import-data").permitAll()
+			.requestMatchers(HttpMethod.POST, "/users", "/users/sign-in").anonymous()
 			.anyRequest().authenticated())
 		.oauth2ResourceServer(oauth -> 
-			oauth.jwt(Customizer.withDefaults()));;
+			oauth.jwt(Customizer.withDefaults())
+			.authenticationEntryPoint(entryPoint));
 		return http.build();
 	}
 	

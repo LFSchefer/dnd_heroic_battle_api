@@ -85,10 +85,12 @@ public class SecurityConfig {
 		http.cors(Customizer.withDefaults())
 		.csrf( csrf -> csrf.disable())
 		.authorizeHttpRequests( request -> request
-			.requestMatchers(HttpMethod.POST, "/users/token-renewal").permitAll()
-			.requestMatchers(HttpMethod.GET, "/import-data").permitAll()
+			.requestMatchers(HttpMethod.GET, "/import-data").permitAll())
+		.authorizeHttpRequests( request -> request
 			.requestMatchers(HttpMethod.POST, "/users", "/users/sign-in").anonymous()
-			.anyRequest().authenticated())
+			.requestMatchers(HttpMethod.POST, "/users/token-renewal").anonymous())
+		.authorizeHttpRequests( request -> request
+				.anyRequest().authenticated())
 		.oauth2ResourceServer(oauth -> 
 			oauth.jwt(Customizer.withDefaults())
 			.authenticationEntryPoint(entryPoint));

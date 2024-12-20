@@ -50,6 +50,7 @@ public class JwtProvider {
 	
 	public Tokens generate(String subject) {
 		UUID uuid = UUID.randomUUID();
-		return new Tokens(create(subject, uuid), createRefresh(uuid));
+		Long exp = Instant.now().plus(expire, ChronoUnit.MINUTES).toEpochMilli();
+		return new Tokens(create(subject, uuid), createRefresh(uuid), exp);
 	}
 }

@@ -5,6 +5,8 @@ import co.simplon.dnd_heroic_battle_api.dtos.user.UserCreateDto;
 import co.simplon.dnd_heroic_battle_api.dtos.user.UserView;
 import co.simplon.dnd_heroic_battle_api.entities.User;
 
+import java.time.Instant;
+
 public final class UserMapper {
 
     public static User createDtoToEntity(UserCreateDto input, String hashPassword) {

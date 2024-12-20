@@ -1,6 +1,7 @@
 package co.simplon.dnd_heroic_battle_api.controllers;
 
 import co.simplon.dnd_heroic_battle_api.dtos.user.Tokens;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.security.auth.message.AuthException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +40,7 @@ public class UserController {
     
     @PostMapping("/token-renewal")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Tokens tokenRenewal(@RequestBody String token) throws AccessDeniedException, AuthException {
-    	return userService.renewalToken(token);
+    public Tokens tokenRenewal(@RequestBody Tokens tokens) throws JsonProcessingException, AccessDeniedException, AuthException {
+    	return userService.renewalToken(tokens);
     }
 }

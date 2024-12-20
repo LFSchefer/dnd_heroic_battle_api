@@ -1,11 +1,14 @@
 package co.simplon.dnd_heroic_battle_api.services.Impl;
 
+import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +46,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
     public UserView login(UserLoginDto input) {
     	User user = repo.findByEmail(input.email())
     			.orElseThrow( () -> new BadCredentialsException("Wrong email or password"));
@@ -56,18 +58,28 @@ public class UserServiceImpl implements UserService {
     }
 
 	@Override
-	public Tokens renewalToken(String token) throws AuthException {
-		String[] split = token.split("[.]");
-		String base64 = split[1];
-		byte[] bytes = Base64.getDecoder().decode(base64.getBytes());
-		String decoded = new String(bytes);
-		Map<String, String> body = new HashMap<String, String>();
-		try {
-			body = mapper.readValue(decoded, new TypeReference<Map<String,String>>(){});
-			String subject = body.get("sub");
-			return jwt.generate(subject);
-		} catch (JsonProcessingException e) {
-			throw new AuthException("bad token");
+	public Tokens renewalToken(Tokens tokens) throws JsonProcessingException {
+		String token = tokens.token();
+		String refreshToken = tokens.refreshToken();
+		String tokenSplit = token.split("[.]")[1];
+		String refreshSplit = refreshToken.split("[.]")[1];
+		byte[] tokenBytes = Base64.getDecoder().decode(tokenSplit.getBytes());
+		byte[] refreshBytes = Base64.getDecoder().decode(refreshSplit.getBytes());
+		String decodedToken = new String(tokenBytes);
+		String decodedRefresh = new String(refreshBytes);
+		Map<String, String> tokenBody = new HashMap<String, String>();
+		Map<String, String> refreshBody = new HashMap<String, String>();
+		tokenBody = mapper.readValue(decodedToken, new TypeReference<Map<String,String>>(){});
+		refreshBody = mapper.readValue(decodedRefresh, new TypeReference<Map<String,String>>(){});
+		String tokenRef = tokenBody.get("ref");
+		String refreshRef = refreshBody.get("ref");
+		long tokenExp = Long.parseLong(tokenBody.get("exp"));
+		long refreshExp = Long.parseLong(refreshBody.get("exp"));
+		long now = Instant.now().getEpochSecond();
+		boolean matchRef = tokenRef.equals(refreshRef);
+		if (matchRef && now > tokenExp && now < refreshExp) {
+			return jwt.generate(tokenBody.get("sub"));
 		}
+		throw new BadCredentialsException("bad tokens");
 	}
 }

@@ -17,7 +17,7 @@ import co.simplon.dnd_heroic_battle_api.services.MonsterService;
 @RequiredArgsConstructor
 public class MonsterController {
 
-	MonsterService service;
+	private final MonsterService service;
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)

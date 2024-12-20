@@ -15,10 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class MonsterServiceImpl implements MonsterService {
 
-	MonsterRepository repo;
+	private final MonsterRepository repo;
 
 	@Override
-	@Transactional
 	public List<MonsterPreviewDto> getAll() {
 		return repo.findAllPreviewDto();
 	}

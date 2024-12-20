@@ -13,10 +13,10 @@ import co.simplon.dnd_heroic_battle_api.entities.Monster;
 public interface MonsterRepository extends JpaRepository<Monster, Long> {
 
 	String FIND_ALL = """
-			SELECT m FROM Monster m
+			SELECT monster_id, monster_name, challenge_rating FROM monsters
 			""";
 
-	@Query(value = FIND_ALL)
+	@Query(value = FIND_ALL, nativeQuery = true)
 	List<MonsterPreviewDto> findAllPreviewDto();
 
 }

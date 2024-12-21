@@ -2,11 +2,11 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import java.util.List;
 
+import co.simplon.dnd_heroic_battle_api.config.JwtHelper;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.simplon.dnd_heroic_battle_api.config.JwtUtils;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignUpdate;
 import co.simplon.dnd_heroic_battle_api.mappers.CampaignMapper;
@@ -21,24 +21,21 @@ import lombok.RequiredArgsConstructor;
 public class CampaignServiceImpl implements CampaignService {
 
 	private final CampaingRepository repo;
-	private final JwtUtils jwtUtils;
 
 
 	@Transactional
 	@Override
-	public void create(CampaignCreate input, String token) {
-		String userId = jwtUtils.getSubject(token);
+	public void create(CampaignCreate input) {
+		Long userId = JwtHelper.getSubject();
 		repo.save(CampaignMapper.campaignCreateToEntity(input, userId));
 	}
 
-	@Transactional(readOnly = true)
 	@Override
-	public List<CampaignModel> getAllByUserId(String token) {
-		String userId = jwtUtils.getSubject(token);
-		return CampaignMapper.entitiesToCampaignModel(repo.findByUserUserId(Long.valueOf(userId)));
+	public List<CampaignModel> getAllByUserId() {
+		Long userId = JwtHelper.getSubject();
+		return CampaignMapper.entitiesToCampaignModel(repo.findByUserUserIdOrderByCreationDateDesc(userId));
 	}
 
-	@Transactional(readOnly = true)
 	@Override
 	public CampaignModel getOne(long id) {
 		return CampaignMapper
@@ -54,9 +51,9 @@ public class CampaignServiceImpl implements CampaignService {
 
 	@Transactional
 	@Override
-	public void update(CampaignUpdate input, String token) {
-		String userId = jwtUtils.getSubject(token);
-		repo.update(input.campaignId(), input.campaignName(), Long.valueOf(userId));
+	public void update(CampaignUpdate input) {
+		Long userId = JwtHelper.getSubject();
+		repo.update(input.campaignId(), input.campaignName(), userId);
 	}
 
 }

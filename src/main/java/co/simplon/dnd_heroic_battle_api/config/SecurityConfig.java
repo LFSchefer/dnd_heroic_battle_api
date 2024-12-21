@@ -63,11 +63,7 @@ public class SecurityConfig {
 		Algorithm algorithm = Algorithm.HMAC256(secret);
 		return new JwtProvider(algorithm, expire, issuer , refreshExpire);
 	}
-	
-	@Bean 
-	JwtUtils jwtUtils() {
-		return new JwtUtils(jwtDecoder());
-	}
+
 	// Resources server configuration
 	
 	@Bean

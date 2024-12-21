@@ -31,14 +31,14 @@ public class CampaignController {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public void create(@Valid @RequestBody CampaignCreate input, @RequestHeader(name = HttpHeaders.AUTHORIZATION) String token) {
-		service.create(input, token);
+	public void create(@Valid @RequestBody CampaignCreate input) {
+		service.create(input);
 	}
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<CampaignModel> getAllByUserId(@RequestHeader(name = HttpHeaders.AUTHORIZATION) String token) {
-		return service.getAllByUserId(token);
+	public List<CampaignModel> getAllByUserId() {
+		return service.getAllByUserId();
 	}
 
 	@GetMapping("{id}")
@@ -53,8 +53,8 @@ public class CampaignController {
 	}
 
 	@PatchMapping
-	public void update(@Valid @RequestBody CampaignUpdate input, @RequestHeader(name = HttpHeaders.AUTHORIZATION) String token) {
-		service.update(input, token);
+	public void update(@Valid @RequestBody CampaignUpdate input) {
+		service.update(input);
 	}
 
 }

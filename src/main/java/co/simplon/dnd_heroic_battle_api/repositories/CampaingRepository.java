@@ -28,6 +28,6 @@ public interface CampaingRepository extends JpaRepository<Campaign, Long> {
 
 	boolean existsByCampaignNameAndIdNot(String campaignName, long id);
 
-	List<Campaign> findByUserUserId(Long id);
+	List<Campaign> findByUserUserIdOrderByCreationDateDesc(Long id);
 
 }

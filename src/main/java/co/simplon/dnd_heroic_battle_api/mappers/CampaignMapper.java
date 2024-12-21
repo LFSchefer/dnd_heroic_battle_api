@@ -15,8 +15,8 @@ public final class CampaignMapper {
 		return campaigns.stream().map(c -> new CampaignView(c.getCampaignName(), c.getCreationDate())).toList();
 	}
 
-	public static Campaign campaignCreateToEntity(CampaignCreate campaign, String userId) {
-		return Campaign.builder().campaignName(campaign.campaignName()).user(User.builder().userId(Long.valueOf(userId)).build()).build();
+	public static Campaign campaignCreateToEntity(CampaignCreate campaign, Long userId) {
+		return Campaign.builder().campaignName(campaign.campaignName()).user(User.builder().userId(userId).build()).build();
 	}
 
 	public static CampaignView entityToCampaignView(Campaign campaign) {

@@ -6,5 +6,5 @@ import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterPreviewDto;
 
 public interface MonsterService {
 
-	List<MonsterPreviewDto> getAll();
+	List<MonsterPreviewDto> get(String name, Integer limit, Integer offset);
 }

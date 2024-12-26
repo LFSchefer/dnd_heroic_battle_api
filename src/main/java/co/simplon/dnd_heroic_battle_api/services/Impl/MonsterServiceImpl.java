@@ -2,13 +2,13 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import java.util.List;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterPreviewDto;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonsterService;
-import org.springframework.transaction.annotation.Transactional;
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +18,7 @@ public class MonsterServiceImpl implements MonsterService {
 	private final MonsterRepository repo;
 
 	@Override
-	public List<MonsterPreviewDto> getAll() {
-		return repo.findAllPreviewDto();
+	public List<MonsterPreviewDto> get(String name, Integer limit, Integer offset) {
+		return name.isBlank() ? repo.findAllPreviewDto(limit, offset) : repo.findByNamePreviewDto(name,limit,offset);
 	}
 }

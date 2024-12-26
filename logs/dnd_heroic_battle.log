@@ -1,84 +1,260 @@
-2024-12-21T09:30:22.072+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 23528 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T09:30:22.087+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T09:30:22.888+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T09:30:22.999+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 103 ms. Found 18 JPA repository interfaces.
-2024-12-21T09:30:23.604+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T09:30:23.615+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T09:30:23.615+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T09:30:23.662+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T09:30:23.662+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1522 ms
-2024-12-21T09:30:23.809+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T09:30:23.982+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3d2f3dcb
-2024-12-21T09:30:23.984+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T09:30:24.038+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T09:30:24.097+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T09:30:24.137+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T09:30:24.487+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T09:30:25.539+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T09:30:25.541+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:30:25.829+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T09:30:26.226+01:00  WARN 23528 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T09:30:26.698+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T09:30:26.706+01:00  INFO 23528 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 5.145 seconds (process running for 5.676)
-2024-12-21T09:43:31.135+01:00  INFO 23528 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:43:31.137+01:00  INFO 23528 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T09:43:31.144+01:00  INFO 23528 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T09:43:34.587+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 22708 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T09:43:34.591+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T09:43:35.269+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T09:43:35.413+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 135 ms. Found 18 JPA repository interfaces.
-2024-12-21T09:43:36.037+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T09:43:36.048+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T09:43:36.048+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T09:43:36.099+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T09:43:36.099+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1465 ms
-2024-12-21T09:43:36.232+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T09:43:36.436+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6dca31eb
-2024-12-21T09:43:36.437+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T09:43:36.492+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T09:43:36.540+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T09:43:36.572+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T09:43:36.856+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T09:43:37.810+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T09:43:37.812+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:43:38.187+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T09:43:38.477+01:00  WARN 22708 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T09:43:38.882+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T09:43:38.888+01:00  INFO 22708 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.724 seconds (process running for 5.088)
-2024-12-21T09:43:43.000+01:00  INFO 22708 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:43:43.001+01:00  INFO 22708 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T09:43:43.001+01:00  INFO 22708 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T09:43:46.405+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 20016 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T09:43:46.412+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T09:43:47.357+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T09:43:47.516+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 149 ms. Found 18 JPA repository interfaces.
-2024-12-21T09:43:48.213+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T09:43:48.221+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T09:43:48.221+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T09:43:48.286+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T09:43:48.286+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1779 ms
-2024-12-21T09:43:48.434+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T09:43:48.692+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7e61e25c
-2024-12-21T09:43:48.696+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T09:43:48.751+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T09:43:48.830+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T09:43:48.867+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T09:43:49.198+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T09:43:50.190+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T09:43:50.193+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:43:50.480+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T09:43:50.858+01:00  WARN 20016 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T09:43:51.324+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T09:43:51.338+01:00  INFO 20016 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 5.483 seconds (process running for 6.051)
-2024-12-21T09:44:08.382+01:00  INFO 20016 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T09:44:08.382+01:00  INFO 20016 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T09:44:08.387+01:00  INFO 20016 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
-2024-12-21T09:45:11.338+01:00  WARN 20016 --- [dnd_heroic_battle_api] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=52s535ms483µs400ns).
-2024-12-21T09:45:18.605+01:00 ERROR 20016 --- [dnd_heroic_battle_api] [http-nio-8080-exec-6] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt cannot be cast to class java.lang.Long (org.springframework.security.oauth2.jwt.Jwt is in unnamed module of loader 'app'; java.lang.Long is in module java.base of loader 'bootstrap')] with root cause
+2024-12-26T12:09:45.976+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 13888 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T12:09:45.985+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T12:09:46.589+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T12:09:46.679+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 18 JPA repository interfaces.
+2024-12-26T12:09:47.108+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T12:09:47.118+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T12:09:47.118+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T12:09:47.160+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T12:09:47.160+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1135 ms
+2024-12-26T12:09:47.264+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T12:09:47.407+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2bf2d6eb
+2024-12-26T12:09:47.409+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T12:09:47.441+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T12:09:47.483+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T12:09:47.508+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T12:09:47.734+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T12:09:48.634+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T12:09:48.636+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T12:09:48.900+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T12:09:49.152+01:00  WARN 13888 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T12:09:49.554+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T12:09:49.562+01:00  INFO 13888 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.891 seconds (process running for 4.549)
+2024-12-26T12:09:58.198+01:00  INFO 13888 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T12:09:58.198+01:00  INFO 13888 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T12:09:58.199+01:00  INFO 13888 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T12:17:28.616+01:00  INFO 13888 --- [dnd_heroic_battle_api] [RMI TCP Connection(11)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T12:17:28.629+01:00  INFO 13888 --- [dnd_heroic_battle_api] [RMI TCP Connection(11)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T12:17:28.631+01:00  INFO 13888 --- [dnd_heroic_battle_api] [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T12:17:28.634+01:00  INFO 13888 --- [dnd_heroic_battle_api] [RMI TCP Connection(11)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:20:15.987+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 17700 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:20:15.989+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:20:16.516+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:20:16.602+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:20:16.991+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:20:16.999+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:20:16.999+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:20:17.039+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:20:17.039+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1014 ms
+2024-12-26T16:20:17.139+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:20:17.272+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6321a5aa
+2024-12-26T16:20:17.274+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:20:17.306+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:20:17.341+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:20:17.366+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:20:17.580+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:20:18.456+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:20:18.460+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:20:18.677+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:20:18.974+01:00  WARN 17700 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:20:19.338+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:20:19.345+01:00  INFO 17700 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.646 seconds (process running for 4.22)
+2024-12-26T16:43:39.121+01:00  INFO 17700 --- [dnd_heroic_battle_api] [RMI TCP Connection(27)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:43:39.132+01:00  INFO 17700 --- [dnd_heroic_battle_api] [RMI TCP Connection(27)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:43:39.133+01:00  INFO 17700 --- [dnd_heroic_battle_api] [RMI TCP Connection(27)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:43:39.137+01:00  INFO 17700 --- [dnd_heroic_battle_api] [RMI TCP Connection(27)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:43:40.901+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 14828 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:43:40.903+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:43:41.406+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:43:41.490+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:43:41.889+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:43:41.898+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:43:41.898+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:43:41.937+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:43:41.937+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 999 ms
+2024-12-26T16:43:42.041+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:43:42.169+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@242ff747
+2024-12-26T16:43:42.170+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:43:42.200+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:43:42.236+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:43:42.259+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:43:42.473+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:43:43.325+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:43:43.328+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:43:43.578+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:43:43.808+01:00  WARN 14828 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:43:44.167+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:43:44.173+01:00  INFO 14828 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.577 seconds (process running for 4.15)
+2024-12-26T16:43:48.009+01:00  INFO 14828 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:43:48.009+01:00  INFO 14828 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:43:48.010+01:00  INFO 14828 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T16:44:59.596+01:00  INFO 14828 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:44:59.605+01:00  INFO 14828 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:44:59.606+01:00  INFO 14828 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:44:59.614+01:00  INFO 14828 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:45:01.598+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 9160 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:45:01.600+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:45:02.107+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:45:02.196+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:45:02.596+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:45:02.605+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:45:02.605+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:45:02.644+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:45:02.644+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1009 ms
+2024-12-26T16:45:02.748+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:45:02.874+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7a36c83a
+2024-12-26T16:45:02.876+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:45:02.906+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:45:02.947+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:45:02.968+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:45:03.171+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:45:04.013+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:45:04.016+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:45:04.217+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:45:04.496+01:00  WARN 9160 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:45:04.840+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:45:04.847+01:00  INFO 9160 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.545 seconds (process running for 4.144)
+2024-12-26T16:45:09.050+01:00  INFO 9160 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:45:09.050+01:00  INFO 9160 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:45:09.051+01:00  INFO 9160 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T16:45:34.939+01:00  INFO 9160 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:45:34.948+01:00  INFO 9160 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:45:34.949+01:00  INFO 9160 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:45:34.951+01:00  INFO 9160 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:45:36.939+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 804 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:45:36.940+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:45:37.470+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:45:37.555+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:45:37.944+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:45:37.954+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:45:37.954+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:45:37.992+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:45:37.993+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1015 ms
+2024-12-26T16:45:38.089+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:45:38.215+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4409cae6
+2024-12-26T16:45:38.217+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:45:38.249+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:45:38.288+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:45:38.313+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:45:38.522+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:45:39.378+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:45:39.381+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:45:39.590+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:45:39.867+01:00  WARN 804 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:45:40.210+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:45:40.217+01:00  INFO 804 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.591 seconds (process running for 4.186)
+2024-12-26T16:45:43.450+01:00  INFO 804 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:45:43.450+01:00  INFO 804 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:45:43.451+01:00  INFO 804 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T16:45:51.617+01:00  INFO 804 --- [dnd_heroic_battle_api] [http-nio-8080-exec-5] org.apache.tomcat.util.http.Parameters   : Character decoding failed. Parameter [name] with value [%ol%] has been ignored. Note that the name and value quoted here may be corrupted due to the failed decoding. Use debug level logging to see the original, non-corrupted values.
+ Note: further occurrences of Parameter errors will be logged at DEBUG level.
+2024-12-26T16:45:51.622+01:00 ERROR 804 --- [dnd_heroic_battle_api] [http-nio-8080-exec-5] c.s.d.c.errors.ControllerAdvice          : org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'name' for method parameter type String is not present
+2024-12-26T16:46:29.587+01:00  INFO 804 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:46:29.597+01:00  INFO 804 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:46:29.599+01:00  INFO 804 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:46:29.601+01:00  INFO 804 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:46:31.502+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 16872 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:46:31.504+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:46:32.013+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:46:32.100+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:46:32.498+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:46:32.507+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:46:32.507+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:46:32.547+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:46:32.548+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1003 ms
+2024-12-26T16:46:32.651+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:46:32.777+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4409cae6
+2024-12-26T16:46:32.779+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:46:32.807+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:46:32.843+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:46:32.868+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:46:33.076+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:46:33.930+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:46:33.933+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:46:34.132+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:46:34.425+01:00  WARN 16872 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:46:34.762+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:46:34.769+01:00  INFO 16872 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.571 seconds (process running for 4.15)
+2024-12-26T16:46:39.798+01:00  INFO 16872 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:46:39.798+01:00  INFO 16872 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:46:39.799+01:00  INFO 16872 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T16:46:57.521+01:00  INFO 16872 --- [dnd_heroic_battle_api] [RMI TCP Connection(2)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:46:57.529+01:00  INFO 16872 --- [dnd_heroic_battle_api] [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:46:57.531+01:00  INFO 16872 --- [dnd_heroic_battle_api] [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:46:57.532+01:00  INFO 16872 --- [dnd_heroic_battle_api] [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:47:25.632+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 17632 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:47:25.635+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:47:26.137+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:47:26.220+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:47:26.616+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:47:26.629+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:47:26.629+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:47:26.674+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:47:26.674+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1005 ms
+2024-12-26T16:47:26.775+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:47:27.017+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@597d48ca
+2024-12-26T16:47:27.020+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:47:27.052+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:47:27.086+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:47:27.109+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:47:27.326+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:47:28.175+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:47:28.177+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:47:28.437+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:47:28.664+01:00  WARN 17632 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:47:29.025+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:47:29.031+01:00  INFO 17632 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.685 seconds (process running for 4.29)
+2024-12-26T16:47:31.720+01:00  INFO 17632 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:47:31.720+01:00  INFO 17632 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:47:31.722+01:00  INFO 17632 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-12-26T16:47:31.897+01:00  WARN 17632 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42601
+2024-12-26T16:47:31.897+01:00 ERROR 17632 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERREUR: erreur de syntaxe sur ou près de « $1 »
+  Position : 105
+2024-12-26T16:47:31.905+01:00 ERROR 17632 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.InvalidDataAccessResourceUsageException: JDBC exception executing SQL [SELECT monster_id, monster_name, challenge_rating FROM monsters
+WHERE UPPER(monster_name) LIKE UPPER('%'?'%')
+LIMIT ?
+OFFSET ?
+] [ERREUR: erreur de syntaxe sur ou près de « $1 »
+  Position : 105] [n/a]; SQL [n/a]] with root cause
 
-java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt cannot be cast to class java.lang.Long (org.springframework.security.oauth2.jwt.Jwt is in unnamed module of loader 'app'; java.lang.Long is in module java.base of loader 'bootstrap')
-	at co.simplon.dnd_heroic_battle_api.config.JwtHelper.getSubject(JwtHelper.java:19) ~[classes/:na]
-	at co.simplon.dnd_heroic_battle_api.services.Impl.CampaignServiceImpl.create(CampaignServiceImpl.java:32) ~[classes/:na]
+org.postgresql.util.PSQLException: ERREUR: erreur de syntaxe sur ou près de « $1 »
+  Position : 105
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194) ~[postgresql-42.7.3.jar:42.7.3]
+	at org.postgresql.jdbc.PgPreparedStatement.executeQuery(PgPreparedStatement.java:137) ~[postgresql-42.7.3.jar:42.7.3]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeQuery(ProxyPreparedStatement.java:52) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeQuery(HikariProxyPreparedStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.executeQuery(DeferredResultSetAccess.java:246) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.getResultSet(DeferredResultSetAccess.java:167) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.jdbc.internal.AbstractResultSetAccess.getMetaData(AbstractResultSetAccess.java:36) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.results.jdbc.internal.AbstractResultSetAccess.getColumnCount(AbstractResultSetAccess.java:52) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.results.ResultSetMappingImpl.resolve(ResultSetMappingImpl.java:193) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValuesSource(JdbcSelectExecutorStandardImpl.java:327) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.doExecuteQuery(JdbcSelectExecutorStandardImpl.java:115) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.executeQuery(JdbcSelectExecutorStandardImpl.java:83) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:76) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.sql.exec.spi.JdbcSelectExecutor.list(JdbcSelectExecutor.java:65) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sql.internal.NativeSelectQueryPlanImpl.performList(NativeSelectQueryPlanImpl.java:138) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.sql.internal.NativeQueryImpl.doList(NativeQueryImpl.java:628) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.spi.AbstractSelectionQuery.list(AbstractSelectionQuery.java:423) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.hibernate.query.Query.getResultList(Query.java:120) ~[hibernate-core-6.5.2.Final.jar:6.5.2.Final]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution$CollectionExecution.doExecute(JpaQueryExecution.java:129) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.jpa.repository.query.JpaQueryExecution.execute(JpaQueryExecution.java:92) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.doExecute(AbstractJpaQuery.java:152) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.jpa.repository.query.AbstractJpaQuery.execute(AbstractJpaQuery.java:140) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:164) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:143) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:136) ~[spring-data-jpa-3.3.2.jar:3.3.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.11.jar:6.1.11]
+	at jdk.proxy2/jdk.proxy2.$Proxy151.findAllPreviewDto(Unknown Source) ~[na:na]
+	at co.simplon.dnd_heroic_battle_api.services.Impl.MonsterServiceImpl.get(MonsterServiceImpl.java:22) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
@@ -90,8 +266,8 @@ java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt 
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.11.jar:6.1.11]
-	at co.simplon.dnd_heroic_battle_api.services.Impl.CampaignServiceImpl$$SpringCGLIB$$0.create(<generated>) ~[classes/:na]
-	at co.simplon.dnd_heroic_battle_api.controllers.CampaignController.create(CampaignController.java:35) ~[classes/:na]
+	at co.simplon.dnd_heroic_battle_api.services.Impl.MonsterServiceImpl$$SpringCGLIB$$0.get(<generated>) ~[classes/:na]
+	at co.simplon.dnd_heroic_battle_api.controllers.MonsterController.get(MonsterController.java:28) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.11.jar:6.1.11]
@@ -103,8 +279,8 @@ java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt 
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.11.jar:6.1.11]
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.11.jar:6.1.11]
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.11.jar:6.1.11]
-	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903) ~[spring-webmvc-6.1.11.jar:6.1.11]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.11.jar:6.1.11]
 	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
@@ -188,68 +364,129 @@ java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt 
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-2024-12-21T09:46:32.605+01:00  INFO 20016 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:46:32.609+01:00  INFO 20016 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T09:46:32.613+01:00  INFO 20016 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T09:46:35.702+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 20172 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T09:46:35.708+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T09:46:36.460+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T09:46:36.574+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 18 JPA repository interfaces.
-2024-12-21T09:46:37.186+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T09:46:37.201+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T09:46:37.201+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T09:46:37.271+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T09:46:37.271+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1516 ms
-2024-12-21T09:46:37.421+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T09:46:37.611+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5fef0c19
-2024-12-21T09:46:37.614+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T09:46:37.659+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T09:46:37.712+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T09:46:37.750+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T09:46:38.051+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T09:46:39.053+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T09:46:39.053+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:46:39.414+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T09:46:39.726+01:00  WARN 20172 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T09:46:40.167+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T09:46:40.176+01:00  INFO 20172 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.931 seconds (process running for 5.364)
-2024-12-21T09:46:53.774+01:00  INFO 20172 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T09:46:53.776+01:00  INFO 20172 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T09:46:53.777+01:00  INFO 20172 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-12-21T09:49:51.778+01:00  WARN 20172 --- [dnd_heroic_battle_api] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m14s59ms909µs).
-2024-12-21T09:52:22.005+01:00  INFO 20172 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:52:22.006+01:00  INFO 20172 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T09:52:22.009+01:00  INFO 20172 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T09:52:25.082+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 18316 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T09:52:25.088+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T09:52:25.791+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T09:52:25.913+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 18 JPA repository interfaces.
-2024-12-21T09:52:26.520+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T09:52:26.532+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T09:52:26.532+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T09:52:26.595+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T09:52:26.596+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1462 ms
-2024-12-21T09:52:26.730+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T09:52:26.920+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@256bb5be
-2024-12-21T09:52:26.920+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T09:52:26.961+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T09:52:27.013+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T09:52:27.045+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T09:52:27.347+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T09:52:28.345+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T09:52:28.348+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:52:28.697+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T09:52:28.999+01:00  WARN 18316 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T09:52:29.453+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T09:52:29.467+01:00  INFO 18316 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.849 seconds (process running for 5.3)
-2024-12-21T09:52:33.516+01:00  INFO 18316 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T09:52:33.516+01:00  INFO 18316 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T09:52:33.518+01:00  INFO 18316 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2024-12-21T09:52:58.673+01:00 ERROR 18316 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt cannot be cast to class com.auth0.jwt.JWT (org.springframework.security.oauth2.jwt.Jwt and com.auth0.jwt.JWT are in unnamed module of loader 'app')] with root cause
+2024-12-26T16:49:35.456+01:00  INFO 17632 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:49:35.466+01:00  INFO 17632 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:49:35.468+01:00  INFO 17632 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:49:35.470+01:00  INFO 17632 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:49:37.037+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 23888 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:49:37.039+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:49:37.547+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:49:37.634+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:49:38.036+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:49:38.047+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:49:38.047+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:49:38.086+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:49:38.086+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1010 ms
+2024-12-26T16:49:38.183+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:49:38.317+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7a36c83a
+2024-12-26T16:49:38.318+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:49:38.353+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:49:38.394+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:49:38.421+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:49:38.655+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:49:39.538+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:49:39.540+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:49:39.808+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:49:40.052+01:00  WARN 23888 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:49:40.398+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:49:40.406+01:00  INFO 23888 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.655 seconds (process running for 4.245)
+2024-12-26T16:49:42.772+01:00  INFO 23888 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:49:42.772+01:00  INFO 23888 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:49:42.774+01:00  INFO 23888 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T16:50:53.668+01:00  INFO 23888 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:50:53.678+01:00  INFO 23888 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:50:53.679+01:00  INFO 23888 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:50:53.684+01:00  INFO 23888 --- [dnd_heroic_battle_api] [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:50:55.423+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 8512 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:50:55.425+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:50:55.921+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:50:56.006+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:50:56.395+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:50:56.405+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:50:56.405+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:50:56.444+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:50:56.444+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 983 ms
+2024-12-26T16:50:56.546+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:50:56.668+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2c7c0e36
+2024-12-26T16:50:56.669+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:50:56.704+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:50:56.739+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:50:56.761+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:50:56.965+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:50:57.807+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:50:57.809+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:50:58.014+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:50:58.286+01:00  WARN 8512 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:50:58.631+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:50:58.639+01:00  INFO 8512 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.52 seconds (process running for 4.088)
+2024-12-26T16:51:02.601+01:00  INFO 8512 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:51:02.601+01:00  INFO 8512 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:51:02.602+01:00  INFO 8512 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T16:55:46.848+01:00  INFO 8512 --- [dnd_heroic_battle_api] [RMI TCP Connection(9)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:55:46.857+01:00  INFO 8512 --- [dnd_heroic_battle_api] [RMI TCP Connection(9)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:55:46.859+01:00  INFO 8512 --- [dnd_heroic_battle_api] [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:55:46.862+01:00  INFO 8512 --- [dnd_heroic_battle_api] [RMI TCP Connection(9)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:55:48.402+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 16820 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:55:48.404+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:55:48.909+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:55:48.993+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:55:49.381+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:55:49.392+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:55:49.392+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:55:49.433+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:55:49.433+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 995 ms
+2024-12-26T16:55:49.531+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:55:49.763+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4409cae6
+2024-12-26T16:55:49.764+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:55:49.799+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:55:49.833+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:55:49.857+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:55:50.064+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:55:50.901+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:55:50.903+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:55:51.101+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:55:51.370+01:00  WARN 16820 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:55:51.726+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:55:51.732+01:00  INFO 16820 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.623 seconds (process running for 4.198)
+2024-12-26T16:56:00.668+01:00  INFO 16820 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:56:00.669+01:00  INFO 16820 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:56:00.670+01:00  INFO 16820 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T16:56:31.089+01:00 ERROR 16820 --- [dnd_heroic_battle_api] [http-nio-8080-exec-6] c.s.d.c.errors.ControllerAdvice          : org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'name' for method parameter type String is not present
+2024-12-26T16:57:08.499+01:00  INFO 16820 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T16:57:08.509+01:00  INFO 16820 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:57:08.510+01:00  INFO 16820 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T16:57:08.512+01:00  INFO 16820 --- [dnd_heroic_battle_api] [RMI TCP Connection(4)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T16:57:10.271+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 12892 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T16:57:10.272+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T16:57:10.781+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T16:57:10.868+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 18 JPA repository interfaces.
+2024-12-26T16:57:11.256+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T16:57:11.265+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T16:57:11.265+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T16:57:11.304+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T16:57:11.304+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 995 ms
+2024-12-26T16:57:11.403+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T16:57:11.528+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2c7c0e36
+2024-12-26T16:57:11.531+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T16:57:11.560+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T16:57:11.595+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T16:57:11.619+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T16:57:11.842+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T16:57:12.709+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T16:57:12.712+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T16:57:12.965+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T16:57:13.200+01:00  WARN 12892 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T16:57:13.549+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T16:57:13.556+01:00  INFO 12892 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.59 seconds (process running for 4.165)
+2024-12-26T16:57:17.135+01:00  INFO 12892 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T16:57:17.135+01:00  INFO 12892 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T16:57:17.136+01:00  INFO 12892 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T17:25:55.256+01:00 ERROR 12892 --- [dnd_heroic_battle_api] [http-nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NumberFormatException: Cannot parse null string] with root cause
 
-java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt cannot be cast to class com.auth0.jwt.JWT (org.springframework.security.oauth2.jwt.Jwt and com.auth0.jwt.JWT are in unnamed module of loader 'app')
-	at co.simplon.dnd_heroic_battle_api.config.JwtHelper.getPrincipal(JwtHelper.java:21) ~[classes/:na]
-	at co.simplon.dnd_heroic_battle_api.services.Impl.CampaignServiceImpl.create(CampaignServiceImpl.java:34) ~[classes/:na]
+java.lang.NumberFormatException: Cannot parse null string
+	at java.base/java.lang.Long.parseLong(Long.java:672) ~[na:na]
+	at java.base/java.lang.Long.parseLong(Long.java:832) ~[na:na]
+	at co.simplon.dnd_heroic_battle_api.services.Impl.UserServiceImpl.renewalToken(UserServiceImpl.java:76) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.11.jar:6.1.11]
@@ -261,8 +498,8 @@ java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt 
 	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.11.jar:6.1.11]
 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.11.jar:6.1.11]
-	at co.simplon.dnd_heroic_battle_api.services.Impl.CampaignServiceImpl$$SpringCGLIB$$0.create(<generated>) ~[classes/:na]
-	at co.simplon.dnd_heroic_battle_api.controllers.CampaignController.create(CampaignController.java:35) ~[classes/:na]
+	at co.simplon.dnd_heroic_battle_api.services.Impl.UserServiceImpl$$SpringCGLIB$$0.renewalToken(<generated>) ~[classes/:na]
+	at co.simplon.dnd_heroic_battle_api.controllers.UserController.tokenRenewal(UserController.java:44) ~[classes/:na]
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.11.jar:6.1.11]
@@ -297,7 +534,7 @@ java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt 
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar:6.3.1]
 	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.1.jar:6.3.1]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar:6.3.1]
-	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:145) ~[spring-security-oauth2-resource-server-6.3.1.jar:6.3.1]
+	at org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter.doFilterInternal(BearerTokenAuthenticationFilter.java:128) ~[spring-security-oauth2-resource-server-6.3.1.jar:6.3.1]
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.11.jar:6.1.11]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.1.jar:6.3.1]
 	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.1.jar:6.3.1]
@@ -359,286 +596,65 @@ java.lang.ClassCastException: class org.springframework.security.oauth2.jwt.Jwt 
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.26.jar:10.1.26]
 	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
 
-2024-12-21T09:54:38.546+01:00  INFO 18316 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:54:38.548+01:00  INFO 18316 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T09:54:38.550+01:00  INFO 18316 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T09:54:41.666+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 17652 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T09:54:41.673+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T09:54:42.420+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T09:54:42.523+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 18 JPA repository interfaces.
-2024-12-21T09:54:43.148+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T09:54:43.161+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T09:54:43.161+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T09:54:43.236+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T09:54:43.237+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1519 ms
-2024-12-21T09:54:43.379+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T09:54:43.556+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@119290b9
-2024-12-21T09:54:43.558+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T09:54:43.600+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T09:54:43.656+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T09:54:43.693+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T09:54:43.997+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T09:54:45.006+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T09:54:45.008+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T09:54:45.366+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T09:54:45.680+01:00  WARN 17652 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T09:54:46.145+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T09:54:46.152+01:00  INFO 17652 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.956 seconds (process running for 5.385)
-2024-12-21T09:54:59.395+01:00  INFO 17652 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T09:54:59.396+01:00  INFO 17652 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T09:54:59.398+01:00  INFO 17652 --- [dnd_heroic_battle_api] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-12-21T09:56:33.930+01:00  WARN 17652 --- [dnd_heroic_battle_api] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m50s259ms790µs900ns).
-2024-12-21T10:00:53.207+01:00  INFO 17652 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:00:53.209+01:00  INFO 17652 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:00:53.212+01:00  INFO 17652 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:00:56.460+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 22032 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:00:56.466+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:00:57.377+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:00:57.484+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:00:58.106+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:00:58.118+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:00:58.118+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:00:58.182+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:00:58.182+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1671 ms
-2024-12-21T10:00:58.330+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:00:58.528+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4dc52559
-2024-12-21T10:00:58.529+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:00:58.573+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:00:58.625+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:00:58.663+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:00:58.961+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:00:59.932+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:00:59.934+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:01:00.218+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:01:00.567+01:00  WARN 22032 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:01:01.014+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:01:01.024+01:00  INFO 22032 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 5.028 seconds (process running for 5.45)
-2024-12-21T10:01:08.499+01:00  INFO 22032 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:01:08.499+01:00  INFO 22032 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:01:08.499+01:00  INFO 22032 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2024-12-21T10:02:10.354+01:00  INFO 22032 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:02:10.356+01:00  INFO 22032 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:02:10.358+01:00  INFO 22032 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:02:13.413+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 19756 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:02:13.420+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:02:14.131+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:02:14.245+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:02:14.863+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:02:14.876+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:02:14.876+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:02:14.932+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:02:14.932+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1463 ms
-2024-12-21T10:02:15.072+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:02:15.267+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7e61e25c
-2024-12-21T10:02:15.268+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:02:15.312+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:02:15.356+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:02:15.387+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:02:15.689+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:02:16.688+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:02:16.691+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:02:17.005+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:02:17.395+01:00  WARN 19756 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:02:17.850+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:02:17.859+01:00  INFO 19756 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.91 seconds (process running for 5.342)
-2024-12-21T10:02:26.575+01:00  INFO 19756 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:02:26.576+01:00  INFO 19756 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:02:26.579+01:00  INFO 19756 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-2024-12-21T10:04:25.269+01:00  INFO 19756 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:04:25.272+01:00  INFO 19756 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:04:25.278+01:00  INFO 19756 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:04:28.063+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 2676 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:04:28.070+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:04:28.788+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:04:28.907+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:04:29.526+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:04:29.544+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:04:29.544+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:04:29.605+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:04:29.605+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1491 ms
-2024-12-21T10:04:29.742+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:04:29.933+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e6d76ba
-2024-12-21T10:04:29.935+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:04:29.971+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:04:30.030+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:04:30.068+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:04:30.378+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:04:31.425+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:04:31.428+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:04:31.776+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:04:32.090+01:00  WARN 2676 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:04:32.540+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:04:32.549+01:00  INFO 2676 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.972 seconds (process running for 5.428)
-2024-12-21T10:05:10.422+01:00  INFO 2676 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:05:10.423+01:00  INFO 2676 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:05:10.427+01:00  INFO 2676 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:05:13.897+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 16716 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:05:13.904+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:05:14.668+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:05:14.784+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:05:15.416+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:05:15.431+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:05:15.431+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:05:15.499+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:05:15.499+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1544 ms
-2024-12-21T10:05:15.637+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:05:15.847+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2ca3d826
-2024-12-21T10:05:15.851+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:05:15.893+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:05:15.943+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:05:15.983+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:05:16.287+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:05:17.326+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:05:17.328+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:05:17.701+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:05:17.993+01:00  WARN 16716 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:05:18.504+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:05:18.513+01:00  INFO 16716 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 5.129 seconds (process running for 5.552)
-2024-12-21T10:05:28.489+01:00  INFO 16716 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:05:28.490+01:00  INFO 16716 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:05:28.491+01:00  INFO 16716 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-12-21T10:07:41.509+01:00  INFO 16716 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:07:41.511+01:00  INFO 16716 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:07:41.516+01:00  INFO 16716 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:07:44.937+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 20772 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:07:44.939+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:07:45.863+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:07:45.977+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:07:46.628+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:07:46.642+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:07:46.643+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:07:46.709+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:07:46.709+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1719 ms
-2024-12-21T10:07:46.855+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:07:47.046+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@512abf25
-2024-12-21T10:07:47.048+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:07:47.092+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:07:47.141+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:07:47.176+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:07:47.466+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:07:48.524+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:07:48.526+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:07:48.971+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:07:49.300+01:00  WARN 20772 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:07:49.842+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:07:49.850+01:00  INFO 20772 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 5.454 seconds (process running for 5.922)
-2024-12-21T10:07:53.543+01:00  INFO 20772 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:07:53.543+01:00  INFO 20772 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:07:53.544+01:00  INFO 20772 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-12-21T10:15:03.564+01:00  INFO 20772 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:15:03.567+01:00  INFO 20772 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:15:03.569+01:00  INFO 20772 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:15:07.176+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 11896 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:15:07.182+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:15:07.854+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:15:07.971+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:15:08.555+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:15:08.577+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:15:08.577+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:15:08.631+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:15:08.631+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1402 ms
-2024-12-21T10:15:08.772+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:15:08.969+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@515ab3f2
-2024-12-21T10:15:08.971+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:15:09.016+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:15:09.061+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:15:09.100+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:15:09.402+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:15:10.407+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:15:10.410+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:15:10.699+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:15:11.106+01:00  WARN 11896 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:15:11.583+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:15:11.592+01:00  INFO 11896 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.908 seconds (process running for 5.344)
-2024-12-21T10:15:21.304+01:00  INFO 11896 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:15:21.304+01:00  INFO 11896 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:15:21.306+01:00  INFO 11896 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2024-12-21T10:16:50.203+01:00  INFO 11896 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:16:50.205+01:00  INFO 11896 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:16:50.211+01:00  INFO 11896 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:16:53.251+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 15972 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:16:53.258+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:16:54.009+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:16:54.129+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:16:54.737+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:16:54.750+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:16:54.750+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:16:54.812+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:16:54.813+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1497 ms
-2024-12-21T10:16:54.975+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:16:55.169+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7aa01bd9
-2024-12-21T10:16:55.171+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:16:55.216+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:16:55.265+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:16:55.302+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:16:55.606+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:16:56.595+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:16:56.598+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:16:56.949+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:16:57.245+01:00  WARN 15972 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:16:57.703+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:16:57.713+01:00  INFO 15972 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.941 seconds (process running for 5.367)
-2024-12-21T10:17:36.647+01:00  INFO 15972 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:17:36.648+01:00  INFO 15972 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:17:36.650+01:00  INFO 15972 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2024-12-21T10:30:39.739+01:00 ERROR 15972 --- [dnd_heroic_battle_api] [http-nio-8080-exec-5] c.s.d.c.errors.ControllerAdvice          : org.springframework.security.authentication.BadCredentialsException: bad tokens
-2024-12-21T10:38:37.331+01:00  INFO 15972 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:38:37.331+01:00  INFO 15972 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:38:37.335+01:00  INFO 15972 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:38:40.532+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 10960 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:38:40.538+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:38:41.249+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:38:41.366+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 109 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:38:42.086+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:38:42.103+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:38:42.103+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:38:42.169+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:38:42.170+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1585 ms
-2024-12-21T10:38:42.317+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:38:42.523+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5fef0c19
-2024-12-21T10:38:42.525+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:38:42.577+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:38:42.626+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:38:42.667+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:38:42.975+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:38:44.012+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:38:44.012+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:38:44.306+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:38:44.683+01:00  WARN 10960 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:38:45.199+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:38:45.209+01:00  INFO 10960 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 5.145 seconds (process running for 5.587)
-2024-12-21T10:38:58.733+01:00  INFO 10960 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:38:58.734+01:00  INFO 10960 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:38:58.736+01:00  INFO 10960 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2024-12-21T10:47:33.186+01:00  INFO 10960 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:47:33.188+01:00  INFO 10960 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T10:47:33.197+01:00  INFO 10960 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-12-21T10:47:36.017+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.5 with PID 17012 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
-2024-12-21T10:47:36.030+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
-2024-12-21T10:47:36.708+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-12-21T10:47:36.821+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 18 JPA repository interfaces.
-2024-12-21T10:47:37.475+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-12-21T10:47:37.489+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-12-21T10:47:37.490+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-12-21T10:47:37.557+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-12-21T10:47:37.557+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1489 ms
-2024-12-21T10:47:37.708+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-12-21T10:47:37.918+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@119290b9
-2024-12-21T10:47:37.919+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-12-21T10:47:37.960+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-12-21T10:47:38.007+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
-2024-12-21T10:47:38.038+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-12-21T10:47:38.388+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-12-21T10:47:39.382+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-12-21T10:47:39.385+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T10:47:39.751+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-12-21T10:47:40.085+01:00  WARN 17012 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-12-21T10:47:40.554+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-12-21T10:47:40.564+01:00  INFO 17012 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 4.996 seconds (process running for 5.428)
-2024-12-21T10:47:59.610+01:00  INFO 17012 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-12-21T10:47:59.610+01:00  INFO 17012 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-12-21T10:47:59.611+01:00  INFO 17012 --- [dnd_heroic_battle_api] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2024-12-21T10:59:15.084+01:00 ERROR 17012 --- [dnd_heroic_battle_api] [http-nio-8080-exec-5] c.s.d.c.errors.ControllerAdvice          : org.springframework.security.authentication.BadCredentialsException: bad tokens
-2024-12-21T11:00:50.708+01:00  INFO 17012 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-12-21T11:00:50.711+01:00  INFO 17012 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-12-21T11:00:50.721+01:00  INFO 17012 --- [dnd_heroic_battle_api] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T17:26:34.942+01:00  INFO 12892 --- [dnd_heroic_battle_api] [RMI TCP Connection(33)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T17:26:34.951+01:00  INFO 12892 --- [dnd_heroic_battle_api] [RMI TCP Connection(33)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T17:26:34.953+01:00  INFO 12892 --- [dnd_heroic_battle_api] [RMI TCP Connection(33)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T17:26:34.960+01:00  INFO 12892 --- [dnd_heroic_battle_api] [RMI TCP Connection(33)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T17:26:36.709+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 16464 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T17:26:36.710+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T17:26:37.225+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T17:26:37.310+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 18 JPA repository interfaces.
+2024-12-26T17:26:37.710+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T17:26:37.722+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T17:26:37.722+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T17:26:37.762+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T17:26:37.762+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1016 ms
+2024-12-26T17:26:37.859+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T17:26:37.989+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2ab09943
+2024-12-26T17:26:37.991+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T17:26:38.021+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T17:26:38.057+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T17:26:38.079+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T17:26:38.307+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T17:26:39.171+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T17:26:39.173+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T17:26:39.415+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T17:26:39.646+01:00  WARN 16464 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T17:26:39.987+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T17:26:39.994+01:00  INFO 16464 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.578 seconds (process running for 4.156)
+2024-12-26T17:26:50.506+01:00  INFO 16464 --- [dnd_heroic_battle_api] [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T17:26:50.506+01:00  INFO 16464 --- [dnd_heroic_battle_api] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T17:26:50.509+01:00  INFO 16464 --- [dnd_heroic_battle_api] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-12-26T18:01:04.054+01:00  INFO 16464 --- [dnd_heroic_battle_api] [RMI TCP Connection(39)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T18:01:04.068+01:00  INFO 16464 --- [dnd_heroic_battle_api] [RMI TCP Connection(39)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T18:01:04.070+01:00  INFO 16464 --- [dnd_heroic_battle_api] [RMI TCP Connection(39)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T18:01:04.072+01:00  INFO 16464 --- [dnd_heroic_battle_api] [RMI TCP Connection(39)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-12-26T18:01:05.656+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Starting DndHeroicBattleApiApplication using Java 21.0.4 with PID 21784 (C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api\target\classes started by Hutke in C:\Users\Hutke\code\project-perso\dnd-epic-battle\dnd_heroic_battle_api)
+2024-12-26T18:01:05.658+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : No active profile set, falling back to 1 default profile: "default"
+2024-12-26T18:01:06.171+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-26T18:01:06.257+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 18 JPA repository interfaces.
+2024-12-26T18:01:06.648+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-12-26T18:01:06.658+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-26T18:01:06.658+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-12-26T18:01:06.697+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-26T18:01:06.697+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 999 ms
+2024-12-26T18:01:06.795+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-26T18:01:06.918+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@191ec193
+2024-12-26T18:01:06.919+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-26T18:01:06.949+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-26T18:01:06.985+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-12-26T18:01:07.008+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-12-26T18:01:07.215+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-26T18:01:08.067+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-26T18:01:08.070+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T18:01:08.335+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-26T18:01:08.562+01:00  WARN 21784 --- [dnd_heroic_battle_api] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-26T18:01:08.913+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-12-26T18:01:08.920+01:00  INFO 21784 --- [dnd_heroic_battle_api] [main] c.s.d.DndHeroicBattleApiApplication      : Started DndHeroicBattleApiApplication in 3.58 seconds (process running for 4.171)
+2024-12-26T18:01:19.954+01:00  INFO 21784 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-26T18:01:19.954+01:00  INFO 21784 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-26T18:01:19.955+01:00  INFO 21784 --- [dnd_heroic_battle_api] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-26T18:27:42.524+01:00  INFO 21784 --- [dnd_heroic_battle_api] [RMI TCP Connection(30)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2024-12-26T18:27:42.535+01:00  INFO 21784 --- [dnd_heroic_battle_api] [RMI TCP Connection(30)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-26T18:27:42.537+01:00  INFO 21784 --- [dnd_heroic_battle_api] [RMI TCP Connection(30)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-26T18:27:42.540+01:00  INFO 21784 --- [dnd_heroic_battle_api] [RMI TCP Connection(30)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

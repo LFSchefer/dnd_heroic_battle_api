@@ -4,7 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
 public record BattleMonsterCreateDto(@NotBlank String name,
-                                     @Positive int currentHitPoints,
                                      @Positive Long battleId,
                                      @Positive Long monsterId) {
 }

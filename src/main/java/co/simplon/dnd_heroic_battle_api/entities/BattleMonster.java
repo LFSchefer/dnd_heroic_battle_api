@@ -25,10 +25,6 @@ public class BattleMonster {
     private Integer initiative;
 
     @ManyToOne
-    @JoinColumn(name = "battle_id")
-    private Battle battle;
-
-    @ManyToOne
     @JoinColumn(name = "monster_id")
     private Monster monster;
 
@@ -68,14 +64,6 @@ public class BattleMonster {
         this.initiative = initiative;
     }
 
-    public Battle getBattle() {
-        return battle;
-    }
-
-    public void setBattle(Battle battle) {
-        this.battle = battle;
-    }
-
     public Monster getMonster() {
         return monster;
     }
@@ -91,7 +79,6 @@ public class BattleMonster {
                 ", currentHitPoints=" + currentHitPoints +
                 ", name='" + name + '\'' +
                 ", initiative=" + initiative +
-                ", battle=" + battle +
                 ", monster=" + monster +
                 '}';
     }

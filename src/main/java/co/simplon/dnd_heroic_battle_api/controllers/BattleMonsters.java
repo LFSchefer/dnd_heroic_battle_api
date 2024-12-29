@@ -5,6 +5,7 @@ import co.simplon.dnd_heroic_battle_api.entities.BattleMonster;
 import co.simplon.dnd_heroic_battle_api.services.BattleMonstersService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,6 +16,7 @@ public class BattleMonsters {
     private final BattleMonstersService service;
 
     @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
     public void create(@RequestBody @Valid BattleMonsterCreateDto input) {
         service.create(input);
     }

@@ -30,10 +30,10 @@ public final class BattleMapper {
 
 	public static List<BattleModel> entitiesToBattleModel(List<Battle> battles) {
 		return battles.stream()
-				.map(b -> new BattleModel(b.getBattleId(), b.getBattleName(), b.getTurn(), b.getCampaign().getId())).toList();
+				.map(b -> new BattleModel(b.getBattleId(), b.getBattleName(), b.getTurn(), b.getCampaign().getId(), BattleMonstersMapper.setEntitiesToSetPreviewDto(b.getBattleMonsters()))).toList();
 	}
 
 	public static BattleModel entityToBattleModel(Battle battle) {
-		return new BattleModel(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getCampaign().getId());
+		return new BattleModel(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getCampaign().getId(), BattleMonstersMapper.setEntitiesToSetPreviewDto(battle.getBattleMonsters()));
 	}
 }

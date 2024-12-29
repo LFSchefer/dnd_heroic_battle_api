@@ -1,7 +1,11 @@
 package co.simplon.dnd_heroic_battle_api.models;
 
+import co.simplon.dnd_heroic_battle_api.dtos.battle_monsters.BattleMonsterPreviewDto;
+import co.simplon.dnd_heroic_battle_api.entities.BattleMonster;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+
+import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -13,7 +17,17 @@ public class BattleModel {
 
 	private int turn;
 
-	private Long  campaignId;
+	private Long campaignId;
+
+	private Set<BattleMonsterPreviewDto> battleMonsters;
+
+	public Set<BattleMonsterPreviewDto> getBattleMonsters() {
+		return battleMonsters;
+	}
+
+	public void setBattleMonsters(Set<BattleMonsterPreviewDto> battleMonsters) {
+		this.battleMonsters = battleMonsters;
+	}
 
 	public Long getBattleId() {
 		return battleId;

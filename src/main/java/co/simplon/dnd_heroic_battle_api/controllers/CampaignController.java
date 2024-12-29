@@ -41,7 +41,7 @@ public class CampaignController {
 		return service.getAllByUserId();
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public CampaignModel getOne(@PathVariable("id") long id) {
 		return service.getOne(id);

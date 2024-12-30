@@ -26,10 +26,25 @@ public interface MonsterRepository extends JpaRepository<Monster, Long> {
 			OFFSET :offset
 			""";
 
+	String COUNT_RESULTS = """
+			SELECT count(*) FROM monsters
+			WHERE UPPER(monster_name) LIKE UPPER(CONCAT('%',:name,'%'))
+			""";
+
+	String COUNT_TOTAL = """
+			SELECT count(*) from monsters
+			""";
+
 	@Query(value = FIND_ALL, nativeQuery = true)
 	List<MonsterPreviewDto> findAllPreviewDto(@Param("limit") Integer limit, @Param("offset") Integer offset);
 	
 	@Query(value = FIND_ALL_BY_NAME, nativeQuery = true)
 	List<MonsterPreviewDto> findByNamePreviewDto(@Param("name") String name, @Param("limit") Integer limit, @Param("offset") Integer offset);
+
+	@Query(value = COUNT_RESULTS, nativeQuery = true)
+	Integer countResults(@Param("name") String name);
+
+	@Query(value = COUNT_TOTAL, nativeQuery = true)
+	Integer countTotal();
 
 }

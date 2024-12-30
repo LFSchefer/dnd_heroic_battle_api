@@ -1,10 +1,9 @@
 package co.simplon.dnd_heroic_battle_api.services;
 
-import java.util.List;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterPreviewDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterSearchDto;
 
 public interface MonsterService {
 
-	List<MonsterPreviewDto> get(String name, Integer limit, Integer offset);
+	MonsterSearchDto get(String name, Integer limit, Integer page);
 }

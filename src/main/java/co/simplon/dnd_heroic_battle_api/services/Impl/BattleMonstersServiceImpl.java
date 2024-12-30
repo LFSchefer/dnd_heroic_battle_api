@@ -28,6 +28,7 @@ public class BattleMonstersServiceImpl implements BattleMonstersService {
         repo.create(input.name(), monster.getHitPoints(), input.monsterId(), input.battleId());
     }
 
+    //TODO
     @Override
     public BattleMonster get(Long id) {
         return repo.findById(id).get();

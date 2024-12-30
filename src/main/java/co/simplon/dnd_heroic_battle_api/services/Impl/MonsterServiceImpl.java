@@ -1,7 +1,9 @@
 package co.simplon.dnd_heroic_battle_api.services.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterSearchDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +20,18 @@ public class MonsterServiceImpl implements MonsterService {
 	private final MonsterRepository repo;
 
 	@Override
-	public List<MonsterPreviewDto> get(String name, Integer limit, Integer offset) {
-		return name.isBlank() ? repo.findAllPreviewDto(limit, offset) : repo.findByNamePreviewDto(name,limit,offset);
+	public MonsterSearchDto get(String name, Integer limit, Integer page) {
+		int trueOffset = page == 1 ? 0 : (page - 1 ) * limit;
+		List<MonsterPreviewDto> monsterList = new ArrayList<MonsterPreviewDto>();
+		Integer numberOfResult;
+		if (name.isBlank()) {
+			monsterList = repo.findAllPreviewDto(limit, trueOffset);
+			numberOfResult = repo.countTotal();
+		} else {
+			monsterList = repo.findByNamePreviewDto(name,limit,trueOffset);
+			numberOfResult = repo.countResults(name);
+		}
+		int numberOfPages = (int) Math.ceil( (double) numberOfResult / limit);
+		return new MonsterSearchDto(monsterList, page,numberOfPages);
 	}
 }

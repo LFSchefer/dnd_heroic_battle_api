@@ -21,6 +21,7 @@ public class BattleMonsters {
         service.create(input);
     }
 
+    // TODO
     @GetMapping("/{id}")
     public BattleMonster get( @PathVariable("id") Long id) {
         return service.get(id);

@@ -1,11 +1,16 @@
 package co.simplon.dnd_heroic_battle_api.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -87,6 +92,36 @@ public class Monster {
 	@ManyToOne(targetEntity = ArmorClass.class)
 	@JoinColumn(name = "armor_id")
 	private ArmorClass armorClass;
+
+	@ManyToMany
+	@JoinTable(name = "monster_languages", 
+	joinColumns = @JoinColumn(name = "monster_id"),
+	inverseJoinColumns = @JoinColumn( name = "language_id"))
+	private Set<Language> languages = new HashSet<Language>();
+	
+	@ManyToMany
+	@JoinTable(name = "monster_condition_immunities",
+	joinColumns = @JoinColumn(name = "monster_id"),
+	inverseJoinColumns = @JoinColumn(name = "condition_id"))
+	private Set<Condition> conditionsImmunities = new HashSet<Condition>();
+	
+	@ManyToMany
+	@JoinTable( name = "monster_vulnerabilities",
+	joinColumns = @JoinColumn(name = "monster_id"),
+	inverseJoinColumns = @JoinColumn(name = "vulnerability_id"))
+	private Set<DamageType> monsterVulnerabilities = new HashSet<DamageType>();
+	
+	@ManyToMany
+	@JoinTable( name = "monster_resistances",
+	joinColumns = @JoinColumn(name = "monster_id"),
+	inverseJoinColumns = @JoinColumn(name = "resistance_id"))
+	private Set<DamageType> monsterResistances = new HashSet<DamageType>();
+	
+	@ManyToMany
+	@JoinTable( name = "monster_imunities",
+	joinColumns = @JoinColumn(name = "monster_id"),
+	inverseJoinColumns = @JoinColumn(name = "imunity_id"))
+	private Set<DamageType> monsterImunities = new HashSet<DamageType>();
 
 	public Monster() {
 		// ORM
@@ -261,13 +296,59 @@ public class Monster {
 		this.armorClass = armorClass;
 	}
 
+	public Set<Language> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(Set<Language> languages) {
+		this.languages = languages;
+	}
+
+	public Set<Condition> getConditionsImmunities() {
+		return conditionsImmunities;
+	}
+
+	public void setConditionsImmunities(Set<Condition> conditionsImmunities) {
+		this.conditionsImmunities = conditionsImmunities;
+	}
+
+	public Set<DamageType> getMonsterVulnerabilities() {
+		return monsterVulnerabilities;
+	}
+
+	public void setMonsterVulnerabilities(Set<DamageType> monsterVulnerabilities) {
+		this.monsterVulnerabilities = monsterVulnerabilities;
+	}
+
+	public Set<DamageType> getMonsterResistances() {
+		return monsterResistances;
+	}
+
+	public void setMonsterResistances(Set<DamageType> monsterResistances) {
+		this.monsterResistances = monsterResistances;
+	}
+
+	public Set<DamageType> getMonsterImunities() {
+		return monsterImunities;
+	}
+
+	public void setMonsterImunities(Set<DamageType> monsterImunities) {
+		this.monsterImunities = monsterImunities;
+	}
+
 	@Override
 	public String toString() {
-		return "{monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints + ", hitDices=" + hitDices + ", hitPointsRoll="
-				+ hitPointsRoll + ", strength=" + strength + ", dexterity=" + dexterity + ", constitution=" + constitution + ", intelligence=" + intelligence
-				+ ", wisdom=" + wisdom + ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl=" + imageUrl
-				+ ", dnd5Native=" + dnd5Native + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size + ", sense=" + sense
-				+ ", speed=" + speed + ", armorClass=" + armorClass + "}";
+		return "Monster [monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints
+				+ ", hitDices=" + hitDices + ", hitPointsRoll=" + hitPointsRoll + ", strength=" + strength
+				+ ", dexterity=" + dexterity + ", constitution=" + constitution + ", intelligence=" + intelligence
+				+ ", wisdom=" + wisdom + ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp="
+				+ xp + ", imageUrl=" + imageUrl + ", dnd5Native=" + dnd5Native + ", alignment=" + alignment
+				+ ", monsterType=" + monsterType + ", size=" + size + ", sense=" + sense + ", speed=" + speed
+				+ ", armorClass=" + armorClass + ", languages=" + languages + ", conditionsImmunities="
+				+ conditionsImmunities + ", monsterVulnerabilities=" + monsterVulnerabilities + ", monsterResistances="
+				+ monsterResistances + ", monsterImunities=" + monsterImunities + "]";
 	}
+
+
 
 }

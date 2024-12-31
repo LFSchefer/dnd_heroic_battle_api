@@ -1,13 +1,17 @@
 package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterSearchDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterPreviewDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterSearchDto;
+import co.simplon.dnd_heroic_battle_api.entities.DamageType;
+import co.simplon.dnd_heroic_battle_api.entities.Monster;
+import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonsterService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +22,9 @@ import lombok.RequiredArgsConstructor;
 public class MonsterServiceImpl implements MonsterService {
 
 	private final MonsterRepository repo;
+	
+	// FOR TEST
+	private final DamageTypeRepository dmgRepo;
 
 	@Override
 	public MonsterSearchDto get(String name, Integer limit, Integer page) {
@@ -33,5 +40,15 @@ public class MonsterServiceImpl implements MonsterService {
 		}
 		int numberOfPages = (int) Math.ceil( (double) numberOfResult / limit);
 		return new MonsterSearchDto(monsterList, page,numberOfPages);
+	}
+
+	@Override
+	@Transactional
+	public Monster test(Long id) {
+		Monster monster = repo.findById(id).get();
+		monster.setMonsterResistances(new HashSet<DamageType>());
+		monster.setMonsterName("tata");
+		repo.save(monster);
+		return repo.findById(id).get();
 	}
 }

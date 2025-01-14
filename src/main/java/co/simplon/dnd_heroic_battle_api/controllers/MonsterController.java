@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterSearchDto;
-import co.simplon.dnd_heroic_battle_api.entities.Monster;
 import co.simplon.dnd_heroic_battle_api.services.MonsterService;
 import lombok.RequiredArgsConstructor;
 
@@ -27,8 +26,4 @@ public class MonsterController {
 		return service.get(name, limit, page);
 	}
 	
-	@GetMapping("/test")
-	public Monster test(@RequestParam("id") Long id) {
-		return service.test(id);
-	}
 }

@@ -6,22 +6,19 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterPreviewDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterSearchDto;
-import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
-import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
-import co.simplon.dnd_heroic_battle_api.services.MonsterService;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterPreviewDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterSearchDto;
+import co.simplon.dnd_heroic_battle_api.repositories.MonsterModelRepository;
+import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class MonsterServiceImpl implements MonsterService {
+public class MonsterModelServiceImpl implements MonsterModelService {
 
-    private final MonsterRepository repo;
+    private final MonsterModelRepository repo;
 
-    // TODO FOR TEST
-    private final DamageTypeRepository dmgRepo;
 
     @Override
     public MonsterSearchDto get(String name, Integer limit, Integer page) {

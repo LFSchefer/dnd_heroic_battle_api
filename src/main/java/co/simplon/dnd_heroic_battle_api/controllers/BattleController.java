@@ -2,7 +2,6 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 
 import java.util.List;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +20,10 @@ import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 import co.simplon.dnd_heroic_battle_api.services.BattleService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/battles")
+@RequestMapping("/api/v1/battles")
 @RequiredArgsConstructor
 public class BattleController {
 

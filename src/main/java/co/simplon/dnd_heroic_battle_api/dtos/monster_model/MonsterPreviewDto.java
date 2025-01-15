@@ -1,8 +1,8 @@
-package co.simplon.dnd_heroic_battle_api.dtos.monster;
+package co.simplon.dnd_heroic_battle_api.dtos.monster_model;
 
 public interface MonsterPreviewDto {
 
-	Long getMonsterId();
+	Long getModelId();
 
 	String getMonsterName();
 

@@ -1,4 +1,4 @@
-package co.simplon.dnd_heroic_battle_api.dtos.monster;
+package co.simplon.dnd_heroic_battle_api.dtos.monster_model;
 
 import java.util.List;
 

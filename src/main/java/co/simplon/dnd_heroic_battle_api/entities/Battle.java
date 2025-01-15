@@ -30,7 +30,7 @@ public class Battle {
 
 	@OneToMany
 	@JoinColumn(name = "battle_id")
-	private Set<BattleMonster> battleMonsters = new HashSet<BattleMonster>();
+	private Set<Monster> monsters = new HashSet<Monster>();
 
 	public Battle() {
 		// for ORM
@@ -69,12 +69,12 @@ public class Battle {
 		this.campaign = campaign;
 	}
 
-	public Set<BattleMonster> getBattleMonsters() {
-		return battleMonsters;
+	public Set<Monster> getBattleMonsters() {
+		return monsters;
 	}
 
-	public void setBattleMonsters(Set<BattleMonster> battleMonsters) {
-		this.battleMonsters = battleMonsters;
+	public void setBattleMonsters(Set<Monster> battleMonsters) {
+		this.monsters = battleMonsters;
 	}
 
 	@Override

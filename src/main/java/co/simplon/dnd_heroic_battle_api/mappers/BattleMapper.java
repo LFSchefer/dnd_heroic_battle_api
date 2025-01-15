@@ -49,12 +49,12 @@ public final class BattleMapper {
         return battles.stream()
                 .map(b ->
                         new BattleModel(b.getBattleId(), b.getBattleName(), b.getTurn(), b.getCampaign().getId(),
-                                BattleMonstersMapper.setEntitiesToSetPreviewDto(b.getBattleMonsters())))
+                                MonstersMapper.setEntitiesToSetPreviewDto(b.getBattleMonsters())))
                 .toList();
     }
 
     public static BattleModel entityToBattleModel(Battle battle) {
         return new BattleModel(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getCampaign().getId(),
-                BattleMonstersMapper.setEntitiesToSetPreviewDto(battle.getBattleMonsters()));
+                MonstersMapper.setEntitiesToSetPreviewDto(battle.getBattleMonsters()));
     }
 }

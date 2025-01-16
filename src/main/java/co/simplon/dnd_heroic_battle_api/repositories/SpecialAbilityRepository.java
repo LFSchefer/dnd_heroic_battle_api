@@ -8,4 +8,6 @@ import co.simplon.dnd_heroic_battle_api.entities.SpecialAbility;
 @Repository
 public interface SpecialAbilityRepository extends JpaRepository<SpecialAbility, Long> {
 
+	SpecialAbility findBySpecialAbilityNameAndSpecialAbilityDescription(String specialAbilityName, String specialAbilityDescription);
+
 }

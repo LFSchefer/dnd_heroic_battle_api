@@ -374,13 +374,26 @@ public class ImportDataServiceImpl implements ImportDataService {
 			List<String> conditionList = conditionImport.stream().map( condMap -> condMap.get("name")).toList();
 			Set<Condition> conditions = new HashSet<Condition>();
 			conditionList.forEach(c -> conditions.add(conditionRepository.findByConditionName(c)));
+			// Special abilities
+			List<Map<String, Object>> specialAbilitiesApi = (List<Map<String, Object>>) monstersImport.get("special_abilities");
+			Set<Map<String, String>> specialAbilities = new HashSet<>();
+			if (specialAbilitiesApi.size() != 0) {
+				specialAbilitiesApi.forEach(specialAbility -> {
+					Map<String, String> specialAbilityMap = new HashMap<String, String>();
+					specialAbilityMap.put("specialAbilityName",(String) specialAbility.get("name"));
+					specialAbilityMap.put("specialAbilityDescription",(String) specialAbility.get("desc"));
+					specialAbilities.add(specialAbilityMap);
+				});
+			}
+			Set<SpecialAbility> specAbil = new HashSet<SpecialAbility>();
+			specialAbilities.forEach( sa -> specAbil.add(specialAbilityRepository.findBySpecialAbilityNameAndSpecialAbilityDescription(sa.get("specialAbilityName"),sa.get("specialAbilityDescription"))));
 			
 			monsters.add(MonsterModel.builder().monsterName(name).hitPoints(hitPoints).hitPointsRoll(hitPointsRoll).strength(strength)
 					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
 					.challengeRating(challengeRating).xp(xp).imageUrl(imageUrl == null ? null : BASE_URL + imageUrl).dnd5Native(true).alignment(alignment)
 					.monsterType(monsterType).passivePerception(passivePerception).darkvision(darkvision1).size(size).walk(speed.get("walk")).swim(speed.get("swim"))
 					.fly(speed.get("fly")).armorClass(armorClass).monsterImunities(immunities).monsterResistances(resistances)
-					.monsterVulnerabilities(vulnerabilities).languages(langSet).conditionsImmunities(conditions).build());
+					.monsterVulnerabilities(vulnerabilities).languages(langSet).conditionsImmunities(conditions).specialAbilities(specAbil).build());
 		}
 		monsterModelRepository.saveAll(monsters);
 

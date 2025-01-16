@@ -39,11 +39,12 @@ public class Monster {
         // ORM
     }
 
-    public Long getBattleMonsterId() {
+    public Long getMonsterId() {
         return monsterId;
     }
 
-    private void setBattleMonsterId(Long battleMonsterId) {
+    @SuppressWarnings("unused")
+	private void setMonsterId(Long battleMonsterId) {
         this.monsterId = battleMonsterId;
     }
 
@@ -75,7 +76,8 @@ public class Monster {
         return monster;
     }
 
-    public void setMonster(MonsterModel monster) {
+    @SuppressWarnings("unused")
+	private void setMonster(MonsterModel monster) {
         this.monster = monster;
     }
 

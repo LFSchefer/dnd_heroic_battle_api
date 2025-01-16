@@ -1,6 +1,7 @@
 package co.simplon.dnd_heroic_battle_api.entities;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
@@ -126,6 +127,12 @@ public class MonsterModel {
 	joinColumns = @JoinColumn(name = "monster_id"),
 	inverseJoinColumns = @JoinColumn(name = "imunity_id"))
 	private Set<DamageType> monsterImunities = new HashSet<DamageType>();
+	
+	@ManyToMany
+	@JoinTable(name = "monster_special_abilities",
+	joinColumns = @JoinColumn( name = "monster_id"),
+	inverseJoinColumns = @JoinColumn(name = "special_ability_id"))
+	private Set<SpecialAbility> specialAbilities = new HashSet<SpecialAbility>();
 
 	public MonsterModel() {
 		// ORM
@@ -355,19 +362,44 @@ public class MonsterModel {
 	public void setFly(Integer fly) {
 		this.fly = fly;
 	}
+	
+	public Set<SpecialAbility> getSpecialAbilities() {
+		return specialAbilities;
+	}
+
+	public void setSpecialAbilities(Set<SpecialAbility> specialAbilities) {
+		this.specialAbilities = specialAbilities;
+	}
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(monsterName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		return obj instanceof MonsterModel other
+				&& this.monsterName.equals(other.monsterName);
+	}
 
 	@Override
 	public String toString() {
 		return "MonsterModel [monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints
-				+ ", hitPointsRoll=" + hitPointsRoll + ", strength=" + strength
-				+ ", dexterity=" + dexterity + ", constitution=" + constitution + ", intelligence=" + intelligence
-				+ ", wisdom=" + wisdom + ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp="
-				+ xp + ", imageUrl=" + imageUrl + ", dnd5Native=" + dnd5Native + ", passivePerception="
-				+ passivePerception + ", darkvision=" + darkvision + ", walk=" + walk + ", swim=" + swim + ", fly="
-				+ fly + ", alignment=" + alignment + ", monsterType=" + monsterType + ", size=" + size + ", armorClass="
-				+ armorClass + ", languages=" + languages + ", conditionsImmunities=" + conditionsImmunities
-				+ ", monsterVulnerabilities=" + monsterVulnerabilities + ", monsterResistances=" + monsterResistances
-				+ ", monsterImunities=" + monsterImunities + "]";
+				+ ", hitPointsRoll=" + hitPointsRoll + ", strength=" + strength + ", dexterity=" + dexterity
+				+ ", constitution=" + constitution + ", intelligence=" + intelligence + ", wisdom=" + wisdom
+				+ ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl="
+				+ imageUrl + ", dnd5Native=" + dnd5Native + ", passivePerception=" + passivePerception + ", darkvision="
+				+ darkvision + ", walk=" + walk + ", swim=" + swim + ", fly=" + fly + ", alignment=" + alignment
+				+ ", monsterType=" + monsterType + ", size=" + size + ", armorClass=" + armorClass + ", languages="
+				+ languages + ", conditionsImmunities=" + conditionsImmunities + ", monsterVulnerabilities="
+				+ monsterVulnerabilities + ", monsterResistances=" + monsterResistances + ", monsterImunities="
+				+ monsterImunities + ", specialAbilities=" + specialAbilities + "]";
 	}
 
+
+	
 }

@@ -12,7 +12,6 @@ import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-// TODO change mapping
 @RequestMapping("/api/v1/monster-models")
 @RequiredArgsConstructor
 public class MonsterModelController {

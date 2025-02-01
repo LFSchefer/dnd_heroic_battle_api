@@ -9,13 +9,13 @@ import co.simplon.dnd_heroic_battle_api.entities.Monster;
 
 public interface MonsterRepository extends JpaRepository<Monster, Long> {
 
-    String CREATE_BM = """ 
-            INSERT INTO monsters (current_hit_points, monster_name, battle_id, monster_id) 
+    String CREATE = """ 
+            INSERT INTO monsters (current_hit_points, monster_name, battle_id, monster_id)
             VALUES (:currentHitPoint,:name, :battleId, :monsterId);
             """;
 
     @Modifying
-    @Query(value = CREATE_BM, nativeQuery = true)
+    @Query(value = CREATE, nativeQuery = true)
     void create(@Param("name") String name, @Param("currentHitPoint") int currentHitPoint, @Param("monsterId") Long monsterId, @Param("battleId") Long battleId);
 
 }

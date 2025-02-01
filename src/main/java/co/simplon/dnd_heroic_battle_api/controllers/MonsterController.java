@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 // TODO change mapping
-@RequestMapping("/api/v1/battle-monsters")
+@RequestMapping("/api/v1/monsters")
 @RequiredArgsConstructor
 public class MonsterController {
 

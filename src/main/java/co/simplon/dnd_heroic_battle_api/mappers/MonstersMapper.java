@@ -13,12 +13,12 @@ public final class MonstersMapper {
     }
 
     public static MonsterPreviewDto entityToPreviewDto(Monster monster) {
-        return new MonsterPreviewDto(monster.getMonsterId(), monster.getName(), monster.getCurrentHitPoints(), monster.getInitiative(), monster.getMonsterId());
+        return new MonsterPreviewDto(monster.getMonsterId(), monster.getName(), monster.getCurrentHitPoints(), monster.getMaxHitPoints(), monster.getInitiative(), monster.getMonsterId());
     }
 
     public static Set<MonsterPreviewDto> setEntitiesToSetPreviewDto(Set<Monster> monsters) {
         return monsters.stream().map(m ->
-                        new MonsterPreviewDto(m.getMonsterId(), m.getName(), m.getCurrentHitPoints(), m.getInitiative(), m.getMonster().getModelId()))
+                        new MonsterPreviewDto(m.getMonsterId(), m.getName(), m.getCurrentHitPoints(), m.getMaxHitPoints(), m.getInitiative(), m.getMonster().getModelId()))
                 .collect(Collectors.toSet());
     }
 }

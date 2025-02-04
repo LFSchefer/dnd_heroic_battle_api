@@ -18,17 +18,14 @@ import java.util.Optional;
 public class MonstersServiceImpl implements MonstersService {
 
     private final MonsterRepository repo;
-    private final MonsterModelRepository monsterRepo;
 
     @Transactional
     @Override
     public void create(MonsterCreateDto input) {
-        MonsterModel monster = monsterRepo.findById(input.monsterId())
-                .orElseThrow(() -> new IllegalArgumentException(String.format("Monster with id = %s don't exist", input.monsterId())));
-        repo.create(input.name(), monster.getHitPoints(), input.monsterId(), input.battleId());
+        repo.create(input.name(), input.currentHitPoints(), input.maxHitPoints(), input.monsterId(), input.battleId());
     }
 
-    //TODO
+    //TODO for testing purpose
     @Override
     public Monster get(Long id) {
         return repo.findById(id).get();

@@ -1,11 +1,7 @@
 package co.simplon.dnd_heroic_battle_api.controllers;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelSearchDto;
 import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
@@ -25,5 +21,10 @@ public class MonsterModelController {
                                      @RequestParam Integer page) {
 		return service.get(name, limit, page);
 	}
-	
+
+	@GetMapping("/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public Object getOne(@PathVariable("id") long id) {
+		return service.getOne(id);
+	}
 }

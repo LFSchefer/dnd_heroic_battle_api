@@ -26,7 +26,7 @@ public class MonsterModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "model_id")
-	private Long monsterId;
+	private Long modelId;
 
 	@Column(name = "monster_name")
 	private String monsterName;
@@ -138,13 +138,13 @@ public class MonsterModel {
 		// ORM
 	}
 
-	public Long getMonsterId() {
-		return monsterId;
+	public Long getModelId() {
+		return modelId;
 	}
 
 	@SuppressWarnings("unused")
-	private void setMonsterId(Long monsterId) {
-		this.monsterId = monsterId;
+	private void setModelId(Long modelId) {
+		this.modelId = modelId;
 	}
 
 	public String getMonsterName() {
@@ -388,7 +388,7 @@ public class MonsterModel {
 
 	@Override
 	public String toString() {
-		return "MonsterModel [monsterId=" + monsterId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints
+		return "MonsterModel [monsterId=" + modelId + ", monsterName=" + monsterName + ", hitPoints=" + hitPoints
 				+ ", hitPointsRoll=" + hitPointsRoll + ", strength=" + strength + ", dexterity=" + dexterity
 				+ ", constitution=" + constitution + ", intelligence=" + intelligence + ", wisdom=" + wisdom
 				+ ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl="

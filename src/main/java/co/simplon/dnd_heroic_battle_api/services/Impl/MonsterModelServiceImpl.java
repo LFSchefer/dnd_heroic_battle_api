@@ -3,6 +3,7 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationDto;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,6 +34,12 @@ public class MonsterModelServiceImpl implements MonsterModelService {
         }
         int numberOfPages = (int) Math.ceil((double) numberOfResult / limit);
         return new MonsterModelSearchDto(monsterList, page, numberOfPages);
+    }
+
+    @Override
+    public MonsterModelCreationDto getOne(long id) {
+        return repo.findByMonsterModelCreationDto(id).orElseThrow( () ->
+                new IllegalArgumentException(String.format("MonsterModel with id: %s does not exist", id)));
     }
 
 }

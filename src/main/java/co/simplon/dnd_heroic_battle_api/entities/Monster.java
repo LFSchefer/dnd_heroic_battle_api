@@ -25,6 +25,9 @@ public class Monster {
     @Column(name = "current_hit_points")
     private int currentHitPoints;
 
+    @Column(name = "max_hit_points")
+    private int maxHitPoints;
+
     @Column(name = "monster_name")
     private String name;
 
@@ -81,11 +84,20 @@ public class Monster {
         this.monster = monster;
     }
 
+    public void setMaxHitPoints(int maxHitPoints) {
+        this.maxHitPoints = maxHitPoints;
+    }
+
+    public int getMaxHitPoints() {
+        return maxHitPoints;
+    }
+
     @Override
     public String toString() {
-        return "BattleMonster{" +
-                "battleMonsterId=" + monsterId +
+        return "Monster{" +
+                "monsterId=" + monsterId +
                 ", currentHitPoints=" + currentHitPoints +
+                ", maxHitPoints=" + maxHitPoints +
                 ", name='" + name + '\'' +
                 ", initiative=" + initiative +
                 ", monster=" + monster +

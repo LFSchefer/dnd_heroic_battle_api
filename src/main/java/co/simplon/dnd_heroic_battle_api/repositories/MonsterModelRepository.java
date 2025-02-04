@@ -1,7 +1,9 @@
 package co.simplon.dnd_heroic_battle_api.repositories;
 
 import java.util.List;
+import java.util.Optional;
 
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -35,6 +37,11 @@ public interface MonsterModelRepository extends JpaRepository<MonsterModel, Long
 			SELECT count(*) from monster_models
 			""";
 
+	String FIND_BY_ID = """
+			SELECT model_id, monster_name, hit_points, hit_points_roll FROM monster_models
+			WHERE model_id = :id;
+			""";
+
 	@Query(value = FIND_ALL, nativeQuery = true)
 	List<MonsterModelPreviewDto> findAllPreviewDto(@Param("limit") Integer limit, @Param("offset") Integer offset);
 	
@@ -47,4 +54,6 @@ public interface MonsterModelRepository extends JpaRepository<MonsterModel, Long
 	@Query(value = COUNT_TOTAL, nativeQuery = true)
 	Integer countTotal();
 
+	@Query(value = FIND_BY_ID, nativeQuery = true)
+	Optional<MonsterModelCreationDto> findByMonsterModelCreationDto(long id);
 }

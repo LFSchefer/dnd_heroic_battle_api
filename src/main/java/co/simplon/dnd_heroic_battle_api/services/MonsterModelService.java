@@ -7,4 +7,5 @@ public interface MonsterModelService {
 
 	MonsterModelSearchDto get(String name, Integer limit, Integer page);
 
+    Object getOne(long id);
 }

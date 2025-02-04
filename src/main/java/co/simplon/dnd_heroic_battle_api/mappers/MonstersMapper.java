@@ -18,7 +18,7 @@ public final class MonstersMapper {
 
     public static Set<MonsterPreviewDto> setEntitiesToSetPreviewDto(Set<Monster> monsters) {
         return monsters.stream().map(m ->
-                        new MonsterPreviewDto(m.getMonsterId(), m.getName(), m.getCurrentHitPoints(), m.getInitiative(), m.getMonster().getMonsterId()))
+                        new MonsterPreviewDto(m.getMonsterId(), m.getName(), m.getCurrentHitPoints(), m.getInitiative(), m.getMonster().getModelId()))
                 .collect(Collectors.toSet());
     }
 }

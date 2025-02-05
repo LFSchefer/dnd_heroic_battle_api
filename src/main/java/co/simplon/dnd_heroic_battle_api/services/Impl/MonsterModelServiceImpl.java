@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
+import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
+import co.simplon.dnd_heroic_battle_api.mappers.MonsterModelMapper;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +44,12 @@ public class MonsterModelServiceImpl implements MonsterModelService {
     public MonsterModelCreationDto getOne(long id) {
         return repo.findByMonsterModelCreationDto(id).orElseThrow( () ->
                 new IllegalArgumentException(String.format("MonsterModel with id: %s does not exist", id)));
+    }
+
+    @Override
+    public MonsterModelDetail getDetail(long id) {
+        return MonsterModelMapper.entityToDetailDto(repo.findById(id).orElseThrow(() ->
+                new IllegalArgumentException(String.format("MonsterModel with id: %s does not exist", id))));
     }
 
 }

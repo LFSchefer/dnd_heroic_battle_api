@@ -5,6 +5,7 @@ import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -29,14 +30,17 @@ import jakarta.security.auth.message.AuthException;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository repo;
-    private final PasswordEncoder encoder;
-    private final JwtProvider jwt;
-    private final ObjectMapper mapper;
+	@Autowired
+    private UserRepository repo;
+	@Autowired
+    private PasswordEncoder encoder;
+	@Autowired
+    private JwtProvider jwt;
+	@Autowired
+    private ObjectMapper mapper;
 
     @Override
     @Transactional

@@ -3,6 +3,7 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 import java.util.List;
 
 import co.simplon.dnd_heroic_battle_api.config.JwtHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,11 +17,11 @@ import co.simplon.dnd_heroic_battle_api.services.CampaignService;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class CampaignServiceImpl implements CampaignService {
 
-	private final CampaingRepository repo;
+	@Autowired
+	private CampaingRepository repo;
 
 
 	@Transactional

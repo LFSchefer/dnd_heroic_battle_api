@@ -7,6 +7,7 @@ import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationD
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 import co.simplon.dnd_heroic_battle_api.mappers.MonsterModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +19,11 @@ import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class MonsterModelServiceImpl implements MonsterModelService {
 
-    private final MonsterModelRepository repo;
+    @Autowired
+    private MonsterModelRepository repo;
 
     @Override
     public MonsterModelSearchDto get(String name, Integer limit, Integer page) {

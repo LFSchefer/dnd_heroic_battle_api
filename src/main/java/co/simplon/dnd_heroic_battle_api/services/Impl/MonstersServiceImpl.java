@@ -23,7 +23,7 @@ public class MonstersServiceImpl implements MonstersService {
     @Transactional
     @Override
     public void create(MonsterCreateDto input) {
-        repo.create(input.name(), input.currentHitPoints(), input.maxHitPoints(), input.monsterId(), input.battleId());
+        repo.create(input.name(), input.currentHitPoints(), input.maxHitPoints(), input.modelId(), input.battleId());
     }
 
     //TODO for testing purpose

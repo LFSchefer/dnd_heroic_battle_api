@@ -2,6 +2,7 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 
 import java.nio.file.AccessDeniedException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,10 +23,10 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/v1/users")
-@RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)

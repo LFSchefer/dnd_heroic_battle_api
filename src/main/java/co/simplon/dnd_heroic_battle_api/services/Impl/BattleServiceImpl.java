@@ -2,6 +2,7 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,11 +17,11 @@ import co.simplon.dnd_heroic_battle_api.services.BattleService;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class BattleServiceImpl implements BattleService {
 
-	private final BattleRepository repo;
+	@Autowired
+	private BattleRepository repo;
 
 	@Override
 	public List<BattleModel> getAll() {

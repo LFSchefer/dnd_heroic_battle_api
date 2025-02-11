@@ -3,6 +3,7 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationDto;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +13,10 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/v1/monster-models")
-@RequiredArgsConstructor
 public class MonsterModelController {
 
-	private final MonsterModelService service;
+	@Autowired
+	private MonsterModelService service;
 
 	@GetMapping
 	@ResponseStatus(code = HttpStatus.OK)

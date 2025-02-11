@@ -29,7 +29,7 @@ public class Battle {
 	private Campaign campaign;
 
 	@OneToMany
-	@JoinColumn(name = "battle_id")
+	@JoinColumn(name = "battle_id", updatable = false)
 	private Set<Monster> monsters = new HashSet<Monster>();
 
 	public Battle() {

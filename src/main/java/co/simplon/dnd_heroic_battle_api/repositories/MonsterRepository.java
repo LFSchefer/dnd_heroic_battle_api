@@ -10,8 +10,8 @@ import co.simplon.dnd_heroic_battle_api.entities.Monster;
 public interface MonsterRepository extends JpaRepository<Monster, Long> {
 
     String CREATE = """ 
-            INSERT INTO monsters (current_hit_points, max_hit_points, monster_name, battle_id, monster_id)
-            VALUES (:currentHitPoint, :maxHitPoints ,:name, :battleId, :monsterId);
+            INSERT INTO monsters (current_hit_points, max_hit_points, monster_name, battle_id, model_id)
+            VALUES (:currentHitPoint, :maxHitPoints ,:name, :battleId, :modelId);
             """;
 
     @Modifying
@@ -19,7 +19,7 @@ public interface MonsterRepository extends JpaRepository<Monster, Long> {
     void create(@Param("name") String name,
                 @Param("currentHitPoint") int currentHitPoint,
                 @Param("maxHitPoints") int maxHitPoints,
-                @Param("monsterId") Long monsterId,
+                @Param("modelId") Long modelId,
                 @Param("battleId") Long battleId);
 
 }

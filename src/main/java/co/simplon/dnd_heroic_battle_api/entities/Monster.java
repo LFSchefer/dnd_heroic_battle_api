@@ -19,7 +19,7 @@ public class Monster {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "monster_id")
     private Long monsterId;
 
     @Column(name = "current_hit_points")
@@ -35,7 +35,7 @@ public class Monster {
     private Integer initiative;
 
     @ManyToOne
-    @JoinColumn(name = "monster_id")
+    @JoinColumn(name = "model_id")
     private MonsterModel monster;
 
     public Monster() {

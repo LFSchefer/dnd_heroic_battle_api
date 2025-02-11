@@ -9,5 +9,5 @@ public record MonsterCreateDto(@NotBlank String name,
                                @Positive int currentHitPoints,
                                @Positive int maxHitPoints,
                                @Positive long battleId,
-                               @Positive long monsterId) {
+                               @Positive long modelId) {
 }

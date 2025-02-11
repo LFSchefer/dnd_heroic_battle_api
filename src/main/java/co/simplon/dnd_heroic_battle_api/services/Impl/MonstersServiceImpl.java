@@ -7,17 +7,18 @@ import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterModelRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonstersService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class MonstersServiceImpl implements MonstersService {
 
-    private final MonsterRepository repo;
+    @Autowired
+    private MonsterRepository repo;
 
     @Transactional
     @Override

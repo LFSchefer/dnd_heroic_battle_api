@@ -17,7 +17,7 @@ public final class MonsterModelMapper {
                 monster.getWalk(), monster.getSwim(), monster.getFly(),
                 monster.getAlignment() == null ? null : monster.getAlignment().getAlignmentsName(),
                 monster.getMonsterType().getTypeName(),monster.getSize().getSizeName(),
-                monster.getArmorClass().getArmorValue(),monster.getArmorClass().getArmorType(),
+                monster.getArmorClass(),monster.getArmorType().getArmorType(),
                 LanguageMapper.entitiesToNames(monster.getLanguages()),
                 ConditionMapper.entitiesToNames(monster.getConditionsImmunities()),
                 DamageTypeMapper.entitiesToNames(monster.getMonsterVulnerabilities()),

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 import co.simplon.dnd_heroic_battle_api.entities.Alignment;
-import co.simplon.dnd_heroic_battle_api.entities.ArmorClass;
+import co.simplon.dnd_heroic_battle_api.entities.ArmorType;
 import co.simplon.dnd_heroic_battle_api.entities.Condition;
 import co.simplon.dnd_heroic_battle_api.entities.Damage;
 import co.simplon.dnd_heroic_battle_api.entities.DamageType;
@@ -26,7 +26,7 @@ import co.simplon.dnd_heroic_battle_api.entities.Size;
 import co.simplon.dnd_heroic_battle_api.entities.SpecialAbility;
 import co.simplon.dnd_heroic_battle_api.entities.Usage;
 import co.simplon.dnd_heroic_battle_api.repositories.AlignmentRepository;
-import co.simplon.dnd_heroic_battle_api.repositories.ArmorClassRepository;
+import co.simplon.dnd_heroic_battle_api.repositories.ArmorTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ConditionRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DamageRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
@@ -51,7 +51,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 	private final ProficiencyRepository proficiencyRepository;
 	private final SizeRepository sizeRepository;
 	private final MonsterTypeRepository monsterTypeRepository;
-	private final ArmorClassRepository armorClassRepository;
+	private final ArmorTypeRepository armorTypeRepository;
 	private final MonsterModelRepository monsterModelRepository;
 	private final UsageRepository usageRepository;
 	private final DcRepository dcRepository;
@@ -61,10 +61,10 @@ public class ImportDataServiceImpl implements ImportDataService {
 	private final static String BASE_URL = "https://www.dnd5eapi.co";
 
 	public ImportDataServiceImpl(DamageTypeRepository damageTypeRepository, AlignmentRepository alignmentRepository, ConditionRepository conditionRepository,
-			LanguageRepository languageRepository, ProficiencyRepository proficiencyRepository, SizeRepository sizeRepository,
-			MonsterTypeRepository monsterTypeRepository, ArmorClassRepository armorClassRepository, MonsterModelRepository monsterRepository,
-			UsageRepository usageRepository, DcRepository dcRepository,SpecialAbilityRepository specialAbilityRepository, DamageRepository damageRepository, 
-			MonsterRepository battleMonstersRepository) {
+								 LanguageRepository languageRepository, ProficiencyRepository proficiencyRepository, SizeRepository sizeRepository,
+								 MonsterTypeRepository monsterTypeRepository, ArmorTypeRepository armorTypeRepository, MonsterModelRepository monsterRepository,
+								 UsageRepository usageRepository, DcRepository dcRepository, SpecialAbilityRepository specialAbilityRepository, DamageRepository damageRepository,
+								 MonsterRepository battleMonstersRepository) {
 		this.damageTypeRepository = damageTypeRepository;
 		this.alignmentRepository = alignmentRepository;
 		this.conditionRepository = conditionRepository;
@@ -72,7 +72,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 		this.proficiencyRepository = proficiencyRepository;
 		this.sizeRepository = sizeRepository;
 		this.monsterTypeRepository = monsterTypeRepository;
-		this.armorClassRepository = armorClassRepository;
+		this.armorTypeRepository = armorTypeRepository;
 		this.monsterModelRepository = monsterRepository;
 		this.usageRepository = usageRepository;
 		this.dcRepository = dcRepository;
@@ -106,7 +106,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 		proficiencyRepository.deleteAll();
 		sizeRepository.deleteAll();
 		monsterTypeRepository.deleteAll();
-		armorClassRepository.deleteAll();
+		armorTypeRepository.deleteAll();
 		usageRepository.deleteAll();
 		dcRepository.deleteAll();
 		specialAbilityRepository.deleteAll();
@@ -184,7 +184,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 		Set<String> monsterTypes = new HashSet<>();
 		Set<Pair<Integer, String>> senses = new HashSet<>();
 		Set<Map<String, Short>> speeds = new HashSet<>();
-		Set<Pair<String, Integer>> armorClasses = new HashSet<>();
+		Set<String> armorClasses = new HashSet<>();
 		Set<Pair<String, Integer>> usages = new HashSet<>();
 		Set<Map<String, Object>> dcs = new HashSet<>();
 		Set<Map<String, Object>> specialAbilities = new HashSet<>();
@@ -202,9 +202,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 			List<Map<String, Object>> listArmorClasses = (List<Map<String, Object>>) monstersImport.get("armor_class");
 			Map<String, Object> ArmorClasseApi = listArmorClasses.get(0);
 			String armorType = (String) ArmorClasseApi.get("type");
-			Integer armorValue = (Integer) ArmorClasseApi.get("value");
-			Pair<String, Integer> armorclass = Pair.of(armorType, armorValue);
-			armorClasses.add(armorclass);
+			armorClasses.add(armorType);
 			// Usages
 			List<Map<String, Object>> actionsApi = (List<Map<String, Object>>) monstersImport.get("actions");
 			actionsApi.forEach(action -> {
@@ -285,7 +283,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 		}
 		sizeRepository.saveAll(sizes.stream().map(s -> Size.builder().sizeName(s).build()).toList());
 		monsterTypeRepository.saveAll(monsterTypes.stream().map(m -> MonsterType.builder().typeName(m).build()).toList());
-		armorClassRepository.saveAll(armorClasses.stream().map(a -> ArmorClass.builder().armorType(a.getFirst()).armorValue(a.getSecond()).build()).toList());
+		armorTypeRepository.saveAll(armorClasses.stream().map(a -> ArmorType.builder().armorType(a).build()).toList());
 		usageRepository
 				.saveAll(usages.stream().map(u -> Usage.builder().usageType(u.getFirst()).time(u.getSecond() == 0 ? null : u.getSecond()).build()).toList());
 		dcRepository.saveAll(dcs.stream()
@@ -349,7 +347,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 			Map<String, Object> ArmorClasseApi = listArmorClasses.get(0);
 			String armorType = (String) ArmorClasseApi.get("type");
 			Integer armorValue = (Integer) ArmorClasseApi.get("value");
-			ArmorClass armorClass = armorClassRepository.findByArmorTypeAndArmorValue(armorType, armorValue);
+			ArmorType armorType1 = armorTypeRepository.findByArmorType(armorType);
 			// Damage immunities
 			List<String> immunitiesList = (List<String>) monstersImport.get("damage_immunities");
 			Set<DamageType> immunities = new HashSet<DamageType>();
@@ -392,7 +390,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
 					.challengeRating(challengeRating).xp(xp).imageUrl(imageUrl == null ? null : BASE_URL + imageUrl).dnd5Native(true).alignment(alignment)
 					.monsterType(monsterType).passivePerception(passivePerception).darkvision(darkvision1).size(size).walk(speed.get("walk")).swim(speed.get("swim"))
-					.fly(speed.get("fly")).armorClass(armorClass).monsterImunities(immunities).monsterResistances(resistances)
+					.fly(speed.get("fly")).armorClass(armorValue).armorType(armorType1).monsterImunities(immunities).monsterResistances(resistances)
 					.monsterVulnerabilities(vulnerabilities).languages(langSet).conditionsImmunities(conditions).specialAbilities(specAbil).build());
 		}
 		monsterModelRepository.saveAll(monsters);

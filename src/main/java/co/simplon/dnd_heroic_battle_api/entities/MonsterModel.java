@@ -82,6 +82,9 @@ public class MonsterModel {
 	@Column(name = "fly")
 	private Integer fly;
 
+	@Column(name = "armor_class")
+	private int armorClass;
+
 	@ManyToOne(targetEntity = Alignment.class)
 	@JoinColumn(name = "alignment_id")
 	private Alignment alignment;
@@ -94,9 +97,9 @@ public class MonsterModel {
 	@JoinColumn(name = "size_id")
 	private Size size;
 
-	@ManyToOne(targetEntity = ArmorClass.class)
+	@ManyToOne(targetEntity = ArmorType.class)
 	@JoinColumn(name = "armor_id")
-	private ArmorClass armorClass;
+	private ArmorType armorType;
 
 	@ManyToMany
 	@JoinTable(name = "monster_languages", 
@@ -275,12 +278,12 @@ public class MonsterModel {
 		this.size = size;
 	}
 
-	public ArmorClass getArmorClass() {
-		return armorClass;
+	public ArmorType getArmorType() {
+		return armorType;
 	}
 
-	public void setArmorClass(ArmorClass armorClass) {
-		this.armorClass = armorClass;
+	public void setArmorType(ArmorType armorType) {
+		this.armorType = armorType;
 	}
 
 	public Set<Language> getLanguages() {
@@ -370,7 +373,14 @@ public class MonsterModel {
 	public void setSpecialAbilities(Set<SpecialAbility> specialAbilities) {
 		this.specialAbilities = specialAbilities;
 	}
-	
+
+	public int getArmorClass() {
+		return armorClass;
+	}
+
+	public void setArmorClass(int armorClass) {
+		this.armorClass = armorClass;
+	}
 
 	@Override
 	public int hashCode() {
@@ -394,7 +404,7 @@ public class MonsterModel {
 				+ ", charisma=" + charisma + ", challengeRating=" + challengeRating + ", xp=" + xp + ", imageUrl="
 				+ imageUrl + ", dnd5Native=" + dnd5Native + ", passivePerception=" + passivePerception + ", darkvision="
 				+ darkvision + ", walk=" + walk + ", swim=" + swim + ", fly=" + fly + ", alignment=" + alignment
-				+ ", monsterType=" + monsterType + ", size=" + size + ", armorClass=" + armorClass + ", languages="
+				+ ", monsterType=" + monsterType + ", size=" + size + ", armorClass=" + armorType + ", languages="
 				+ languages + ", conditionsImmunities=" + conditionsImmunities + ", monsterVulnerabilities="
 				+ monsterVulnerabilities + ", monsterResistances=" + monsterResistances + ", monsterImunities="
 				+ monsterImunities + ", specialAbilities=" + specialAbilities + "]";

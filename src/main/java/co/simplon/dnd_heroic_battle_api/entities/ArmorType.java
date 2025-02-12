@@ -10,33 +10,30 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 @Entity
-@Table(name = "armor_classes")
+@Table(name = "armor_types")
 @Builder
 @AllArgsConstructor
-public class ArmorClass {
+public class ArmorType {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "armor_classe_id")
-	private Long armorClasseId;
+	@Column(name = "armor_types_id")
+	private Long armorTypeId;
 
 	@Column(name = "armor_type")
 	private String armorType;
 
-	@Column(name = "armor_value")
-	private Integer armorValue;
-
-	public ArmorClass() {
+	public ArmorType() {
 		// ORM
 	}
 
 	public Long getId() {
-		return armorClasseId;
+		return armorTypeId;
 	}
 
 	@SuppressWarnings("unused")
 	private void setId(Long id) {
-		this.armorClasseId = id;
+		this.armorTypeId = id;
 	}
 
 	public String getArmorType() {
@@ -47,17 +44,11 @@ public class ArmorClass {
 		this.armorType = armorType;
 	}
 
-	public Integer getArmorValue() {
-		return armorValue;
-	}
-
-	public void setArmorValue(Integer armorValue) {
-		this.armorValue = armorValue;
-	}
-
 	@Override
 	public String toString() {
-		return "{id=" + armorClasseId + ", armorType=" + armorType + ", armorValue=" + armorValue + "}";
+		return "ArmorType{" +
+				"armorTypeId=" + armorTypeId +
+				", armorType='" + armorType + '\'' +
+				'}';
 	}
-
 }

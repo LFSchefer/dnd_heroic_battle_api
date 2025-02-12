@@ -19,13 +19,11 @@ import co.simplon.dnd_heroic_battle_api.entities.Damage;
 import co.simplon.dnd_heroic_battle_api.entities.DamageType;
 import co.simplon.dnd_heroic_battle_api.entities.Dc;
 import co.simplon.dnd_heroic_battle_api.entities.Language;
-import co.simplon.dnd_heroic_battle_api.entities.Monster;
+import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterType;
 import co.simplon.dnd_heroic_battle_api.entities.Proficiency;
-import co.simplon.dnd_heroic_battle_api.entities.Sense;
 import co.simplon.dnd_heroic_battle_api.entities.Size;
 import co.simplon.dnd_heroic_battle_api.entities.SpecialAbility;
-import co.simplon.dnd_heroic_battle_api.entities.Speed;
 import co.simplon.dnd_heroic_battle_api.entities.Usage;
 import co.simplon.dnd_heroic_battle_api.repositories.AlignmentRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ArmorClassRepository;
@@ -34,13 +32,12 @@ import co.simplon.dnd_heroic_battle_api.repositories.DamageRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.DcRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.LanguageRepository;
+import co.simplon.dnd_heroic_battle_api.repositories.MonsterModelRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.ProficiencyRepository;
-import co.simplon.dnd_heroic_battle_api.repositories.SenseRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.SizeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.SpecialAbilityRepository;
-import co.simplon.dnd_heroic_battle_api.repositories.SpeedRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.UsageRepository;
 import co.simplon.dnd_heroic_battle_api.services.ImportDataService;
 
@@ -54,21 +51,20 @@ public class ImportDataServiceImpl implements ImportDataService {
 	private final ProficiencyRepository proficiencyRepository;
 	private final SizeRepository sizeRepository;
 	private final MonsterTypeRepository monsterTypeRepository;
-	private final SenseRepository senseRepository;
-	private final SpeedRepository speedRepository;
 	private final ArmorClassRepository armorClassRepository;
-	private final MonsterRepository monsterRepository;
+	private final MonsterModelRepository monsterModelRepository;
 	private final UsageRepository usageRepository;
 	private final DcRepository dcRepository;
 	private final SpecialAbilityRepository specialAbilityRepository;
 	private final DamageRepository damageRepository;
+	private final MonsterRepository monsterRepository;
 	private final static String BASE_URL = "https://www.dnd5eapi.co";
 
 	public ImportDataServiceImpl(DamageTypeRepository damageTypeRepository, AlignmentRepository alignmentRepository, ConditionRepository conditionRepository,
 			LanguageRepository languageRepository, ProficiencyRepository proficiencyRepository, SizeRepository sizeRepository,
-			MonsterTypeRepository monsterTypeRepository, SenseRepository senseRepository, SpeedRepository speedRepository,
-			ArmorClassRepository armorClassRepository, MonsterRepository monsterRepository, UsageRepository usageRepository, DcRepository dcRepository,
-			SpecialAbilityRepository specialAbilityRepository, DamageRepository damageRepository) {
+			MonsterTypeRepository monsterTypeRepository, ArmorClassRepository armorClassRepository, MonsterModelRepository monsterRepository,
+			UsageRepository usageRepository, DcRepository dcRepository,SpecialAbilityRepository specialAbilityRepository, DamageRepository damageRepository, 
+			MonsterRepository battleMonstersRepository) {
 		this.damageTypeRepository = damageTypeRepository;
 		this.alignmentRepository = alignmentRepository;
 		this.conditionRepository = conditionRepository;
@@ -76,14 +72,13 @@ public class ImportDataServiceImpl implements ImportDataService {
 		this.proficiencyRepository = proficiencyRepository;
 		this.sizeRepository = sizeRepository;
 		this.monsterTypeRepository = monsterTypeRepository;
-		this.senseRepository = senseRepository;
-		this.speedRepository = speedRepository;
 		this.armorClassRepository = armorClassRepository;
-		this.monsterRepository = monsterRepository;
+		this.monsterModelRepository = monsterRepository;
 		this.usageRepository = usageRepository;
 		this.dcRepository = dcRepository;
 		this.specialAbilityRepository = specialAbilityRepository;
 		this.damageRepository = damageRepository;
+		this.monsterRepository = battleMonstersRepository;
 	}
 
 	@Override
@@ -102,6 +97,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 
 	private void deleteExisting() {
 		monsterRepository.deleteAll();
+		monsterModelRepository.deleteAll();
 		alignmentRepository.deleteAll();
 		damageRepository.deleteAll();
 		damageTypeRepository.deleteAll();
@@ -110,8 +106,6 @@ public class ImportDataServiceImpl implements ImportDataService {
 		proficiencyRepository.deleteAll();
 		sizeRepository.deleteAll();
 		monsterTypeRepository.deleteAll();
-		senseRepository.deleteAll();
-		speedRepository.deleteAll();
 		armorClassRepository.deleteAll();
 		usageRepository.deleteAll();
 		dcRepository.deleteAll();
@@ -204,26 +198,6 @@ public class ImportDataServiceImpl implements ImportDataService {
 			// Monster Type
 			String type = (String) monstersImport.get("type");
 			monsterTypes.add(type);
-			// Sense
-			Map<String, Object> apiSense = (Map<String, Object>) monstersImport.get("senses");
-			Integer passivePerception = (Integer) apiSense.get("passive_perception");
-			String darkvision = (String) apiSense.get("darkvision");
-			if (darkvision == null) {
-				darkvision = "0";
-			}
-			Pair<Integer, String> sens = Pair.of(passivePerception, darkvision);
-			senses.add(sens);
-			// Speed
-			Map<String, String> speedApi = (Map<String, String>) monstersImport.get("speed");
-			Map<String, Short> speed = new HashMap<>();
-			Short walk = speedApi.get("walk") == null ? null : Short.valueOf(speedApi.get("walk").replace("ft.", "").trim());
-			if (walk != null && walk == 0) {
-				walk = null;
-			}
-			speed.put("walk", walk);
-			speed.put("swim", speedApi.get("swim") == null ? null : Short.valueOf(speedApi.get("swim").replace("ft.", "").trim()));
-			speed.put("fly", speedApi.get("fly") == null ? null : Short.valueOf(speedApi.get("fly").replace("ft.", "").trim()));
-			speeds.add(speed);
 			// Armor class
 			List<Map<String, Object>> listArmorClasses = (List<Map<String, Object>>) monstersImport.get("armor_class");
 			Map<String, Object> ArmorClasseApi = listArmorClasses.get(0);
@@ -242,6 +216,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 					usages.add(usageValues);
 				}
 			});
+			// Special abilities
 			List<Map<String, Object>> specialAbilitiesApi = (List<Map<String, Object>>) monstersImport.get("special_abilities");
 			specialAbilitiesApi.forEach(specialAbility -> {
 				Map<String, Object> usage = (Map<String, Object>) specialAbility.get("usage");
@@ -293,7 +268,6 @@ public class ImportDataServiceImpl implements ImportDataService {
 					specialAbilityMap.put("specialAbilityDescription", specialAbility.get("desc"));
 					specialAbilities.add(specialAbilityMap);
 				});
-
 			}
 			// Damages
 			actionsApi.forEach(action -> {
@@ -311,11 +285,6 @@ public class ImportDataServiceImpl implements ImportDataService {
 		}
 		sizeRepository.saveAll(sizes.stream().map(s -> Size.builder().sizeName(s).build()).toList());
 		monsterTypeRepository.saveAll(monsterTypes.stream().map(m -> MonsterType.builder().typeName(m).build()).toList());
-		senseRepository.saveAll(senses.stream()
-				.map(s -> Sense.builder().passivePerception(s.getFirst())
-						.darkvision(s.getSecond().replace("ft.", "") == "0" ? null : Integer.valueOf(s.getSecond().replace("ft.", "").trim())).build())
-				.toList());
-		speedRepository.saveAll(speeds.stream().map(s -> Speed.builder().walk(s.get("walk")).fly(s.get("fly")).swim(s.get("swim")).build()).toList());
 		armorClassRepository.saveAll(armorClasses.stream().map(a -> ArmorClass.builder().armorType(a.getFirst()).armorValue(a.getSecond()).build()).toList());
 		usageRepository
 				.saveAll(usages.stream().map(u -> Usage.builder().usageType(u.getFirst()).time(u.getSecond() == 0 ? null : u.getSecond()).build()).toList());
@@ -329,13 +298,12 @@ public class ImportDataServiceImpl implements ImportDataService {
 	}
 
 	private void importMonsters(RestClient restClient, List<String> monsterUrls) {
-		List<Monster> monsters = new ArrayList<>();
+		List<MonsterModel> monsters = new ArrayList<>();
 		for (String monsterUrl : monsterUrls) {
 			Map<String, Object> monstersImport = restClient.get().uri(BASE_URL + monsterUrl).retrieve().body(new ParameterizedTypeReference<>() {
 			});
 			String name = (String) monstersImport.get("name");
 			Integer hitPoints = (Integer) monstersImport.get("hit_points");
-			String hitDices = (String) monstersImport.get("hit_dice");
 			String hitPointsRoll = (String) monstersImport.get("hit_points_roll");
 			Integer strength = (Integer) monstersImport.get("strength");
 			Integer dexterity = (Integer) monstersImport.get("dexterity");
@@ -352,6 +320,11 @@ public class ImportDataServiceImpl implements ImportDataService {
 			}
 			Integer xp = (Integer) monstersImport.get("xp");
 			String imageUrl = (String) monstersImport.get("image");
+			// Sense
+			Map<String, Object> apiSense = (Map<String, Object>) monstersImport.get("senses");
+			Integer passivePerception = (Integer) apiSense.get("passive_perception");
+			String darkvision = (String) apiSense.get("darkvision");
+			Integer darkvision1 = darkvision == null ? null : Integer.valueOf(darkvision.replace("ft.", "").trim());
 			// Alignment fkey
 			String alignmentsName = (String) monstersImport.get("alignment");
 			Alignment alignment = alignmentRepository.findByAlignmentsNameIgnoreCase(alignmentsName);
@@ -361,33 +334,68 @@ public class ImportDataServiceImpl implements ImportDataService {
 			// Size fkey
 			String sizeName = (String) monstersImport.get("size");
 			Size size = sizeRepository.findBySizeName(sizeName);
-			// Sense fkey
-			Map<String, Object> apiSense = (Map<String, Object>) monstersImport.get("senses");
-			Integer passivePerception = (Integer) apiSense.get("passive_perception");
-			String darkvisionApi = (String) apiSense.get("darkvision");
-			Integer darkvision = darkvisionApi == null ? null : Integer.valueOf(darkvisionApi.replace("ft.", "").trim());
-			Sense sense = senseRepository.findByDarkvisionAndPassivePerception(darkvision, passivePerception);
-			// Speed fkey
+			// Speed
 			Map<String, String> speedApi = (Map<String, String>) monstersImport.get("speed");
-			Short walk = speedApi.get("walk") == null ? null : Short.valueOf(speedApi.get("walk").replace("ft.", "").trim());
+			Map<String, Integer> speed = new HashMap<>();
+			Integer walk = speedApi.get("walk") == null ? null : Integer.valueOf(speedApi.get("walk").replace("ft.", "").trim());
 			if (walk != null && walk == 0) {
 				walk = null;
 			}
-			Short swim = speedApi.get("swim") == null ? null : Short.valueOf(speedApi.get("swim").replace("ft.", "").trim());
-			Short fly = speedApi.get("fly") == null ? null : Short.valueOf(speedApi.get("fly").replace("ft.", "").trim());
-			Speed speed = speedRepository.findByWalkAndSwimAndFly(walk, swim, fly);
+			speed.put("walk", walk);
+			speed.put("swim", speedApi.get("swim") == null ? null : Integer.valueOf(speedApi.get("swim").replace("ft.", "").trim()));
+			speed.put("fly", speedApi.get("fly") == null ? null : Integer.valueOf(speedApi.get("fly").replace("ft.", "").trim()));
 			// Armor class fkey
 			List<Map<String, Object>> listArmorClasses = (List<Map<String, Object>>) monstersImport.get("armor_class");
 			Map<String, Object> ArmorClasseApi = listArmorClasses.get(0);
 			String armorType = (String) ArmorClasseApi.get("type");
 			Integer armorValue = (Integer) ArmorClasseApi.get("value");
 			ArmorClass armorClass = armorClassRepository.findByArmorTypeAndArmorValue(armorType, armorValue);
-			monsters.add(Monster.builder().monsterName(name).hitPoints(hitPoints).hitDices(hitDices).hitPointsRoll(hitPointsRoll).strength(strength)
+			// Damage immunities
+			List<String> immunitiesList = (List<String>) monstersImport.get("damage_immunities");
+			Set<DamageType> immunities = new HashSet<DamageType>();
+			immunitiesList.forEach( i -> immunities.add(damageTypeRepository.findByDamageTypeNameIgnoreCase(i.split(",")[0])));
+			// Damage resistance
+			List<String> resistanceList = (List<String>) monstersImport.get("damage_resistances");
+			Set<DamageType> resistances = new HashSet<DamageType>();
+			resistanceList.forEach( r -> resistances.add(damageTypeRepository.findByDamageTypeNameIgnoreCase(r.split(",")[0])));
+			// Damage vulnerabilities
+			List<String> vulnarabilitiesList = (List<String>) monstersImport.get("damage_vulnerabilities");
+			Set<DamageType> vulnerabilities = new HashSet<DamageType>();
+			vulnarabilitiesList.forEach( v -> vulnerabilities.add(damageTypeRepository.findByDamageTypeNameIgnoreCase(v.split(",")[0])));
+			// Languages
+			String languages = (String) monstersImport.get("languages");
+			String[] languagesList = languages.split(",");
+			Set<Language> langSet = new HashSet<Language>();
+			for (int j = 0; j < languagesList.length; j++) {
+				langSet.add(languageRepository.findByLanguagesName(languagesList[j].trim()));
+			}
+			// Condition immunities
+			List<Map<String,String>> conditionImport = (List<Map<String,String>>) monstersImport.get("condition_immunities");
+			List<String> conditionList = conditionImport.stream().map( condMap -> condMap.get("name")).toList();
+			Set<Condition> conditions = new HashSet<Condition>();
+			conditionList.forEach(c -> conditions.add(conditionRepository.findByConditionName(c)));
+			// Special abilities
+			List<Map<String, Object>> specialAbilitiesApi = (List<Map<String, Object>>) monstersImport.get("special_abilities");
+			Set<Map<String, String>> specialAbilities = new HashSet<>();
+			if (specialAbilitiesApi.size() != 0) {
+				specialAbilitiesApi.forEach(specialAbility -> {
+					Map<String, String> specialAbilityMap = new HashMap<String, String>();
+					specialAbilityMap.put("specialAbilityName",(String) specialAbility.get("name"));
+					specialAbilityMap.put("specialAbilityDescription",(String) specialAbility.get("desc"));
+					specialAbilities.add(specialAbilityMap);
+				});
+			}
+			Set<SpecialAbility> specAbil = new HashSet<SpecialAbility>();
+			specialAbilities.forEach( sa -> specAbil.add(specialAbilityRepository.findBySpecialAbilityNameAndSpecialAbilityDescription(sa.get("specialAbilityName"),sa.get("specialAbilityDescription"))));
+			
+			monsters.add(MonsterModel.builder().monsterName(name).hitPoints(hitPoints).hitPointsRoll(hitPointsRoll).strength(strength)
 					.dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
 					.challengeRating(challengeRating).xp(xp).imageUrl(imageUrl == null ? null : BASE_URL + imageUrl).dnd5Native(true).alignment(alignment)
-					.monsterType(monsterType).sense(sense).size(size).speed(speed).armorClass(armorClass).build());
+					.monsterType(monsterType).passivePerception(passivePerception).darkvision(darkvision1).size(size).walk(speed.get("walk")).swim(speed.get("swim"))
+					.fly(speed.get("fly")).armorClass(armorClass).monsterImunities(immunities).monsterResistances(resistances)
+					.monsterVulnerabilities(vulnerabilities).languages(langSet).conditionsImmunities(conditions).specialAbilities(specAbil).build());
 		}
-		monsterRepository.saveAll(monsters);
+		monsterModelRepository.saveAll(monsters);
 
 	}
 

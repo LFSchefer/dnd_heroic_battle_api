@@ -2,6 +2,9 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import java.util.List;
 
+import co.simplon.dnd_heroic_battle_api.config.JwtHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,33 +14,34 @@ import co.simplon.dnd_heroic_battle_api.mappers.CampaignMapper;
 import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 import co.simplon.dnd_heroic_battle_api.repositories.CampaingRepository;
 import co.simplon.dnd_heroic_battle_api.services.CampaignService;
+import lombok.RequiredArgsConstructor;
 
 @Service
+@Transactional(readOnly = true)
 public class CampaignServiceImpl implements CampaignService {
 
-	private final CampaingRepository repo;
+	@Autowired
+	private CampaingRepository repo;
 
-	public CampaignServiceImpl(CampaingRepository repo) {
-		this.repo = repo;
-	}
 
 	@Transactional
 	@Override
 	public void create(CampaignCreate input) {
-		repo.save(CampaignMapper.campaignCreateToEntity(input));
+		Long userId = JwtHelper.getSubject();
+		repo.save(CampaignMapper.campaignCreateToEntity(input, userId));
 	}
 
-	@Transactional(readOnly = true)
 	@Override
-	public List<CampaignModel> getAll() {
-		return CampaignMapper.entitiesToCampaignModel(repo.findAll());
+	public List<CampaignModel> getAllByUserId() {
+		Long userId = JwtHelper.getSubject();
+		return CampaignMapper.entitiesToCampaignModel(repo.findByUserUserIdOrderByCreationDateDesc(userId));
 	}
 
-	@Transactional(readOnly = true)
 	@Override
 	public CampaignModel getOne(long id) {
 		return CampaignMapper
-				.entityToCampaignModel(repo.findById(id).orElseThrow(() -> new IllegalArgumentException("Campaign with id = " + id + " does not exist")));
+				.entityToCampaignModel(repo.findById(id)
+						.orElseThrow(() -> new BadCredentialsException("Campaign with id = " + id + " does not exist")));
 	}
 
 	@Transactional
@@ -49,7 +53,8 @@ public class CampaignServiceImpl implements CampaignService {
 	@Transactional
 	@Override
 	public void update(CampaignUpdate input) {
-		repo.update(input.campaignId(), input.campaignName());
+		Long userId = JwtHelper.getSubject();
+		repo.update(input.campaignId(), input.campaignName(), userId);
 	}
 
 }

@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,6 +32,10 @@ public class Campaign {
 	@CreationTimestamp
 	@Column(name = "creation_date")
 	private Timestamp creationDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Campaign() {
 		// for ORM
@@ -37,11 +43,6 @@ public class Campaign {
 
 	public Long getId() {
 		return campaignId;
-	}
-
-	@SuppressWarnings("unused")
-	private void setId(Long id) {
-		this.campaignId = id;
 	}
 
 	public String getCampaignName() {
@@ -60,9 +61,31 @@ public class Campaign {
 		this.creationDate = creationDate;
 	}
 
+	public Long getCampaignId() {
+		return campaignId;
+	}
+
+	@SuppressWarnings("unused")
+	private void setCampaignId(Long campaignId) {
+		this.campaignId = campaignId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "{id=" + campaignId + ", campaignName=" + campaignName + ", creationDate=" + creationDate + "}";
+		return "Campaign [campaignId=" + campaignId + ", campaignName=" + campaignName + ", creationDate="
+				+ creationDate + ", user=" + user + "]";
 	}
+	
+	
+
+
 
 }

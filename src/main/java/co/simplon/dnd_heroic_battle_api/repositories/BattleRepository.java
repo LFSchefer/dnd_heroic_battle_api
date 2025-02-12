@@ -39,7 +39,8 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
 
 	String FIND_ALL_BY_CAMPAIGN_ID = """
 			SELECT * FROM battles b
-			WHERE campaign_id = :id;
+			WHERE campaign_id = :id
+			ORDER BY battle_id DESC;
 						""";
 
 	@Query(value = FIND_ALL_BY_CAMPAIGN_ID, nativeQuery = true)

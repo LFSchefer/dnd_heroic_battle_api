@@ -8,4 +8,6 @@ import co.simplon.dnd_heroic_battle_api.entities.Language;
 @Repository
 public interface LanguageRepository extends JpaRepository<Language, Long> {
 
+	Language findByLanguagesName(String name);
+
 }

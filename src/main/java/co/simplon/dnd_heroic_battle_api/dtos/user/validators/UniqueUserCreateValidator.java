@@ -15,6 +15,6 @@ public class UniqueUserCreateValidator implements ConstraintValidator<UniqueUser
 
     @Override
     public boolean isValid(UserCreateDto value, ConstraintValidatorContext context) {
-        return !repo.existsByUserNameAndEmail(value.userName(),value.email());
+        return !repo.existsByUserNameOrEmail(value.userName(),value.email());
     }
 }

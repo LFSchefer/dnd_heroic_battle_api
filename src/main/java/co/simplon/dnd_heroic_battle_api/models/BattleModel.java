@@ -1,5 +1,9 @@
 package co.simplon.dnd_heroic_battle_api.models;
 
+import java.util.Set;
+
+
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterPreviewDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
@@ -13,43 +17,57 @@ public class BattleModel {
 
 	private int turn;
 
-	private CampaignModel campaign;
+	private Long campaignId;
+
+	private Set<MonsterPreviewDto> battleMonsters;
 
 	public Long getBattleId() {
 		return battleId;
-	}
-
-	public void setBattleId(Long battleId) {
-		this.battleId = battleId;
 	}
 
 	public String getBattleName() {
 		return battleName;
 	}
 
-	public void setBattleName(String battleName) {
-		this.battleName = battleName;
-	}
-
-	public CampaignModel getCampaign() {
-		return campaign;
-	}
-
-	public void setCampaign(CampaignModel campaign) {
-		this.campaign = campaign;
-	}
-
 	public int getTurn() {
 		return turn;
+	}
+
+	public Long getCampaignId() {
+		return campaignId;
+	}
+
+	public void setBattleId(Long battleId) {
+		this.battleId = battleId;
+	}
+
+	public void setBattleName(String battleName) {
+		this.battleName = battleName;
 	}
 
 	public void setTurn(int turn) {
 		this.turn = turn;
 	}
 
-	@Override
-	public String toString() {
-		return "{battleId=" + battleId + ", battleName=" + battleName + ", campaign=" + campaign + ", turn=" + turn + "}";
+	public void setCampaignId(Long campaignId) {
+		this.campaignId = campaignId;
 	}
 
+	public Set<MonsterPreviewDto> getBattleMonsters() {
+		return battleMonsters;
+	}
+
+	public void setBattleMonsters(Set<MonsterPreviewDto> battleMonsters) {
+		this.battleMonsters = battleMonsters;
+	}
+
+	@Override
+	public String toString() {
+		return "BattleModel{" +
+				"battleId=" + battleId +
+				", battleName='" + battleName + '\'' +
+				", turn=" + turn +
+				", campaignId=" + campaignId +
+				'}';
+	}
 }

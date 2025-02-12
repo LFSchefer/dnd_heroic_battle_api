@@ -1,27 +1,37 @@
 package co.simplon.dnd_heroic_battle_api.controllers;
 
-import java.util.List;
-
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster.MonsterPreviewDto;
-import co.simplon.dnd_heroic_battle_api.services.MonsterService;
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterCreateDto;
+import co.simplon.dnd_heroic_battle_api.entities.Monster;
+import co.simplon.dnd_heroic_battle_api.services.MonstersService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/monsters")
+@RequestMapping("/api/v1/monsters")
 public class MonsterController {
 
-	MonsterService service;
+    @Autowired
+    private MonstersService service;
 
-	public MonsterController(MonsterService service) {
-		this.service = service;
-	}
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void create(@RequestBody @Valid MonsterCreateDto input) {
+        service.create(input);
+    }
 
-	@GetMapping
-	public ResponseEntity<List<MonsterPreviewDto>> getAll() {
-		return ResponseEntity.ok(service.getAll());
-	}
+    // TODO for testing purpose
+    @GetMapping("/{id}")
+    public Monster get( @PathVariable("id") Long id) {
+        return service.get(id);
+    }
 }

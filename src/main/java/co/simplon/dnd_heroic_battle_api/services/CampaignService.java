@@ -10,7 +10,7 @@ public interface CampaignService {
 
 	void create(CampaignCreate input);
 
-	List<CampaignModel> getAll();
+	List<CampaignModel> getAllByUserId();
 
 	void deleteOne(long id);
 

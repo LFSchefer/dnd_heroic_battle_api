@@ -1,10 +1,15 @@
 package co.simplon.dnd_heroic_battle_api.mappers;
 
+import co.simplon.dnd_heroic_battle_api.dtos.user.Tokens;
 import co.simplon.dnd_heroic_battle_api.dtos.user.UserCreateDto;
 import co.simplon.dnd_heroic_battle_api.dtos.user.UserView;
 import co.simplon.dnd_heroic_battle_api.entities.User;
 
 public final class UserMapper {
+
+    private UserMapper() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static User createDtoToEntity(UserCreateDto input, String hashPassword) {
         return User.builder()
@@ -14,7 +19,7 @@ public final class UserMapper {
                 .build();
     }
 
-    public static UserView entityToUserView(User user) {
-        return new UserView(user.getUserName(), user.getEmail());
+    public static UserView entityToUserView(User user, Tokens token) {
+        return new UserView(user.getUserName(), user.getEmail(), token);
     }
 }

@@ -9,5 +9,8 @@ import co.simplon.dnd_heroic_battle_api.entities.DamageType;
 public interface DamageTypeRepository extends JpaRepository<DamageType, Long> {
 
 	DamageType findByDamageTypeName(String damageTypeName);
+	
+	DamageType findByDamageTypeNameIgnoreCase(String damageTypeName);
+
 
 }

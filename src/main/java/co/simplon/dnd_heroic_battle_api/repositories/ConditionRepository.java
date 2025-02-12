@@ -8,4 +8,6 @@ import co.simplon.dnd_heroic_battle_api.entities.Condition;
 @Repository
 public interface ConditionRepository extends JpaRepository<Condition, Long> {
 
+	Condition findByConditionName(String name);
+
 }

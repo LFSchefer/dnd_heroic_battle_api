@@ -2,8 +2,8 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
@@ -20,47 +21,48 @@ import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 import co.simplon.dnd_heroic_battle_api.services.BattleService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/battles")
+@RequestMapping("/api/v1/battles")
 public class BattleController {
 
-	private final BattleService service;
-
-	public BattleController(BattleService service) {
-		this.service = service;
-	}
+	@Autowired
+	private BattleService service;
 
 	@GetMapping
-	public ResponseEntity<List<BattleModel>> getAll() {
-		return ResponseEntity.ok(service.getAll());
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<BattleModel> getAll() {
+		return service.getAll();
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<BattleModel> getOne(@PathVariable("id") Long id) {
-		return ResponseEntity.ok(service.getOne(id));
+	@ResponseStatus(code = HttpStatus.OK)
+	public BattleModel getOne(@PathVariable("id") Long id) {
+		return service.getOne(id);
 	}
 
 	@GetMapping("/campaign")
-	public ResponseEntity<List<BattleDto>> getAllFromCampaign(@RequestParam("id") Long id) {
-		return ResponseEntity.ok(service.getAllFromCampaign(id));
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<BattleDto> getAllFromCampaign(@RequestParam("id") Long id) {
+		return service.getAllFromCampaign(id);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteOne(@PathVariable("id") Long id) {
+	@ResponseStatus(code = HttpStatus.OK)
+	public void deleteOne(@PathVariable("id") Long id) {
 		service.deleteOne(id);
-		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> create(@Valid @RequestBody BattleCreate input) {
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public void create(@Valid @RequestBody BattleCreate input) {
 		service.create(input);
-		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@PatchMapping
-	public ResponseEntity<Void> update(@Valid @RequestBody BattleUpdate input) {
+	@ResponseStatus(code = HttpStatus.OK)
+	public void update(@Valid @RequestBody BattleUpdate input) {
 		service.update(input);
-		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

@@ -26,9 +26,4 @@ public class MonstersServiceImpl implements MonstersService {
         repo.create(input.name(), input.currentHitPoints(), input.maxHitPoints(), input.modelId(), input.battleId());
     }
 
-    //TODO for testing purpose
-    @Override
-    public Monster get(Long id) {
-        return repo.findById(id).get();
-    }
 }

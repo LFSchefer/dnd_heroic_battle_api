@@ -30,12 +30,6 @@ public class BattleController {
 	@Autowired
 	private BattleService service;
 
-	@GetMapping
-	@ResponseStatus(code = HttpStatus.OK)
-	public List<BattleModel> getAll() {
-		return service.getAll();
-	}
-
 	@GetMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
 	public BattleModel getOne(@PathVariable("id") Long id) {

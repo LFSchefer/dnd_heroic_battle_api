@@ -9,8 +9,6 @@ import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 
 public interface BattleService {
 
-	List<BattleModel> getAll();
-
 	BattleModel getOne(Long id);
 
 	List<BattleDto> getAllFromCampaign(Long id);

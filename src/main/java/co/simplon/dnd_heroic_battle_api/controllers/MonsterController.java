@@ -29,9 +29,4 @@ public class MonsterController {
         service.create(input);
     }
 
-    // TODO for testing purpose
-    @GetMapping("/{id}")
-    public Monster get( @PathVariable("id") Long id) {
-        return service.get(id);
-    }
 }

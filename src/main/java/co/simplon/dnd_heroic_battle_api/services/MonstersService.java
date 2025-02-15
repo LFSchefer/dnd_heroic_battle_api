@@ -8,5 +8,4 @@ public interface MonstersService {
 
     void create(MonsterCreateDto input);
 
-    Monster get(Long id);
 }

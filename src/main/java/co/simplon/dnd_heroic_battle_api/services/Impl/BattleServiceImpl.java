@@ -24,11 +24,6 @@ public class BattleServiceImpl implements BattleService {
 	private BattleRepository repo;
 
 	@Override
-	public List<BattleModel> getAll() {
-		return BattleMapper.entitiesToBattleModel(repo.findAll());
-	}
-
-	@Override
 	public BattleModel getOne(Long id) {
 		return BattleMapper
 				.entityToBattleModel(repo.findById(id)

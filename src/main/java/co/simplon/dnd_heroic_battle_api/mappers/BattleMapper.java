@@ -21,10 +21,6 @@ public final class BattleMapper {
                 .toList();
     }
 
-    public static BattleDto entityToBattleView(Battle battle) {
-        return new BattleDto(battle.getBattleId(), battle.getBattleName(), battle.getTurn());
-    }
-
     public static Battle battleCreateToEntity(BattleCreate input) {
         return Battle.builder()
                 .battleName(input.battleName())
@@ -43,14 +39,6 @@ public final class BattleMapper {
                         .campaignId(id)
                         .build())
                 .build();
-    }
-
-    public static List<BattleModel> entitiesToBattleModel(List<Battle> battles) {
-        return battles.stream()
-                .map(b ->
-                        new BattleModel(b.getBattleId(), b.getBattleName(), b.getTurn(), b.getCampaign().getId(),
-                                MonstersMapper.setEntitiesToSetPreviewDto(b.getBattleMonsters())))
-                .toList();
     }
 
     public static BattleModel entityToBattleModel(Battle battle) {

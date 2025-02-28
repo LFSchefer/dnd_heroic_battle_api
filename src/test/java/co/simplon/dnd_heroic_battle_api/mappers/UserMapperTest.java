@@ -5,7 +5,9 @@ import co.simplon.dnd_heroic_battle_api.dtos.user.UserCreateDto;
 import co.simplon.dnd_heroic_battle_api.entities.User;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class UserMapperTest {
 

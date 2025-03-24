@@ -14,7 +14,6 @@ import co.simplon.dnd_heroic_battle_api.mappers.BattleMapper;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
 import co.simplon.dnd_heroic_battle_api.services.BattleService;
-import lombok.RequiredArgsConstructor;
 
 @Service
 @Transactional(readOnly = true)

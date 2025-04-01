@@ -1,6 +1,6 @@
 package co.simplon.dnd_heroic_battle_api.dtos.monster_model;
 
-public interface MonsterModelPreviewDto {
+public interface MonsterModelPreviewPro {
 
 	Long getModelId();
 

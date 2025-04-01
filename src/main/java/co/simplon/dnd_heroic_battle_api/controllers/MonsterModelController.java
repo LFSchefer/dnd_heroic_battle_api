@@ -1,15 +1,13 @@
 package co.simplon.dnd_heroic_battle_api.controllers;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationPro;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
-import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelSearchDto;
 import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
-import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api/v1/monster-models")
@@ -28,7 +26,7 @@ public class MonsterModelController {
 
 	@GetMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.OK)
-	public MonsterModelCreationDto getOne(@PathVariable("id") long id) {
+	public MonsterModelCreationPro getOne(@PathVariable("id") long id) {
 		return service.getOne(id);
 	}
 

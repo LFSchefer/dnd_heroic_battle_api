@@ -1,6 +1,6 @@
 package co.simplon.dnd_heroic_battle_api.services.Impl;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationPro;
 import co.simplon.dnd_heroic_battle_api.entities.ArmorType;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterType;
@@ -39,7 +39,7 @@ class MonsterModelServiceImplTest {
 
     @Test
     void getOne() {
-        var modelDto = new MonsterModelCreationDto() {
+        var modelDto = new MonsterModelCreationPro() {
             @Override
             public Long getModelId() {
                 return 1L;

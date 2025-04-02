@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Builder
 @AllArgsConstructor
 @Entity
@@ -60,4 +62,14 @@ public class SpecialAbility {
 				+ specialAbilityDescription + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof SpecialAbility that)) return false;
+        return Objects.equals(specialAbilityName, that.specialAbilityName) && Objects.equals(specialAbilityDescription, that.specialAbilityDescription);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(specialAbilityName, specialAbilityDescription);
+	}
 }

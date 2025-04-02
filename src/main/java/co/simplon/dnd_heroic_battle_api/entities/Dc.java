@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Builder
 @AllArgsConstructor
 @Entity
@@ -71,4 +73,14 @@ public class Dc {
 		return "{dcId=" + dcId + ", dcType=" + dcType + ", dcValue=" + dcValue + ", successType=" + successType + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Dc dc)) return false;
+        return Objects.equals(dcType, dc.dcType) && Objects.equals(dcValue, dc.dcValue) && Objects.equals(successType, dc.successType);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dcType, dcValue, successType);
+	}
 }

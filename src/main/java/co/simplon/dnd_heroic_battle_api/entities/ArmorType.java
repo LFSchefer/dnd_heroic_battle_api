@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "armor_types")
 @Builder
@@ -50,5 +52,16 @@ public class ArmorType {
 				"armorTypeId=" + armorTypeId +
 				", armorType='" + armorType + '\'' +
 				'}';
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof ArmorType armorType1)) return false;
+        return Objects.equals(armorType, armorType1.armorType);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(armorType);
 	}
 }

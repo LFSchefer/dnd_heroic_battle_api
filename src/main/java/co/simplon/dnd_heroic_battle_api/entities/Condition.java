@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "conditions")
 @Builder
@@ -60,4 +62,14 @@ public class Condition {
 		return "{id=" + conditionId + ", conditionName=" + conditionName + ", description=" + description + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Condition condition)) return false;
+        return Objects.equals(conditionName, condition.conditionName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(conditionName);
+	}
 }

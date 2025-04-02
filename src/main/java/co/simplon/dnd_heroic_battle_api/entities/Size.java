@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "sizes")
 @Builder
@@ -49,4 +51,14 @@ public class Size {
 		return "{sizeId=" + sizeId + ", sizeName=" + sizeName + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Size size)) return false;
+        return Objects.equals(sizeName, size.sizeName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(sizeName);
+	}
 }

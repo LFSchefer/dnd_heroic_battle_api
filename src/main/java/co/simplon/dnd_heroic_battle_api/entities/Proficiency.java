@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "proficiencies")
 @Builder
@@ -72,4 +74,14 @@ public class Proficiency {
 				+ proficiencyAttribute + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Proficiency that)) return false;
+        return Objects.equals(proficiencyName, that.proficiencyName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(proficiencyName);
+	}
 }

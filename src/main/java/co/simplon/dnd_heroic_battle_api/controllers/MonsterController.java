@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/monsters")
+@RequestMapping("/api/monsters")
 public class MonsterController {
 
     @Autowired

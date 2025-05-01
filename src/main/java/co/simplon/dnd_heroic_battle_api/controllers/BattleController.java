@@ -23,7 +23,7 @@ import co.simplon.dnd_heroic_battle_api.services.BattleService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/battles")
+@RequestMapping("/api/battles")
 public class BattleController {
 
 	@Autowired

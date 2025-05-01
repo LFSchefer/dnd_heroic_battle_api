@@ -19,10 +19,9 @@ import co.simplon.dnd_heroic_battle_api.dtos.user.UserView;
 import co.simplon.dnd_heroic_battle_api.services.UserService;
 import jakarta.security.auth.message.AuthException;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired

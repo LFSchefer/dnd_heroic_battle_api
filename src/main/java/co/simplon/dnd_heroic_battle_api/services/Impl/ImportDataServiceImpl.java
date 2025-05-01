@@ -85,12 +85,12 @@ public class ImportDataServiceImpl implements ImportDataService {
 	public void importData() {
 		RestClient restClient = RestClient.create();
 		deleteExisting();
-		importDamageTypes(restClient, "/api/damage-types");
-		importConditions(restClient, "/api/conditions");
-		importLanguages(restClient, "/api/languages");
-		importProficiencies(restClient, "/api/proficiencies");
-		importAlignments(restClient, "/api/alignments");
-		List<String> monsterUrls = getUrlList(restClient, "/api/monsters");
+		importDamageTypes(restClient, "/api/2014/damage-types");
+		importConditions(restClient, "/api/2014/conditions");
+		importLanguages(restClient, "/api/2014/languages");
+		importProficiencies(restClient, "/api/2014/proficiencies");
+		importAlignments(restClient, "/api/2014/alignments");
+		List<String> monsterUrls = getUrlList(restClient, "/api/2014/monsters");
 		importFromMonster(restClient, monsterUrls);
 		importMonsters(restClient, monsterUrls);
 	}
@@ -119,8 +119,8 @@ public class ImportDataServiceImpl implements ImportDataService {
 			Map<String, Object> alignmentImport = restClient.get().uri(BASE_URL + url).retrieve().body(new ParameterizedTypeReference<>() {
 			});
 			String name = (String) alignmentImport.get("name");
-			String desc = (String) alignmentImport.get("desc");
-			alignments.add(Alignment.builder().alignmentsName(name).description(desc).build());
+			List<String> desc = (List<String>) alignmentImport.get("desc");
+			alignments.add(Alignment.builder().alignmentsName(name).description(desc.getFirst()).build());
 		}
 		alignmentRepository.saveAll(alignments);
 	}

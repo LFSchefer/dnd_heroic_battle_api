@@ -22,7 +22,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/campaigns")
+@RequestMapping("/api/campaigns")
 public class CampaignController {
 
 	@Autowired

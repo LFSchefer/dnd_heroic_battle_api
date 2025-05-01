@@ -10,7 +10,7 @@ import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelSearchDto
 import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
 
 @RestController
-@RequestMapping("/api/v1/monster-models")
+@RequestMapping("/api/monster-models")
 public class MonsterModelController {
 
 	@Autowired

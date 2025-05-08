@@ -7,6 +7,8 @@ import org.springframework.data.repository.query.Param;
 
 import co.simplon.dnd_heroic_battle_api.entities.Monster;
 
+import java.util.Set;
+
 public interface MonsterRepository extends JpaRepository<Monster, Long> {
 
     String CREATE = """ 
@@ -21,5 +23,12 @@ public interface MonsterRepository extends JpaRepository<Monster, Long> {
                 @Param("maxHitPoints") int maxHitPoints,
                 @Param("modelId") Long modelId,
                 @Param("battleId") Long battleId);
+
+    String FIND_ALL_BY_BATTLE = """
+            SELECT * FROM monsters m
+            WHERE battle_id = :battleId;
+            """;
+    @Query(value = FIND_ALL_BY_BATTLE, nativeQuery = true)
+    Set<Monster> getAllByBattle(Long battleId);
 
 }

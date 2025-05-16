@@ -2,6 +2,7 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterCreateDto;
 import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativePro;
 import co.simplon.dnd_heroic_battle_api.entities.Monster;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 import co.simplon.dnd_heroic_battle_api.mappers.MonstersMapper;
@@ -31,8 +32,8 @@ public class MonstersServiceImpl implements MonstersService {
 
     @Override
     public Set<MonsterInitiativeDto> getAllInitiative(Long battleId) {
-        Set<Monster> monsters =  repo.getAllByBattle(battleId);
-        return MonstersMapper.entitiesToInitiativeDtos(monsters);
+        Set<MonsterInitiativePro> monsterInitiativePros = repo.getAllInitiativeByBattle(battleId);
+        return MonstersMapper.InitiativeProsToInitiativeDtos(monsterInitiativePros);
     }
 
 }

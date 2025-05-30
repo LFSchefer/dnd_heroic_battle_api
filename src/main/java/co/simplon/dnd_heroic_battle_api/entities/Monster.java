@@ -35,7 +35,7 @@ public class Monster {
     private Integer initiative;
 
     @ManyToOne
-    @JoinColumn(name = "model_id")
+    @JoinColumn(name = "model_id", updatable = false)
     private MonsterModel monster;
 
     public Monster() {

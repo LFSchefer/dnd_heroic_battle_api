@@ -55,20 +55,19 @@ public class MonstersServiceImpl implements MonstersService {
     }
 
     @Override
-    public void calculateAllInitiative(List<MonsterInitiativeDto> monsters) {
-        List<Monster> monstersEntity = repo.findAllById(monsters.stream().map(MonsterInitiativeDto::id).toList());
+    public void calculateAllInitiative(List<MonsterInitiativeDto> monstersDto) {
+        List<Monster> monstersEntity = repo.findAllById(monstersDto.stream().map(MonsterInitiativeDto::id).toList());
         monstersEntity.forEach( monster ->
                 {
                     if (monster.getInitiative() == null) {
                         monster.setInitiative(diceRoller.d20(
-                                monsters.stream()
+                                monstersDto.stream()
                                         .filter( m -> m.id().equals(monster.getMonsterId())).findFirst()
                                         .orElseThrow(() -> new BadCredentialsException("Monster not found"))
                                         .bonus()
                         ));
                     }
-                }
-                );
+                });
         repo.saveAll(monstersEntity);
     }
 

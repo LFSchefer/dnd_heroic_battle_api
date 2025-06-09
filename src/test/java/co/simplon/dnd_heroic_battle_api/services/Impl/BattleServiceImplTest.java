@@ -122,4 +122,33 @@ class BattleServiceImplTest {
         assertEquals("name" ,actual.stream().map(BattleDto::battleName).toList().getFirst());
         assertEquals(42, actual.stream().map(BattleDto::turn).toList().getFirst());
     }
+
+    @Test
+    void getFightWithTurn0() {
+        var battle = Battle.builder()
+                .battleName("name")
+                .battleId(1L)
+                .turn(0)
+                .build();
+        when(repo.findById(1L)).thenReturn(Optional.of(battle));
+        when(repo.saveAndFlush(battle)).thenReturn(battle);
+        var actual = assertDoesNotThrow(() -> test.getFight(1L));
+        assertEquals(1L, actual.battleId());
+        assertEquals("name", battle.getBattleName());
+        assertEquals(1, actual.turn());
+    }
+
+    @Test
+    void getFight() {
+        var battle = Battle.builder()
+                .battleName("name")
+                .battleId(1L)
+                .turn(12)
+                .build();
+        when(repo.findById(1L)).thenReturn(Optional.of(battle));
+        var actual = assertDoesNotThrow(() -> test.getFight(1L));
+        assertEquals(1L, actual.battleId());
+        assertEquals("name", battle.getBattleName());
+        assertEquals(12, actual.turn());
+    }
 }

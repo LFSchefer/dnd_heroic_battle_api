@@ -5,6 +5,7 @@ import java.util.List;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleDto;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.FightDto;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 
 public interface BattleService {
@@ -19,4 +20,5 @@ public interface BattleService {
 
 	void update(BattleUpdate input);
 
+	FightDto getFight(Long id);
 }

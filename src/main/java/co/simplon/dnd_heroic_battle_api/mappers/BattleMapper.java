@@ -3,11 +3,14 @@ package co.simplon.dnd_heroic_battle_api.mappers;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleDto;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.FightDto;
 import co.simplon.dnd_heroic_battle_api.entities.Battle;
 import co.simplon.dnd_heroic_battle_api.entities.Campaign;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class BattleMapper {
 
@@ -44,5 +47,11 @@ public final class BattleMapper {
     public static BattleModel entityToBattleModel(Battle battle) {
         return new BattleModel(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getCampaign().getId(),
                 MonstersMapper.setEntitiesToSetPreviewDto(battle.getBattleMonsters()));
+    }
+
+    public static FightDto entityToFightDto(Battle battle) {
+        return new FightDto(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getBattleMonsters().stream()
+                .sorted((a,b) -> b.getInitiative().compareTo(a.getInitiative()))
+                .collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 }

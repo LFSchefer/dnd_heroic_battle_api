@@ -2,6 +2,7 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 
 import java.util.List;
 
+import co.simplon.dnd_heroic_battle_api.dtos.battle.FightDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -57,5 +58,11 @@ public class BattleController {
 	@ResponseStatus(code = HttpStatus.OK)
 	public void update(@Valid @RequestBody BattleUpdate input) {
 		service.update(input);
+	}
+
+	@GetMapping("/{id}/fight")
+	@ResponseStatus(code = HttpStatus.OK)
+	public FightDto getFight(@PathVariable("id") Long id) {
+		return service.getFight(id);
 	}
 }

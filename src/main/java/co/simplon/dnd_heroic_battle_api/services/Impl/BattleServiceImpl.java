@@ -2,10 +2,12 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import java.util.List;
 
+import co.simplon.dnd_heroic_battle_api.dtos.battle.FightDto;
+import co.simplon.dnd_heroic_battle_api.entities.Battle;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleDto;
@@ -16,7 +18,7 @@ import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
 import co.simplon.dnd_heroic_battle_api.services.BattleService;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class BattleServiceImpl implements BattleService {
 
 	@Autowired
@@ -50,6 +52,18 @@ public class BattleServiceImpl implements BattleService {
 	@Override
 	public void update(BattleUpdate input) {
 		repo.save(BattleMapper.battleUpdateToEntity(input, repo.findcampaignIdByBattleId(input.id())));
+	}
+
+	@Override
+	@Transactional
+	public FightDto getFight(Long id) {
+		Battle battle = repo.findById(id)
+				.orElseThrow(() ->  new BadCredentialsException("Battle with id: " + id + " not found !"));
+		if (battle.getTurn() == 0) {
+			battle.setTurn(1);
+			battle = repo.saveAndFlush(battle);
+		}
+		return BattleMapper.entityToFightDto(battle);
 	}
 
 }

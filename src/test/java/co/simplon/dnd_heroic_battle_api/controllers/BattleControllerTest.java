@@ -54,4 +54,10 @@ class BattleControllerTest {
         verify(service, times(1)).update(dto);
     }
 
+    @Test
+    void getFight() {
+        assertDoesNotThrow(() -> test.getFight(1L));
+        verify(service, times(1)).getFight(1L);
+    }
+
 }

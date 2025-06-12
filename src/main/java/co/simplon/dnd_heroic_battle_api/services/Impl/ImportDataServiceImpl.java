@@ -119,8 +119,8 @@ public class ImportDataServiceImpl implements ImportDataService {
 			Map<String, Object> alignmentImport = restClient.get().uri(BASE_URL + url).retrieve().body(new ParameterizedTypeReference<>() {
 			});
 			String name = (String) alignmentImport.get("name");
-			List<String> desc = (List<String>) alignmentImport.get("desc");
-			alignments.add(Alignment.builder().alignmentsName(name).description(desc.getFirst()).build());
+			String desc = (String) alignmentImport.get("desc");
+			alignments.add(Alignment.builder().alignmentsName(name).description(desc).build());
 		}
 		alignmentRepository.saveAll(alignments);
 	}

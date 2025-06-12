@@ -3,10 +3,7 @@ package co.simplon.dnd_heroic_battle_api.mappers;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativePro;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeUpdateDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterPreviewDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.*;
 import co.simplon.dnd_heroic_battle_api.entities.Monster;
 
 public final class MonstersMapper {
@@ -24,6 +21,14 @@ public final class MonstersMapper {
     public static Set<MonsterInitiativeDto> InitiativeProsToInitiativeDtos(Set<MonsterInitiativePro> monsterInitiativePros) {
         return monsterInitiativePros.stream().map( m ->
                         new MonsterInitiativeDto(m.id(),m.name(),m.dexterity(),(m.dexterity() - 10 )/2 , m.initiative())).collect(Collectors.toSet());
+    }
+
+    public static Set<MonsterFightDto> entitiesToMonsterFightDtos(Set<Monster> monsters) {
+        return monsters.stream().map( monster ->
+                new MonsterFightDto(monster.getMonsterId(), monster.getCurrentHitPoints(),
+                        monster.getMaxHitPoints(), monster.getName(), monster.getInitiative(),
+                        monster.isHavePlayThisRound(), MonsterModelMapper.entityToDetailDto(monster.getMonster())))
+                .collect(Collectors.toSet());
     }
 
 }

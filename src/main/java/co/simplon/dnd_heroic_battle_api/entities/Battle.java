@@ -42,7 +42,7 @@ public class Battle {
 	}
 
 	@SuppressWarnings("unused")
-	private void setBattleId(Long battleId) {
+	public void setBattleId(Long battleId) {
 		this.battleId = battleId;
 	}
 

@@ -50,8 +50,9 @@ public final class BattleMapper {
     }
 
     public static FightDto entityToFightDto(Battle battle) {
-        return new FightDto(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getBattleMonsters().stream()
-                .sorted((a,b) -> b.getInitiative().compareTo(a.getInitiative()))
+        return new FightDto(battle.getBattleId(), battle.getBattleName(), battle.getTurn(),
+                MonstersMapper.entitiesToMonsterFightDtos(battle.getBattleMonsters()).stream()
+                .sorted((a,b) -> b.initiative().compareTo(a.initiative()))
                 .collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 }

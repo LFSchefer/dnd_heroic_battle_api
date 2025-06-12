@@ -34,6 +34,9 @@ public class Monster {
     @Column(name = "initiative")
     private Integer initiative;
 
+    @Column(name = "have_play_this_round")
+    private boolean havePlayThisRound;
+
     @ManyToOne
     @JoinColumn(name = "model_id", updatable = false)
     private MonsterModel monster;
@@ -46,9 +49,8 @@ public class Monster {
         return monsterId;
     }
 
-    @SuppressWarnings("unused")
-	private void setMonsterId(Long battleMonsterId) {
-        this.monsterId = battleMonsterId;
+    private void setMonsterId(Long monsterId) {
+        this.monsterId = monsterId;
     }
 
     public int getCurrentHitPoints() {
@@ -57,6 +59,14 @@ public class Monster {
 
     public void setCurrentHitPoints(int currentHitPoints) {
         this.currentHitPoints = currentHitPoints;
+    }
+
+    public int getMaxHitPoints() {
+        return maxHitPoints;
+    }
+
+    public void setMaxHitPoints(int maxHitPoints) {
+        this.maxHitPoints = maxHitPoints;
     }
 
     public String getName() {
@@ -75,32 +85,33 @@ public class Monster {
         this.initiative = initiative;
     }
 
+    public boolean isHavePlayThisRound() {
+        return havePlayThisRound;
+    }
+
+    public void setHavePlayThisRound(boolean havePlayThisRound) {
+        this.havePlayThisRound = havePlayThisRound;
+    }
+
     public MonsterModel getMonster() {
         return monster;
     }
 
-    @SuppressWarnings("unused")
-	private void setMonster(MonsterModel monster) {
+    public void setMonster(MonsterModel monster) {
         this.monster = monster;
-    }
-
-    public void setMaxHitPoints(int maxHitPoints) {
-        this.maxHitPoints = maxHitPoints;
-    }
-
-    public int getMaxHitPoints() {
-        return maxHitPoints;
     }
 
     @Override
     public String toString() {
-        return "Monster{" +
-                "monsterId=" + monsterId +
-                ", currentHitPoints=" + currentHitPoints +
-                ", maxHitPoints=" + maxHitPoints +
-                ", name='" + name + '\'' +
-                ", initiative=" + initiative +
-                ", monster=" + monster +
-                '}';
+        final StringBuilder sb = new StringBuilder("Monster{");
+        sb.append("monsterId=").append(monsterId);
+        sb.append(", currentHitPoints=").append(currentHitPoints);
+        sb.append(", maxHitPoints=").append(maxHitPoints);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", initiative=").append(initiative);
+        sb.append(", havePlayThisRound=").append(havePlayThisRound);
+        sb.append(", monster=").append(monster);
+        sb.append('}');
+        return sb.toString();
     }
 }

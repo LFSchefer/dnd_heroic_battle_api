@@ -17,7 +17,7 @@ public interface MonstersService {
 
     void updateInitiative( MonsterInitiativeUpdateDto monsterInitiativeUpdateDto);
 
-    void calculateInitiative(@Valid MonsterInitiativeDto monster);
+    void calculateInitiative( MonsterInitiativeDto monster);
 
-    void calculateAllInitiative(@Valid List<MonsterInitiativeDto> monsters);
+    void calculateAllInitiative( List<MonsterInitiativeDto> monsters);
 }

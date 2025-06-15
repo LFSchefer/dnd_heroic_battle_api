@@ -37,6 +37,15 @@ public class Monster {
     @Column(name = "have_play_this_round")
     private boolean havePlayThisRound;
 
+    @Column(name = "action")
+    private boolean action;
+
+    @Column(name = "move")
+    private boolean move;
+
+    @Column(name = "bonus_action")
+    private boolean bonusAction;
+
     @ManyToOne
     @JoinColumn(name = "model_id", updatable = false)
     private MonsterModel monster;
@@ -101,6 +110,30 @@ public class Monster {
         this.monster = monster;
     }
 
+    public boolean isAction() {
+        return action;
+    }
+
+    public void setAction(boolean action) {
+        this.action = action;
+    }
+
+    public boolean isMove() {
+        return move;
+    }
+
+    public void setMove(boolean move) {
+        this.move = move;
+    }
+
+    public boolean isBonusAction() {
+        return bonusAction;
+    }
+
+    public void setBonusAction(boolean bonusAction) {
+        this.bonusAction = bonusAction;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Monster{");
@@ -110,6 +143,9 @@ public class Monster {
         sb.append(", name='").append(name).append('\'');
         sb.append(", initiative=").append(initiative);
         sb.append(", havePlayThisRound=").append(havePlayThisRound);
+        sb.append(", action=").append(action);
+        sb.append(", move=").append(move);
+        sb.append(", bonusAction=").append(bonusAction);
         sb.append(", monster=").append(monster);
         sb.append('}');
         return sb.toString();

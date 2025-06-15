@@ -1,10 +1,7 @@
 package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import co.simplon.dnd_heroic_battle_api.components.DiceRoller;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterCreateDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativePro;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeUpdateDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.*;
 import co.simplon.dnd_heroic_battle_api.entities.Monster;
 import co.simplon.dnd_heroic_battle_api.mappers.MonstersMapper;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
@@ -70,5 +67,16 @@ public class MonstersServiceImpl implements MonstersService {
                 });
         repo.saveAll(monstersEntity);
     }
+
+    @Override
+    public MonsterFightDto actionsUpdate(MonsterActionsUpdateDtos input) {
+        Monster monster = repo.findById(input.monsterId())
+                .orElseThrow(() -> new BadCredentialsException("Monster not found"));
+        monster.setAction(input.action());
+        monster.setMove(input.move());
+        monster.setBonusAction(input.bonusAction());
+        return MonstersMapper.entityToFightDto(repo.saveAndFlush(monster));
+    }
+
 
 }

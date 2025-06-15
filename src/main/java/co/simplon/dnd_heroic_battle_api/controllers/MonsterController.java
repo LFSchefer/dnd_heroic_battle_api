@@ -1,12 +1,10 @@
 package co.simplon.dnd_heroic_battle_api.controllers;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeUpdateDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterCreateDto;
 import co.simplon.dnd_heroic_battle_api.services.MonstersService;
 import jakarta.validation.Valid;
 
@@ -48,6 +46,12 @@ public class MonsterController {
     @ResponseStatus(code = HttpStatus.OK)
     public void calculateAllInitiative(@RequestBody @Valid List<MonsterInitiativeDto> monsters) {
         service.calculateAllInitiative(monsters);
+    }
+
+    @PutMapping("/update-actions")
+    @ResponseStatus(code = HttpStatus.OK)
+    public MonsterFightDto updateActions(@RequestBody @Valid MonsterActionsUpdateDtos input) {
+        return service.actionsUpdate(input);
     }
 
 }

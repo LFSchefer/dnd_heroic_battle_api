@@ -27,8 +27,16 @@ public final class MonstersMapper {
         return monsters.stream().map( monster ->
                 new MonsterFightDto(monster.getMonsterId(), monster.getCurrentHitPoints(),
                         monster.getMaxHitPoints(), monster.getName(), monster.getInitiative(),
-                        monster.isHavePlayThisRound(), MonsterModelMapper.entityToDetailDto(monster.getMonster())))
+                        monster.isHavePlayThisRound(),monster.isAction(), monster.isMove(), monster.isBonusAction(),
+                        MonsterModelMapper.entityToDetailDto(monster.getMonster())
+                        ))
                 .collect(Collectors.toSet());
     }
 
+    public static MonsterFightDto entityToFightDto(Monster monster) {
+        return new MonsterFightDto(monster.getMonsterId(), monster.getCurrentHitPoints(),
+                monster.getMaxHitPoints(), monster.getName(), monster.getInitiative(),
+                monster.isHavePlayThisRound(),monster.isAction(), monster.isMove(), monster.isBonusAction(),
+                MonsterModelMapper.entityToDetailDto(monster.getMonster()));
+    }
 }

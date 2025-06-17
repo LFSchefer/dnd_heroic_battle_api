@@ -7,8 +7,8 @@ import co.simplon.dnd_heroic_battle_api.mappers.MonstersMapper;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonstersService;
 import jakarta.transaction.Transactional;
+import org.hibernate.ResourceClosedException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class MonstersServiceImpl implements MonstersService {
     @Override
     public void updateInitiative(MonsterInitiativeUpdateDto monsterInitiativeUpdateDto) {
         Monster monster = repo.findById(monsterInitiativeUpdateDto.monsterId())
-                .orElseThrow(() -> new BadCredentialsException("Monster with id: " + monsterInitiativeUpdateDto.monsterId() + " not found"));
+                .orElseThrow(() -> new ResourceClosedException("Monster with id: " + monsterInitiativeUpdateDto.monsterId() + " not found"));
         monster.setInitiative(monsterInitiativeUpdateDto.initiative());
         repo.save(monster);
     }
@@ -46,7 +46,7 @@ public class MonstersServiceImpl implements MonstersService {
     @Override
     public void calculateInitiative(MonsterInitiativeDto monster) {
         Monster monsterEntity = repo.findById(monster.id())
-                .orElseThrow(() -> new BadCredentialsException("Monster with id: " + monster.id() + " not found"));
+                .orElseThrow(() -> new ResourceClosedException("Monster with id: " + monster.id() + " not found"));
         monsterEntity.setInitiative(diceRoller.d20(monster.bonus()));
         repo.save(monsterEntity);
     }
@@ -60,7 +60,7 @@ public class MonstersServiceImpl implements MonstersService {
                         monster.setInitiative(diceRoller.d20(
                                 monstersDto.stream()
                                         .filter( m -> m.id().equals(monster.getMonsterId())).findFirst()
-                                        .orElseThrow(() -> new BadCredentialsException("Monster not found"))
+                                        .orElseThrow(() -> new ResourceClosedException("Monster not found"))
                                         .bonus()
                         ));
                     }
@@ -71,7 +71,7 @@ public class MonstersServiceImpl implements MonstersService {
     @Override
     public MonsterFightDto actionsUpdate(MonsterActionsUpdateDtos input) {
         Monster monster = repo.findById(input.monsterId())
-                .orElseThrow(() -> new BadCredentialsException("Monster not found"));
+                .orElseThrow(() -> new ResourceClosedException("Monster not found"));
         monster.setAction(input.action());
         monster.setMove(input.move());
         monster.setBonusAction(input.bonusAction());

@@ -6,9 +6,9 @@ import java.util.List;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationPro;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
 import co.simplon.dnd_heroic_battle_api.mappers.MonsterModelMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelPreviewPro;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelSearchDto;
@@ -16,7 +16,7 @@ import co.simplon.dnd_heroic_battle_api.repositories.MonsterModelRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class MonsterModelServiceImpl implements MonsterModelService {
 
     @Autowired

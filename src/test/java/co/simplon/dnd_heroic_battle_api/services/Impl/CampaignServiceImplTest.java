@@ -6,6 +6,7 @@ import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignUpdate;
 import co.simplon.dnd_heroic_battle_api.entities.Campaign;
 import co.simplon.dnd_heroic_battle_api.entities.User;
 import co.simplon.dnd_heroic_battle_api.repositories.CampaingRepository;
+import org.hibernate.ResourceClosedException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,13 +16,11 @@ import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.authentication.BadCredentialsException;
 
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
-
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -49,14 +48,14 @@ class CampaignServiceImplTest {
 
     @Test
     void deleteOne() {
-        assertDoesNotThrow( () -> test.deleteOne(1L));
+        assertDoesNotThrow(() -> test.deleteOne(1L));
         verify(repo, times(1)).deleteById(1L);
     }
 
     @Test
     void getOneWithBadId() {
         when(repo.findById(1L)).thenReturn(Optional.empty());
-        assertThrows(BadCredentialsException.class, () -> test.getOne(1L));
+        assertThrows(ResourceClosedException.class, () -> test.getOne(1L));
     }
 
     @Test
@@ -77,10 +76,10 @@ class CampaignServiceImplTest {
 
     @Test
     void update() {
-        var input = new CampaignUpdate(1L,"campaign name");
+        var input = new CampaignUpdate(1L, "campaign name");
         mockedStatic.when(JwtHelper::getSubject).thenReturn(1L);
         assertDoesNotThrow(() -> test.update(input));
-        verify(repo, times(1)).update(input.campaignId(),input.campaignName(),1L);
+        verify(repo, times(1)).update(input.campaignId(), input.campaignName(), 1L);
     }
 
     @Test

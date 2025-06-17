@@ -3,10 +3,10 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 import java.util.List;
 
 import co.simplon.dnd_heroic_battle_api.config.JwtHelper;
+import jakarta.transaction.Transactional;
+import org.hibernate.ResourceClosedException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.campaign.CampaignUpdate;
@@ -14,17 +14,15 @@ import co.simplon.dnd_heroic_battle_api.mappers.CampaignMapper;
 import co.simplon.dnd_heroic_battle_api.models.CampaignModel;
 import co.simplon.dnd_heroic_battle_api.repositories.CampaingRepository;
 import co.simplon.dnd_heroic_battle_api.services.CampaignService;
-import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class CampaignServiceImpl implements CampaignService {
 
 	@Autowired
 	private CampaingRepository repo;
 
 
-	@Transactional
 	@Override
 	public void create(CampaignCreate input) {
 		Long userId = JwtHelper.getSubject();
@@ -41,16 +39,14 @@ public class CampaignServiceImpl implements CampaignService {
 	public CampaignModel getOne(long id) {
 		return CampaignMapper
 				.entityToCampaignModel(repo.findById(id)
-						.orElseThrow(() -> new BadCredentialsException("Campaign with id = " + id + " does not exist")));
+						.orElseThrow(() -> new ResourceClosedException("Campaign with id = " + id + " does not exist")));
 	}
 
-	@Transactional
 	@Override
 	public void deleteOne(long id) {
 		repo.deleteById(id);
 	}
 
-	@Transactional
 	@Override
 	public void update(CampaignUpdate input) {
 		Long userId = JwtHelper.getSubject();

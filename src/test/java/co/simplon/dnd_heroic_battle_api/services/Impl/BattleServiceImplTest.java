@@ -9,18 +9,17 @@ import co.simplon.dnd_heroic_battle_api.entities.Campaign;
 import co.simplon.dnd_heroic_battle_api.entities.Monster;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
+import org.hibernate.ResourceClosedException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.authentication.BadCredentialsException;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
-
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -38,7 +37,7 @@ class BattleServiceImplTest {
     @Test
     void getOneWithBadId() {
         when(repo.findById(1L)).thenReturn(Optional.empty());
-        assertThrows(BadCredentialsException.class, () ->
+        assertThrows(ResourceClosedException.class, () ->
                 test.getOne(1L));
     }
 
@@ -83,7 +82,7 @@ class BattleServiceImplTest {
     @Test
     void deleteOne() {
         assertDoesNotThrow(() ->
-                        test.deleteOne(1L));
+                test.deleteOne(1L));
         verify(repo, times(1)).deleteById(1L);
     }
 
@@ -96,7 +95,7 @@ class BattleServiceImplTest {
 
     @Test
     void update() {
-        var input = new BattleUpdate(1L,"battle name",0);
+        var input = new BattleUpdate(1L, "battle name", 0);
         assertDoesNotThrow(() -> test.update(input));
         verify(repo).save(any());
     }
@@ -119,7 +118,7 @@ class BattleServiceImplTest {
         var actual = assertDoesNotThrow(() -> test.getAllFromCampaign(1L));
         assertEquals(1, actual.size());
         assertEquals(1, actual.stream().map(BattleDto::battleId).toList().getFirst());
-        assertEquals("name" ,actual.stream().map(BattleDto::battleName).toList().getFirst());
+        assertEquals("name", actual.stream().map(BattleDto::battleName).toList().getFirst());
         assertEquals(42, actual.stream().map(BattleDto::turn).toList().getFirst());
     }
 

@@ -147,7 +147,7 @@ class BattleServiceImplTest {
         when(repo.findById(1L)).thenReturn(Optional.of(battle));
         var actual = assertDoesNotThrow(() -> test.getFight(1L));
         assertEquals(1L, actual.battleId());
-        assertEquals("name", battle.getBattleName());
+        assertEquals("name", actual.battleName());
         assertEquals(12, actual.turn());
     }
 }

@@ -1,11 +1,8 @@
 package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import co.simplon.dnd_heroic_battle_api.components.DiceRoller;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterCreateDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeDto;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativePro;
-import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterInitiativeUpdateDto;
-import co.simplon.dnd_heroic_battle_api.entities.Monster;
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.*;
+import co.simplon.dnd_heroic_battle_api.entities.*;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import org.hibernate.ResourceClosedException;
 import org.junit.jupiter.api.Assertions;
@@ -113,6 +110,46 @@ class MonstersServiceImplTest {
         var monster = Monster.builder().monsterId(2L).initiative(null).build();
         when(repo.findAllById(List.of(99L))).thenReturn(List.of(monster));
         assertThrows(ResourceClosedException.class, () -> test.calculateAllInitiative(List.of(dto)));
+    }
+
+    @Test
+    void actionsUpdate() {
+        var dto = new MonsterActionsUpdateDtos(1L, true, false, true);
+        var monster = Monster.builder()
+                .monsterId(1L)
+                .maxHitPoints(100)
+                .currentHitPoints(12)
+                .havePlayThisRound(true)
+                .action(false)
+                .move(false)
+                .bonusAction(false)
+                .monster(MonsterModel.builder()
+                        .modelId(42L)
+                        .armorType(ArmorType.builder().build())
+                        .monsterType(MonsterType.builder().build())
+                        .alignment(Alignment.builder().build())
+                        .size(Size.builder().build())
+                        .build())
+                .build();
+        when(repo.findById(dto.monsterId())).thenReturn(Optional.of(monster));
+        when(repo.saveAndFlush(any())).thenReturn(monster);
+        var actual = assertDoesNotThrow(() -> test.actionsUpdate(dto));
+        verify(repo, times(1)).findById(dto.monsterId());
+        monster.setAction(dto.action());
+        monster.setMove(dto.move());
+        monster.setBonusAction(dto.bonusAction());
+        verify(repo, times(1)).saveAndFlush(monster);
+        assertEquals(1L, actual.monsterId());
+        assertTrue(actual.action());
+        assertFalse(actual.move());
+        assertTrue(actual.bonusAction());
+    }
+
+    @Test
+    void actionsUpdateWithError() {
+        var dto = new MonsterActionsUpdateDtos(1L, true, false, true);
+        when(repo.findById(dto.monsterId())).thenReturn(Optional.empty());
+        assertThrows(ResourceClosedException.class, () -> test.actionsUpdate(dto));
     }
 
 }

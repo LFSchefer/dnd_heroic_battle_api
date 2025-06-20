@@ -1,15 +1,10 @@
 package co.simplon.dnd_heroic_battle_api.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+
+import java.util.StringJoiner;
 
 @Entity
 @Table(name = "monsters")
@@ -33,6 +28,9 @@ public class Monster {
 
     @Column(name = "initiative")
     private Integer initiative;
+
+    @Column(name = "his_turn")
+    private boolean hisTurn;
 
     @Column(name = "have_play_this_round")
     private boolean havePlayThisRound;
@@ -94,13 +92,6 @@ public class Monster {
         this.initiative = initiative;
     }
 
-    public boolean isHavePlayThisRound() {
-        return havePlayThisRound;
-    }
-
-    public void setHavePlayThisRound(boolean havePlayThisRound) {
-        this.havePlayThisRound = havePlayThisRound;
-    }
 
     public MonsterModel getMonster() {
         return monster;
@@ -134,20 +125,36 @@ public class Monster {
         this.bonusAction = bonusAction;
     }
 
+    public boolean isHisTurn() {
+        return hisTurn;
+    }
+
+    public void setHisTurn(boolean hisTurn) {
+        this.hisTurn = hisTurn;
+    }
+
+    public boolean isHavePlayThisRound() {
+        return havePlayThisRound;
+    }
+
+    public void setHavePlayThisRound(boolean havePlayThisRound) {
+        this.havePlayThisRound = havePlayThisRound;
+    }
+
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Monster{");
-        sb.append("monsterId=").append(monsterId);
-        sb.append(", currentHitPoints=").append(currentHitPoints);
-        sb.append(", maxHitPoints=").append(maxHitPoints);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", initiative=").append(initiative);
-        sb.append(", havePlayThisRound=").append(havePlayThisRound);
-        sb.append(", action=").append(action);
-        sb.append(", move=").append(move);
-        sb.append(", bonusAction=").append(bonusAction);
-        sb.append(", monster=").append(monster);
-        sb.append('}');
-        return sb.toString();
+        return new StringJoiner(", ", Monster.class.getSimpleName() + "[", "]")
+                .add("monsterId=" + monsterId)
+                .add("currentHitPoints=" + currentHitPoints)
+                .add("maxHitPoints=" + maxHitPoints)
+                .add("name='" + name + "'")
+                .add("initiative=" + initiative)
+                .add("hisTurn=" + hisTurn)
+                .add("havePlayThisRound=" + havePlayThisRound)
+                .add("action=" + action)
+                .add("move=" + move)
+                .add("bonusAction=" + bonusAction)
+                .add("monster=" + monster)
+                .toString();
     }
 }

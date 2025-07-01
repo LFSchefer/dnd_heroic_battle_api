@@ -73,14 +73,22 @@ public class BattleServiceImpl implements BattleService {
     public FightDto nextTurn(Long battleId) {
         Battle battle = repo.findById(battleId)
                 .orElseThrow(() -> new ResourceClosedException("Battle with id: " + battleId + " not found !"));
-        battle.setTurn(battle.getTurn() + 1);
-        List<Monster> monsters = battle.getBattleMonsters().stream()
+        LinkedList<Monster> monsters = battle.getBattleMonsters().stream()
                 .sorted((a, b) -> b.getInitiative().compareTo(a.getInitiative()))
                 .collect(Collectors.toCollection(LinkedList::new));
         monsters.stream().filter(Monster::isHisTurn).findFirst().ifPresent(monster -> {
             monster.setHisTurn(false);
             monster.setHavePlayThisRound(true);
         });
+        if (monsters.stream().filter(m -> !m.isHavePlayThisRound()).toList().isEmpty()) {
+            battle.setTurn(battle.getTurn() + 1);
+            monsters.forEach(m -> {
+                m.setHavePlayThisRound(false);
+                m.setAction(false);
+                m.setMove(false);
+                m.setBonusAction(false);
+            });
+        }
         monsters.stream().filter(m -> !m.isHavePlayThisRound()).findFirst().ifPresent(m -> {
             m.setHisTurn(true);
             m.setAction(false);

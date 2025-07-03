@@ -4,10 +4,7 @@ import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleDto;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
 import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterPreviewDto;
-import co.simplon.dnd_heroic_battle_api.entities.Battle;
-import co.simplon.dnd_heroic_battle_api.entities.Campaign;
-import co.simplon.dnd_heroic_battle_api.entities.Monster;
-import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
+import co.simplon.dnd_heroic_battle_api.entities.*;
 import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
 import org.hibernate.ResourceClosedException;
 import org.junit.jupiter.api.Test;
@@ -124,10 +121,44 @@ class BattleServiceImplTest {
 
     @Test
     void getFightWithTurn0() {
+        var model = MonsterModel.builder()
+                .monsterName("name")
+                .hitPoints(15)
+                .hitPointsRoll("roll")
+                .strength(456)
+                .dexterity(45)
+                .constitution(45)
+                .intelligence(21)
+                .wisdom(21)
+                .charisma(32)
+                .challengeRating(1.1)
+                .xp(54)
+                .imageUrl("url")
+                .dnd5Native(true)
+                .monsterType(MonsterType.builder().typeName("type").build())
+                .size(Size.builder().sizeName("size").build())
+                .armorType(ArmorType.builder().armorType("armor").build())
+                .armorClass(12)
+                .languages(Set.of(Language.builder().languagesName("lang").build()))
+                .build();
+        var monster = Monster.builder()
+                .monsterId(1L)
+                .name("name")
+                .currentHitPoints(12)
+                .maxHitPoints(456)
+                .initiative(1)
+                .action(true)
+                .move(true)
+                .bonusAction(true)
+                .hisTurn(false)
+                .havePlayThisRound(false)
+                .monster(model)
+                .build();
         var battle = Battle.builder()
                 .battleName("name")
                 .battleId(1L)
                 .turn(0)
+                .monsters(Set.of(monster))
                 .build();
         when(repo.findById(1L)).thenReturn(Optional.of(battle));
         when(repo.saveAndFlush(battle)).thenReturn(battle);

@@ -15,6 +15,7 @@ import org.hibernate.ResourceClosedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -74,7 +75,10 @@ public class BattleServiceImpl implements BattleService {
         Battle battle = repo.findById(battleId)
                 .orElseThrow(() -> new ResourceClosedException("Battle with id: " + battleId + " not found !"));
         LinkedList<Monster> monsters = battle.getBattleMonsters().stream()
-                .sorted((a, b) -> b.getInitiative().compareTo(a.getInitiative()))
+                .sorted(Comparator.comparing(Monster::getInitiative).reversed()
+                        .thenComparing(m -> m.getMonster().getDexterity())
+                        .thenComparing(Monster::getName)
+                        .thenComparing(Monster::getMonsterId))
                 .collect(Collectors.toCollection(LinkedList::new));
         monsters.stream().filter(Monster::isHisTurn).findFirst().ifPresent(monster -> {
             monster.setHisTurn(false);

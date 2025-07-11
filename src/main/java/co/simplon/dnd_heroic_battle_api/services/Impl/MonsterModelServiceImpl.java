@@ -3,23 +3,20 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationPro;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
-import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 import co.simplon.dnd_heroic_battle_api.mappers.MonsterModelMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelPreviewDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelPreviewPro;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelSearchDto;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterModelRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
-import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class MonsterModelServiceImpl implements MonsterModelService {
 
     @Autowired
@@ -28,7 +25,7 @@ public class MonsterModelServiceImpl implements MonsterModelService {
     @Override
     public MonsterModelSearchDto get(String name, Integer limit, Integer page) {
         int trueOffset = page == 1 ? 0 : (page - 1) * limit;
-        List<MonsterModelPreviewDto> monsterList = new ArrayList<MonsterModelPreviewDto>();
+        List<MonsterModelPreviewPro> monsterList = new ArrayList<MonsterModelPreviewPro>();
         Integer numberOfResult;
         if (name.isBlank()) {
             monsterList = repo.findAllPreviewDto(limit, trueOffset);
@@ -42,7 +39,7 @@ public class MonsterModelServiceImpl implements MonsterModelService {
     }
 
     @Override
-    public MonsterModelCreationDto getOne(long id) {
+    public MonsterModelCreationPro getOne(long id) {
         return repo.findByMonsterModelCreationDto(id).orElseThrow( () ->
                 new IllegalArgumentException(String.format("MonsterModel with id: %s does not exist", id)));
     }

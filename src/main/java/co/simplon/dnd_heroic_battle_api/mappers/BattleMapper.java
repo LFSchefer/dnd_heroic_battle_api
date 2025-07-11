@@ -3,11 +3,16 @@ package co.simplon.dnd_heroic_battle_api.mappers;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleCreate;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleDto;
 import co.simplon.dnd_heroic_battle_api.dtos.battle.BattleUpdate;
+import co.simplon.dnd_heroic_battle_api.dtos.battle.FightDto;
+import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterFightDto;
 import co.simplon.dnd_heroic_battle_api.entities.Battle;
 import co.simplon.dnd_heroic_battle_api.entities.Campaign;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 
+import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class BattleMapper {
 
@@ -19,10 +24,6 @@ public final class BattleMapper {
         return battles.stream().map(b ->
                         new BattleDto(b.getBattleId(), b.getBattleName(), b.getTurn()))
                 .toList();
-    }
-
-    public static BattleDto entityToBattleView(Battle battle) {
-        return new BattleDto(battle.getBattleId(), battle.getBattleName(), battle.getTurn());
     }
 
     public static Battle battleCreateToEntity(BattleCreate input) {
@@ -45,16 +46,18 @@ public final class BattleMapper {
                 .build();
     }
 
-    public static List<BattleModel> entitiesToBattleModel(List<Battle> battles) {
-        return battles.stream()
-                .map(b ->
-                        new BattleModel(b.getBattleId(), b.getBattleName(), b.getTurn(), b.getCampaign().getId(),
-                                MonstersMapper.setEntitiesToSetPreviewDto(b.getBattleMonsters())))
-                .toList();
-    }
-
     public static BattleModel entityToBattleModel(Battle battle) {
         return new BattleModel(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getCampaign().getId(),
                 MonstersMapper.setEntitiesToSetPreviewDto(battle.getBattleMonsters()));
+    }
+
+    public static FightDto entityToFightDto(Battle battle) {
+        return new FightDto(battle.getBattleId(), battle.getBattleName(), battle.getTurn(),
+                MonstersMapper.entitiesToMonsterFightDtos(battle.getBattleMonsters()).stream()
+                        .sorted(Comparator.comparing(MonsterFightDto::initiative).reversed()
+                                .thenComparing(m -> m.monster().dexterity())
+                                .thenComparing(MonsterFightDto::name)
+                                .thenComparing(MonsterFightDto::monsterId))
+                        .collect(Collectors.toCollection(LinkedHashSet::new)));
     }
 }

@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "languages")
 @Builder
@@ -48,4 +50,14 @@ public class Language {
 		return "{languageId=" + languageId + ", languagesName=" + languagesName + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Language language)) return false;
+        return Objects.equals(languagesName, language.languagesName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(languagesName);
+	}
 }

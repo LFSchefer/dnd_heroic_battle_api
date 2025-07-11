@@ -11,6 +11,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Builder
 @AllArgsConstructor
 @Entity
@@ -63,4 +65,14 @@ public class Damage {
 		return "{damageId=" + damageId + ", damageDices=" + damageDices + ", damageType=" + damageType + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Damage damage)) return false;
+        return Objects.equals(damageDices, damage.damageDices) && Objects.equals(damageType, damage.damageType);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(damageDices, damageType);
+	}
 }

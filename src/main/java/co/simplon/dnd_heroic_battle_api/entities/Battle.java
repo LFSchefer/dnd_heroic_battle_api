@@ -28,6 +28,7 @@ public class Battle {
 	@JoinColumn(name = "campaign_id")
 	private Campaign campaign;
 
+	@Builder.Default
 	@OneToMany
 	@JoinColumn(name = "battle_id", updatable = false)
 	private Set<Monster> monsters = new HashSet<Monster>();
@@ -41,7 +42,7 @@ public class Battle {
 	}
 
 	@SuppressWarnings("unused")
-	private void setBattleId(Long battleId) {
+	public void setBattleId(Long battleId) {
 		this.battleId = battleId;
 	}
 

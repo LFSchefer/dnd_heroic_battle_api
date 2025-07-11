@@ -85,12 +85,12 @@ public class ImportDataServiceImpl implements ImportDataService {
 	public void importData() {
 		RestClient restClient = RestClient.create();
 		deleteExisting();
-		importDamageTypes(restClient, "/api/damage-types");
-		importConditions(restClient, "/api/conditions");
-		importLanguages(restClient, "/api/languages");
-		importProficiencies(restClient, "/api/proficiencies");
-		importAlignments(restClient, "/api/alignments");
-		List<String> monsterUrls = getUrlList(restClient, "/api/monsters");
+		importDamageTypes(restClient, "/api/2014/damage-types");
+		importConditions(restClient, "/api/2014/conditions");
+		importLanguages(restClient, "/api/2014/languages");
+		importProficiencies(restClient, "/api/2014/proficiencies");
+		importAlignments(restClient, "/api/2014/alignments");
+		List<String> monsterUrls = getUrlList(restClient, "/api/2014/monsters");
 		importFromMonster(restClient, monsterUrls);
 		importMonsters(restClient, monsterUrls);
 	}

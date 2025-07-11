@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Builder
 @AllArgsConstructor
 @Entity
@@ -60,4 +62,14 @@ public class Usage {
 		return "{usageId=" + usageId + ", usageType=" + usageType + ", time=" + time + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Usage usage)) return false;
+        return Objects.equals(usageType, usage.usageType) && Objects.equals(time, usage.time);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(usageType, time);
+	}
 }

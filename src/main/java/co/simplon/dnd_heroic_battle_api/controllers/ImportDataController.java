@@ -11,7 +11,7 @@ import co.simplon.dnd_heroic_battle_api.services.ImportDataService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1/import-data")
+@RequestMapping("/api/import-data")
 public class ImportDataController {
 
 	@Autowired

@@ -1,15 +1,10 @@
 package co.simplon.dnd_heroic_battle_api.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+
+import java.util.StringJoiner;
 
 @Entity
 @Table(name = "monsters")
@@ -34,8 +29,23 @@ public class Monster {
     @Column(name = "initiative")
     private Integer initiative;
 
+    @Column(name = "his_turn")
+    private boolean hisTurn;
+
+    @Column(name = "have_play_this_round")
+    private boolean havePlayThisRound;
+
+    @Column(name = "action")
+    private boolean action;
+
+    @Column(name = "move")
+    private boolean move;
+
+    @Column(name = "bonus_action")
+    private boolean bonusAction;
+
     @ManyToOne
-    @JoinColumn(name = "model_id")
+    @JoinColumn(name = "model_id", updatable = false)
     private MonsterModel monster;
 
     public Monster() {
@@ -46,9 +56,8 @@ public class Monster {
         return monsterId;
     }
 
-    @SuppressWarnings("unused")
-	private void setMonsterId(Long battleMonsterId) {
-        this.monsterId = battleMonsterId;
+    private void setMonsterId(Long monsterId) {
+        this.monsterId = monsterId;
     }
 
     public int getCurrentHitPoints() {
@@ -57,6 +66,14 @@ public class Monster {
 
     public void setCurrentHitPoints(int currentHitPoints) {
         this.currentHitPoints = currentHitPoints;
+    }
+
+    public int getMaxHitPoints() {
+        return maxHitPoints;
+    }
+
+    public void setMaxHitPoints(int maxHitPoints) {
+        this.maxHitPoints = maxHitPoints;
     }
 
     public String getName() {
@@ -75,32 +92,69 @@ public class Monster {
         this.initiative = initiative;
     }
 
+
     public MonsterModel getMonster() {
         return monster;
     }
 
-    @SuppressWarnings("unused")
-	private void setMonster(MonsterModel monster) {
+    public void setMonster(MonsterModel monster) {
         this.monster = monster;
     }
 
-    public void setMaxHitPoints(int maxHitPoints) {
-        this.maxHitPoints = maxHitPoints;
+    public boolean isAction() {
+        return action;
     }
 
-    public int getMaxHitPoints() {
-        return maxHitPoints;
+    public void setAction(boolean action) {
+        this.action = action;
+    }
+
+    public boolean isMove() {
+        return move;
+    }
+
+    public void setMove(boolean move) {
+        this.move = move;
+    }
+
+    public boolean isBonusAction() {
+        return bonusAction;
+    }
+
+    public void setBonusAction(boolean bonusAction) {
+        this.bonusAction = bonusAction;
+    }
+
+    public boolean isHisTurn() {
+        return hisTurn;
+    }
+
+    public void setHisTurn(boolean hisTurn) {
+        this.hisTurn = hisTurn;
+    }
+
+    public boolean isHavePlayThisRound() {
+        return havePlayThisRound;
+    }
+
+    public void setHavePlayThisRound(boolean havePlayThisRound) {
+        this.havePlayThisRound = havePlayThisRound;
     }
 
     @Override
     public String toString() {
-        return "Monster{" +
-                "monsterId=" + monsterId +
-                ", currentHitPoints=" + currentHitPoints +
-                ", maxHitPoints=" + maxHitPoints +
-                ", name='" + name + '\'' +
-                ", initiative=" + initiative +
-                ", monster=" + monster +
-                '}';
+        return new StringJoiner(", ", Monster.class.getSimpleName() + "[", "]")
+                .add("monsterId=" + monsterId)
+                .add("currentHitPoints=" + currentHitPoints)
+                .add("maxHitPoints=" + maxHitPoints)
+                .add("name='" + name + "'")
+                .add("initiative=" + initiative)
+                .add("hisTurn=" + hisTurn)
+                .add("havePlayThisRound=" + havePlayThisRound)
+                .add("action=" + action)
+                .add("move=" + move)
+                .add("bonusAction=" + bonusAction)
+                .add("monster=" + monster)
+                .toString();
     }
 }

@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "alignments")
 @Builder
@@ -60,4 +62,14 @@ public class Alignment {
 		return "{alignmentId=" + alignmentId + ", alignmentsName=" + alignmentsName + ", description=" + description + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Alignment alignment)) return false;
+        return Objects.equals(alignmentsName, alignment.alignmentsName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(alignmentsName);
+	}
 }

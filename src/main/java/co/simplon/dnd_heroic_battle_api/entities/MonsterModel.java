@@ -101,36 +101,42 @@ public class MonsterModel {
 	@JoinColumn(name = "armor_id")
 	private ArmorType armorType;
 
+	@Builder.Default
 	@ManyToMany
 	@JoinTable(name = "monster_languages", 
 	joinColumns = @JoinColumn(name = "monster_id"),
 	inverseJoinColumns = @JoinColumn( name = "language_id"))
 	private Set<Language> languages = new HashSet<Language>();
-	
+
+	@Builder.Default
 	@ManyToMany
 	@JoinTable(name = "monster_condition_immunities",
 	joinColumns = @JoinColumn(name = "monster_id"),
 	inverseJoinColumns = @JoinColumn(name = "condition_id"))
 	private Set<Condition> conditionsImmunities = new HashSet<Condition>();
-	
+
+	@Builder.Default
 	@ManyToMany
 	@JoinTable( name = "monster_vulnerabilities",
 	joinColumns = @JoinColumn(name = "monster_id"),
 	inverseJoinColumns = @JoinColumn(name = "vulnerability_id"))
 	private Set<DamageType> monsterVulnerabilities = new HashSet<DamageType>();
-	
+
+	@Builder.Default
 	@ManyToMany
 	@JoinTable( name = "monster_resistances",
 	joinColumns = @JoinColumn(name = "monster_id"),
 	inverseJoinColumns = @JoinColumn(name = "resistance_id"))
 	private Set<DamageType> monsterResistances = new HashSet<DamageType>();
-	
+
+	@Builder.Default
 	@ManyToMany
 	@JoinTable( name = "monster_imunities",
 	joinColumns = @JoinColumn(name = "monster_id"),
 	inverseJoinColumns = @JoinColumn(name = "imunity_id"))
 	private Set<DamageType> monsterImunities = new HashSet<DamageType>();
-	
+
+	@Builder.Default
 	@ManyToMany
 	@JoinTable(name = "monster_special_abilities",
 	joinColumns = @JoinColumn( name = "monster_id"),

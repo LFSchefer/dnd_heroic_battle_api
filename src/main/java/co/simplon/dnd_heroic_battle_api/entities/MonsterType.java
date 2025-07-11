@@ -9,6 +9,8 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
+import java.util.Objects;
+
 @Entity
 @Table(name = "monster_types")
 @Builder
@@ -49,4 +51,14 @@ public class MonsterType {
 		return "{monsterTypesId=" + monsterTypesId + ", typeName=" + typeName + "}";
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof MonsterType that)) return false;
+        return Objects.equals(typeName, that.typeName);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(typeName);
+	}
 }

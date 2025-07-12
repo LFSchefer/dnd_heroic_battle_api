@@ -82,7 +82,7 @@ public class SecurityConfig {
         http.cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers(HttpMethod.GET, "api/import-data").permitAll())
+                        .requestMatchers(HttpMethod.GET, "api/import-data", "api/import-data/ping").permitAll())
                 .authorizeHttpRequests(request -> request
                         .requestMatchers(HttpMethod.POST, "api/users", "api/users/sign-in").anonymous()
                         .requestMatchers(HttpMethod.POST, "api/users/token-renewal").anonymous())

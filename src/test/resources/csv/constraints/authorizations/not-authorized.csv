@@ -1,0 +1,2 @@
+method,path,token,json,status
+POST¤/api/users¤validToken¤{"userName":"test user", "email":"test@mail.com", "password": "Azerty!123"}¤201

@@ -6,6 +6,9 @@ pipeline {
         jdk "JDK21"
         maven "Default"
     }
+    environement {
+        withCredentials([usernamePassword(credentialsId: 'c28b396d-485d-429b-8a11-d32cf4b73b3c', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+    }
     stages {
         stage("Clone") {
             steps {
@@ -19,7 +22,7 @@ pipeline {
         stage("Set up database for test") {
             steps {
                 sh """#!/bin/bash
-                psql postgresql://eucalyptus_admin:admin_DF46u9*@localhost:5432/eucalyptus <<MULTILINE
+                psql postgresql://\$USERNAME:\$PASSWORD@localhost:5432/eucalyptus <<MULTILINE
                 \\set ON_ERROR_STOP
                 SET SEARCH_PATH = tests;
                 \\i /srv/readresolve.tech/eucalyptus/data/schema.ddl.sql

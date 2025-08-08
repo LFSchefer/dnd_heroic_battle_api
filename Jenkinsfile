@@ -21,12 +21,12 @@ pipeline {
             steps {
                 sh """#!/bin/bash
                 psql postgresql://eucalyptus_admin:admin_DF46u9*@localhost:5432/eucalyptus <<MULTILINE
-                \set ON_ERROR_STOP
+                \\set ON_ERROR_STOP
                 SET SEARCH_PATH = tests;
-                \i /srv/readresolve.tech/eucalyptus/data/schema.ddl.sql
-                \i /srv/readresolve.tech/eucalyptus/data/data-test.dml.sql
+                \\i /srv/readresolve.tech/eucalyptus/data/schema.ddl.sql
+                \\i /srv/readresolve.tech/eucalyptus/data/data-test.dml.sql
                 select * from users;
-                \q
+                \\q
                 MULTILINE
                 """
             }

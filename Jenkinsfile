@@ -36,7 +36,7 @@ pipeline {
                 set -e
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api/src/test/resources
                 mkdir test
-                cd /test
+                cd test
                 cp /srv/readresolve.tech/eucalyptus/secrets/application-test.properties ./
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api
                 mvn -Dmaven.spring.config.import=/srv/readresolve.tech/eucalyptus/secrets/secrets.properties clean install

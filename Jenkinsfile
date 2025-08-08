@@ -17,11 +17,29 @@ pipeline {
                 """
             }
         }
-        stage("Build") {
+        stage("Set up database for test") {
+            steps {
+                sh """#!/bin/bash
+                psql postgresql://eucalyptus_admin:admin_DF46u9*@localhost:5432/eucalyptus <<MULTILINE
+                \set ON_ERROR_STOP
+                SET SEARCH_PATH = tests;
+                \i /srv/readresolve.tech/eucalyptus/data/schema.ddl.sql
+                \i /srv/readresolve.tech/eucalyptus/data/data-test.dml.sql
+                select * from users;
+                \q
+                MULTILINE
+                """
+            }
+        }
+        stage("Build & Test") {
             steps {
                 sh """#!/bin/bash
                 set -e
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api
+                cd /src/test/resources
+                mkdir test
+                cd /test
+                cp /srv/readresolve.tech/eucalyptus/secrets/application-test.properties ./
                 mvn -Dmaven.spring.config.import=/srv/readresolve.tech/eucalyptus/secrets/secrets.properties clean install
                 """
             }

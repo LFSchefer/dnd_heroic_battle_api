@@ -7,7 +7,7 @@ pipeline {
         maven "Default"
     }
     stages {
-        stage("Clone") {
+        stage("Clean & Clone") {
             steps {
                 sh """#!/bin/bash
                 set -e
@@ -152,13 +152,6 @@ pipeline {
                 echo "Server is healthy! Build successful."
                 echo "###########################"
                 echo "########  CURL  ###########"
-                """
-            }
-        }
-        stage("Clean up") {
-            steps {
-                sh"""#!/bin/bash
-                set -e
                 """
             }
         }

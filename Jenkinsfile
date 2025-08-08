@@ -45,6 +45,11 @@ pipeline {
                 mvn -Dmaven.spring.config.import=/srv/readresolve.tech/eucalyptus/secrets/secrets.properties clean install surefire-report:report
                 """
             }
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml'
+                }
+            }
         }
         stage("Deploy") {
             steps {

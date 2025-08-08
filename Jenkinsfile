@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh """#!/bin/bash
                 set -e
+                rm -rf /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/*
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/
                 git clone 'https://github.com/LFSchefer/dnd_heroic_battle_api.git' && echo "cloned"
                 """
@@ -153,7 +154,6 @@ pipeline {
             steps {
                 sh"""#!/bin/bash
                 set -e
-                rm -rf /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/*
                 """
             }
         }

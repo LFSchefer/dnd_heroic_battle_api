@@ -1,2 +1,2 @@
-method,path,token,json,status
-POST¤/api/users¤null¤{"userName":"test user", "email":"test@mail.com", "password": "Azerty!123"}¤201
+method,path,tokenName,json,status
+POST¤/api/users¤null¤{"userName":"user test", "email":"test@mail.com", "password": "Azerty!123"}¤201

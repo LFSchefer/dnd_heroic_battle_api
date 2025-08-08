@@ -36,7 +36,7 @@ public class MvcTestHelper {
 
     protected final MockHttpServletRequestBuilder requestBuilder(String method, String path, String token, String json) {
         var builder = request(HttpMethod.valueOf(method), path);
-        if (!Objects.equals(token, "null")) {
+        if (!Objects.equals(token, null)) {
             builder.header("Authorization", token);
         }
         if (json != null) {

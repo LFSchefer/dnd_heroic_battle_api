@@ -15,29 +15,29 @@ public class AuthorizationsTest extends MvcTestHelper {
     @MockitoBean
     private UserController controller;
 
-//    @Test
-//    void shouldBeAuthorized() throws Exception {
-//        perform("POST", "/api/users", null, "{\"userName\":\"test user\", \"email\":\"test@mail.com\", \"password\": \"Azerty!123\"}")
-//                .andExpect(status().isCreated());
-//    }
-
     @ParameterizedTest
     @CsvFileSource(resources = "/csv/constraints/authorizations/authorized.csv", numLinesToSkip = 1, delimiter = '¤')
-    void shouldBeAuthorized(String method, String path, String token, String json, int status) throws Exception {
+    void shouldBeAuthorized(String method, String path, String tokenName, String json, int status) throws Exception {
+        String token = null;
+        if (Objects.equals("validToken", tokenName)) {
+            token = validToken;
+        } else if (Objects.equals("expiredToken", tokenName)) {
+            token = expiredToken;
+        }
         perform(method, path, token, json)
                 .andExpect(status().is(status));
     }
 
-//    @Test
-//    void shouldNotAuthorize() throws Exception {
-//        perform("POST", "/api/users", validToken, "{\"userName\":\"test user\", \"email\":\"test@mail.com\", \"password\": \"Azerty!123\"}")
-//                .andExpect(status().is4xxClientError());
-//    }
-
     @ParameterizedTest
     @CsvFileSource(resources = "/csv/constraints/authorizations/not-authorized.csv", numLinesToSkip = 1, delimiter = '¤')
-    void shouldNotAuthorize(String method, String path, String token, String json, int status) throws Exception {
-        perform(method, path, Objects.equals(token, "null") ? null : expiredToken, json)
-                .andExpect(status().is4xxClientError());
+    void shouldNotAuthorize(String method, String path, String tokenName, String json, int status) throws Exception {
+        String token = null;
+        if (Objects.equals("validToken", tokenName)) {
+            token = validToken;
+        } else if (Objects.equals("expiredToken", tokenName)) {
+            token = expiredToken;
+        }
+        perform(method, path, token, json)
+                .andExpect(status().is(status));
     }
 }

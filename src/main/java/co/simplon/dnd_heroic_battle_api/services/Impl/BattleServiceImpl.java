@@ -102,5 +102,6 @@ public class BattleServiceImpl implements BattleService {
         battle.setBattleMonsters(new HashSet<>(monsters));
         battle = repo.saveAndFlush(battle);
         return BattleMapper.entityToFightDto(battle);
+        //TODO check if monster have hp > 0
     }
 }

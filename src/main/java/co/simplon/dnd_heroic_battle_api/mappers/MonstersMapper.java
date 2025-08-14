@@ -32,7 +32,7 @@ public final class MonstersMapper {
                                 monster.getMaxHitPoints(), monster.getName(), monster.getInitiative(),
                                 monster.isAction(), monster.isMove(), monster.isBonusAction(), monster.isHisTurn(),
                                 monster.isHavePlayThisRound(),
-                                MonsterModelMapper.entityToDetailDto(monster.getMonster())
+                                MonsterModelMapper.entityToFightDto(monster.getMonster())
                         ))
                 .collect(Collectors.toSet());
     }
@@ -42,6 +42,6 @@ public final class MonstersMapper {
                 monster.getMaxHitPoints(), monster.getName(), monster.getInitiative(),
                 monster.isAction(), monster.isMove(), monster.isBonusAction(), monster.isHisTurn(),
                 monster.isHavePlayThisRound(),
-                MonsterModelMapper.entityToDetailDto(monster.getMonster()));
+                MonsterModelMapper.entityToFightDto(monster.getMonster()));
     }
 }

@@ -42,7 +42,7 @@ pipeline {
                 cd test
                 cp /srv/readresolve.tech/eucalyptus/secrets/application-test.properties ./
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api
-                mvn -Dmaven.spring.config.import=/srv/readresolve.tech/eucalyptus/secrets/secrets.properties clean install
+                mvn -Dmaven.spring.config.import=/srv/readresolve.tech/eucalyptus/secrets/secrets.properties clean install jacoco:report
                 """
             }
             post {
@@ -53,7 +53,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'f225455e-ea59-40fa-8af7-08176e86507a', installationName: 'My SonarQube Server') {
+                withSonarQubeEnv(credentialsId: 'sqp_4139adfa9a27e6d8022907e5db47ef3e0f8a0e27', installationName: 'eucalyptus:dnd-heroic-battle') {
                 sh """
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api
                 mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar

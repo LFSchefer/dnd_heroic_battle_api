@@ -1,6 +1,7 @@
 package co.simplon.dnd_heroic_battle_api.mappers;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
+import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelFightDto;
 import co.simplon.dnd_heroic_battle_api.entities.MonsterModel;
 
 public final class MonsterModelMapper {
@@ -16,13 +17,20 @@ public final class MonsterModelMapper {
                 monster.getImageUrl(), monster.isDnd5Native(), monster.getPassivePerception(), monster.getDarkvision(),
                 monster.getWalk(), monster.getSwim(), monster.getFly(),
                 monster.getAlignment() == null ? null : monster.getAlignment().getAlignmentsName(),
-                monster.getMonsterType().getTypeName(),monster.getSize().getSizeName(),
-                monster.getArmorClass(),monster.getArmorType().getArmorType(),
+                monster.getMonsterType().getTypeName(), monster.getSize().getSizeName(),
+                monster.getArmorClass(), monster.getArmorType().getArmorType(),
                 LanguageMapper.entitiesToNames(monster.getLanguages()),
                 ConditionMapper.entitiesToNames(monster.getConditionsImmunities()),
                 DamageTypeMapper.entitiesToNames(monster.getMonsterVulnerabilities()),
                 DamageTypeMapper.entitiesToNames(monster.getMonsterResistances()),
                 DamageTypeMapper.entitiesToNames(monster.getMonsterImunities()),
                 SpecialAbilityMapper.entitiesToNames(monster.getSpecialAbilities()));
+    }
+
+    public static MonsterModelFightDto entityToFightDto(MonsterModel monsterModel) {
+        return new MonsterModelFightDto(monsterModel.getStrength(), monsterModel.getDexterity()
+                , monsterModel.getConstitution(), monsterModel.getIntelligence(),
+                monsterModel.getWisdom(), monsterModel.getCharisma(), monsterModel.getArmorClass(),
+                monsterModel.getImageUrl());
     }
 }

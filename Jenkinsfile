@@ -7,10 +7,11 @@ pipeline {
         maven "Default"
     }
     stages {
-        stage("Clone") {
+        stage("Clean & Clone") {
             steps {
                 sh """#!/bin/bash
                 set -e
+                rm -rf /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/*
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/
                 git clone 'https://github.com/LFSchefer/dnd_heroic_battle_api.git' && echo "cloned"
                 """
@@ -43,6 +44,28 @@ pipeline {
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api
                 mvn -Dmaven.spring.config.import=/srv/readresolve.tech/eucalyptus/secrets/secrets.properties clean install
                 """
+            }
+            post {
+                always {
+                    junit '**/target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv(credentialsId: 'f225455e-ea59-40fa-8af7-08176e86507a', installationName: 'My SonarQube Server') {
+                sh """
+                cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api
+                mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar
+                """
+                }
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
         stage("Deploy") {
@@ -146,14 +169,6 @@ pipeline {
                 echo "Server is healthy! Build successful."
                 echo "###########################"
                 echo "########  CURL  ###########"
-                """
-            }
-        }
-        stage("Clean up") {
-            steps {
-                sh"""#!/bin/bash
-                set -e
-                rm -rf /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/*
                 """
             }
         }

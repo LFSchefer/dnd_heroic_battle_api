@@ -53,7 +53,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sqp_4139adfa9a27e6d8022907e5db47ef3e0f8a0e27', installationName: 'eucalyptus:dnd-heroic-battle') {
+                withSonarQubeEnv(credentialsId: 'sqp_4139adfa9a27e6d8022907e5db47ef3e0f8a0e27') {
                 sh """
                 cd /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api
                 mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar

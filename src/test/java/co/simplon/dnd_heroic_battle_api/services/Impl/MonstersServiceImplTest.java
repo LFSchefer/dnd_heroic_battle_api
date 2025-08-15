@@ -3,11 +3,15 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 import co.simplon.dnd_heroic_battle_api.components.DiceRoller;
 import co.simplon.dnd_heroic_battle_api.dtos.monsters.*;
 import co.simplon.dnd_heroic_battle_api.entities.*;
+import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import org.hibernate.ResourceClosedException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -15,6 +19,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -30,6 +35,37 @@ class MonstersServiceImplTest {
 
     @Mock
     private DiceRoller diceRoller;
+
+    @Mock
+    private DamageTypeRepository damageTypeRepository;
+
+    private static Stream<Arguments> providerUpdateHp() {
+        return Stream.of(
+                Arguments.of("Heal", 20, 50, 100, 70),
+                Arguments.of("Heal", 10, 45, 50, 50),
+                Arguments.of("Damage", 10, 45, 50, 35),
+                Arguments.of("Damage", 99, 35, 50, 0)
+        );
+    }
+
+    private static Stream<Arguments> providerCalculatedDamage() {
+        return Stream.of(
+                Arguments.of(DamageType.builder().damageTypeId(1L).damageTypeName("Fire").build(),
+                        1L, 20, 50, Set.of(), Set.of(), Set.of(), 30),
+                Arguments.of(DamageType.builder().damageTypeId(2L).damageTypeName("Force").build(),
+                        2L, 12, 28, Set.of(DamageType.builder().damageTypeId(2L).damageTypeName("Force").build()),
+                        Set.of(DamageType.builder().damageTypeId(4L).damageTypeName("Cold").build()),
+                        Set.of(DamageType.builder().damageTypeId(1L).damageTypeName("Fire").build()), 28),
+                Arguments.of(DamageType.builder().damageTypeId(3L).damageTypeName("Acid").build(),
+                        3L, 20, 50, Set.of(DamageType.builder().damageTypeId(2L).damageTypeName("Force").build()),
+                        Set.of(DamageType.builder().damageTypeId(3L).damageTypeName("Acid").build()),
+                        Set.of(DamageType.builder().damageTypeId(1L).damageTypeName("Fire").build()), 40),
+                Arguments.of(DamageType.builder().damageTypeId(4L).damageTypeName("Cold").build(),
+                        4L, 5, 32, Set.of(DamageType.builder().damageTypeId(2L).damageTypeName("Force").build()),
+                        Set.of(DamageType.builder().damageTypeId(3L).damageTypeName("Acid").build()),
+                        Set.of(DamageType.builder().damageTypeId(4L).damageTypeName("Cold").build()), 22)
+        );
+    }
 
     @Test
     void create() {
@@ -150,6 +186,85 @@ class MonstersServiceImplTest {
         var dto = new MonsterActionsUpdateDtos(1L, true, false, true);
         when(repo.findById(dto.monsterId())).thenReturn(Optional.empty());
         assertThrows(ResourceClosedException.class, () -> test.actionsUpdate(dto));
+    }
+
+    @ParameterizedTest
+    @MethodSource("providerUpdateHp")
+    void updateHp(String type, int amount, int currentHp, int maxHp, int expected) {
+        MonsterHpUpdateDto dto = new MonsterHpUpdateDto(1L, amount, type, null);
+        Monster monster = Monster.builder()
+                .monsterId(1L)
+                .currentHitPoints(currentHp)
+                .maxHitPoints(maxHp)
+                .havePlayThisRound(true)
+                .action(false)
+                .move(false)
+                .bonusAction(false)
+                .monster(MonsterModel.builder()
+                        .modelId(42L)
+                        .armorType(ArmorType.builder().build())
+                        .monsterType(MonsterType.builder().build())
+                        .alignment(Alignment.builder().build())
+                        .size(Size.builder().build())
+                        .build())
+                .build();
+        when(repo.findById(any())).thenReturn(Optional.of(monster));
+        when(repo.saveAndFlush(any())).thenReturn(monster);
+        var actual = assertDoesNotThrow(() -> test.updateHp(dto));
+        assertEquals(expected, actual.currentHitPoints());
+    }
+
+    @Test
+    void updateHpWithBadType() {
+        MonsterHpUpdateDto dto = new MonsterHpUpdateDto(1L, 10, "wrong type", null);
+        Monster monster = Monster.builder()
+                .monsterId(1L)
+                .currentHitPoints(50)
+                .maxHitPoints(70)
+                .havePlayThisRound(true)
+                .action(false)
+                .move(false)
+                .bonusAction(false)
+                .monster(MonsterModel.builder()
+                        .modelId(42L)
+                        .armorType(ArmorType.builder().build())
+                        .monsterType(MonsterType.builder().build())
+                        .alignment(Alignment.builder().build())
+                        .size(Size.builder().build())
+                        .build())
+                .build();
+        when(repo.findById(any())).thenReturn(Optional.of(monster));
+        assertThrows(IllegalArgumentException.class, () -> test.updateHp(dto));
+    }
+
+    @ParameterizedTest
+    @MethodSource("providerCalculatedDamage")
+    void calculateDamage(DamageType damageType, Long damageTypeId, int amount, int currentHp,
+                         Set<DamageType> immunities, Set<DamageType> resistances,
+                         Set<DamageType> vulnerabilities, int expected) {
+        MonsterHpUpdateDto dto = new MonsterHpUpdateDto(1L, amount, "Damage", damageTypeId);
+        Monster monster = Monster.builder()
+                .monsterId(1L)
+                .currentHitPoints(currentHp)
+                .maxHitPoints(70)
+                .havePlayThisRound(true)
+                .action(false)
+                .move(false)
+                .bonusAction(false)
+                .monster(MonsterModel.builder()
+                        .modelId(42L)
+                        .armorType(ArmorType.builder().build())
+                        .monsterType(MonsterType.builder().build())
+                        .alignment(Alignment.builder().build())
+                        .size(Size.builder().build())
+                        .monsterImunities(immunities)
+                        .monsterResistances(resistances)
+                        .monsterVulnerabilities(vulnerabilities)
+                        .build())
+                .build();
+        when(damageTypeRepository.findById(any())).thenReturn(Optional.of(damageType));
+        var actual = assertDoesNotThrow(() -> test.calculateDamage(monster, dto));
+        assertEquals(expected, actual);
     }
 
 }

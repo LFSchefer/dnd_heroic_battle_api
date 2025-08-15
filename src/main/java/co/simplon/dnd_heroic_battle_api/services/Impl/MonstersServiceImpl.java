@@ -2,9 +2,11 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 
 import co.simplon.dnd_heroic_battle_api.components.DiceRoller;
 import co.simplon.dnd_heroic_battle_api.dtos.monsters.*;
+import co.simplon.dnd_heroic_battle_api.entities.DamageType;
 import co.simplon.dnd_heroic_battle_api.entities.Monster;
 import co.simplon.dnd_heroic_battle_api.enums.DamageHeal;
 import co.simplon.dnd_heroic_battle_api.mappers.MonstersMapper;
+import co.simplon.dnd_heroic_battle_api.repositories.DamageTypeRepository;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonstersService;
 import jakarta.transaction.Transactional;
@@ -24,6 +26,9 @@ public class MonstersServiceImpl implements MonstersService {
 
     @Autowired
     private DiceRoller diceRoller;
+
+    @Autowired
+    private DamageTypeRepository damageTypeRepository;
 
     @Override
     public void create(MonsterCreateDto input) {
@@ -85,15 +90,9 @@ public class MonstersServiceImpl implements MonstersService {
                 .orElseThrow(() -> new ResourceClosedException("Monster not found"));
         int updatedHp;
         if (DamageHeal.isDamage(input.type())) {
-            updatedHp = monster.getCurrentHitPoints() - input.amount();
-            if (updatedHp < 0) {
-                updatedHp = 0;
-            }
+            updatedHp = calculateDamage(monster, input);
         } else if (DamageHeal.isHeal(input.type())) {
-            updatedHp = monster.getCurrentHitPoints() + input.amount();
-            if (updatedHp > monster.getMaxHitPoints()) {
-                updatedHp = monster.getMaxHitPoints();
-            }
+            updatedHp = calculateHeal(monster, input);
         } else {
             throw new IllegalArgumentException("Type " + input.type() + "not found");
         }
@@ -101,4 +100,35 @@ public class MonstersServiceImpl implements MonstersService {
         return MonstersMapper.entityToFightDto(repo.saveAndFlush(monster));
     }
 
+    int calculateDamage(Monster monster, MonsterHpUpdateDto input) {
+        int updatedHp;
+        if (input.damageTypeId() == null) {
+            updatedHp = monster.getCurrentHitPoints() - input.amount();
+        } else {
+            DamageType damageType = damageTypeRepository.findById(Long.valueOf(input.damageTypeId()))
+                    .orElseThrow(() -> new ResourceClosedException("damage type with id " + input.damageTypeId() + " not found"));
+            if (monster.getMonster().getMonsterImunities().contains(damageType)) {
+                updatedHp = monster.getCurrentHitPoints();
+            } else if (monster.getMonster().getMonsterVulnerabilities().contains(damageType)) {
+                updatedHp = monster.getCurrentHitPoints() - (input.amount() * 2);
+            } else if (monster.getMonster().getMonsterResistances().contains(damageType)) {
+                updatedHp = monster.getCurrentHitPoints() - (input.amount() / 2);
+            } else {
+                updatedHp = monster.getCurrentHitPoints() - input.amount();
+            }
+        }
+        if (updatedHp < 0) {
+            updatedHp = 0;
+        }
+        return updatedHp;
+    }
+
+    int calculateHeal(Monster monster, MonsterHpUpdateDto input) {
+        int updatedHp;
+        updatedHp = monster.getCurrentHitPoints() + input.amount();
+        if (updatedHp > monster.getMaxHitPoints()) {
+            updatedHp = monster.getMaxHitPoints();
+        }
+        return updatedHp;
+    }
 }

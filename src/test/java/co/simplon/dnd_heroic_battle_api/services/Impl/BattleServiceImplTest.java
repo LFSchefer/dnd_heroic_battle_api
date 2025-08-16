@@ -9,6 +9,9 @@ import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
 import org.hibernate.ResourceClosedException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -17,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -30,6 +34,28 @@ class BattleServiceImplTest {
 
     @Mock
     private BattleRepository repo;
+
+    private static Stream<Arguments> providerNextTurn() {
+        return Stream.of(
+                Arguments.of(Battle.builder().battleId(1L).turn(5).build(),
+                        Monster.builder().monsterId(1L).initiative(20).hisTurn(true)
+                                .havePlayThisRound(false).action(true).move(true).bonusAction(true)
+                                .build(),
+                        Monster.builder().monsterId(2L).initiative(15).hisTurn(false)
+                                .havePlayThisRound(false).action(true).move(true).bonusAction(true)
+                                .build(), 5, 2L
+                ),
+                Arguments.of(Battle.builder().battleId(1L).turn(8).build(),
+                        Monster.builder().monsterId(1L).initiative(20).hisTurn(false)
+                                .havePlayThisRound(true).action(true).move(true).bonusAction(true)
+                                .build(),
+                        Monster.builder().monsterId(2L).initiative(15).hisTurn(true)
+                                .havePlayThisRound(false).action(true).move(true).bonusAction(true)
+                                .build(), 9, 1L
+                )
+
+        );
+    }
 
     @Test
     void getOneWithBadId() {
@@ -180,5 +206,41 @@ class BattleServiceImplTest {
         assertEquals(1L, actual.battleId());
         assertEquals("name", actual.battleName());
         assertEquals(12, actual.turn());
+    }
+
+    @ParameterizedTest
+    @MethodSource("providerNextTurn")
+    void nextTurn(Battle battle, Monster m1, Monster m2, int turn, Long monsterTurnId) {
+        var model = MonsterModel.builder()
+                .monsterName("name")
+                .hitPoints(15)
+                .hitPointsRoll("roll")
+                .strength(456)
+                .dexterity(45)
+                .constitution(45)
+                .intelligence(21)
+                .wisdom(21)
+                .charisma(32)
+                .challengeRating(1.1)
+                .xp(54)
+                .imageUrl("url")
+                .dnd5Native(true)
+                .monsterType(MonsterType.builder().typeName("type").build())
+                .size(Size.builder().sizeName("size").build())
+                .armorType(ArmorType.builder().armorType("armor").build())
+                .armorClass(12)
+                .languages(Set.of(Language.builder().languagesName("lang").build()))
+                .build();
+        m1.setMonster(model);
+        m2.setMonster(model);
+        battle.setBattleMonsters(Set.of(m1, m2));
+        when(repo.findById(1L)).thenReturn(Optional.of(battle));
+        when(repo.saveAndFlush(any())).thenReturn(battle);
+        var actual = assertDoesNotThrow(() -> test.nextTurn(1L));
+        assertEquals(actual.turn(), turn);
+        assertFalse(actual.monsters().stream().filter(m -> m.monsterId().equals(monsterTurnId)).toList().getFirst().action());
+        assertFalse(actual.monsters().stream().filter(m -> m.monsterId().equals(monsterTurnId)).toList().getFirst().move());
+        assertFalse(actual.monsters().stream().filter(m -> m.monsterId().equals(monsterTurnId)).toList().getFirst().bonusAction());
+        assertTrue(actual.monsters().stream().filter(m -> m.monsterId().equals(monsterTurnId)).toList().getFirst().hisTurn());
     }
 }

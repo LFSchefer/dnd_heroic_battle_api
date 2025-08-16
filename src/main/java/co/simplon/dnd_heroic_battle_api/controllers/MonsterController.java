@@ -3,7 +3,6 @@ package co.simplon.dnd_heroic_battle_api.controllers;
 import co.simplon.dnd_heroic_battle_api.dtos.monsters.*;
 import co.simplon.dnd_heroic_battle_api.services.MonstersService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +13,11 @@ import java.util.Set;
 @RequestMapping("/api/monsters")
 public class MonsterController {
 
-    @Autowired
-    private MonstersService service;
+    private final MonstersService service;
+
+    public MonsterController(MonstersService service) {
+        this.service = service;
+    }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)

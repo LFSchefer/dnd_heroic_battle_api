@@ -12,7 +12,6 @@ import co.simplon.dnd_heroic_battle_api.repositories.BattleRepository;
 import co.simplon.dnd_heroic_battle_api.services.BattleService;
 import jakarta.transaction.Transactional;
 import org.hibernate.ResourceClosedException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -25,8 +24,11 @@ import java.util.stream.Collectors;
 @Transactional
 public class BattleServiceImpl implements BattleService {
 
-    @Autowired
-    private BattleRepository repo;
+    private final BattleRepository repo;
+
+    public BattleServiceImpl(BattleRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
     public BattleModel getOne(Long id) {

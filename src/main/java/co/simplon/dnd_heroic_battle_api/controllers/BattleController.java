@@ -7,7 +7,6 @@ import co.simplon.dnd_heroic_battle_api.dtos.battle.FightDto;
 import co.simplon.dnd_heroic_battle_api.models.BattleModel;
 import co.simplon.dnd_heroic_battle_api.services.BattleService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,11 @@ import java.util.List;
 @RequestMapping("/api/battles")
 public class BattleController {
 
-    @Autowired
-    private BattleService service;
+    private final BattleService service;
+
+    public BattleController(BattleService service) {
+        this.service = service;
+    }
 
     @GetMapping("/{id}")
     @ResponseStatus(code = HttpStatus.OK)

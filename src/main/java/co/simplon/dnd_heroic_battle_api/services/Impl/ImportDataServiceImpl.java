@@ -376,8 +376,11 @@ public class ImportDataServiceImpl implements ImportDataService {
     private List<String> getUrlList(RestClient restClient, String urlType) {
         Map<String, Object> object = restClient.get().uri(BASE_URL + urlType).retrieve().body(new ParameterizedTypeReference<>() {
         });
-        List<Map<String, String>> results = (List<Map<String, String>>) object.get("results");
-        return results.stream().map(r -> r.get("url")).toList();
+        if (Objects.nonNull(object)) {
+            List<Map<String, String>> results = (List<Map<String, String>>) object.get("results");
+            return results.stream().map(r -> r.get("url")).toList();
+        }
+        return List.of();
     }
 
 
@@ -385,6 +388,7 @@ public class ImportDataServiceImpl implements ImportDataService {
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
             throw new RuntimeException(e);
         }
     }

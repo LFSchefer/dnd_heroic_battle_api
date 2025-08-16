@@ -24,11 +24,11 @@ public final class CampaignMapper {
 
     public static List<CampaignModel> entitiesToCampaignModel(List<Campaign> campaigns) {
         return campaigns.stream().map(c ->
-                        new CampaignModel(c.getId(), c.getCampaignName(), c.getCreationDate()))
+                        new CampaignModel(c.getCampaignId(), c.getCampaignName(), c.getCreationDate()))
                 .toList();
     }
 
     public static CampaignModel entityToCampaignModel(Campaign campaign) {
-        return new CampaignModel(campaign.getId(), campaign.getCampaignName(), campaign.getCreationDate());
+        return new CampaignModel(campaign.getCampaignId(), campaign.getCampaignName(), campaign.getCreationDate());
     }
 }

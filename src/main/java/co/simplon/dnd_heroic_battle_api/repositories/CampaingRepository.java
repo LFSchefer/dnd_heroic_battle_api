@@ -25,7 +25,7 @@ public interface CampaingRepository extends JpaRepository<Campaign, Long> {
     @NativeQuery(value = UPDATE_CAMPAIGN)
     void update(@Param("id") long id, @Param("campaignName") String campaignName, @Param("userId") Long userId);
 
-    boolean existsByCampaignNameAndIdNot(String campaignName, long id);
+    boolean existsByCampaignNameAndCampaignIdNot(String campaignName, long id);
 
     List<Campaign> findByUserUserIdOrderByCreationDateDesc(Long id);
 

@@ -10,12 +10,12 @@ public class UniqueBattleNameCreateValidator implements ConstraintValidator<Uniq
     private final BattleRepository repo;
 
     public UniqueBattleNameCreateValidator(BattleRepository repo) {
-	this.repo = repo;
+        this.repo = repo;
     }
 
     @Override
     public boolean isValid(BattleCreate input, ConstraintValidatorContext context) {
-	return !repo.existsByBattleNameAndCampaignId(input.battleName(), input.campaignId());
+        return !repo.existsByBattleNameAndCampaignCampaignId(input.battleName(), input.campaignId());
     }
 
 }

@@ -1,6 +1,5 @@
 package co.simplon.dnd_heroic_battle_api.dtos.monster_model;
 
-import co.simplon.dnd_heroic_battle_api.entities.*;
 import java.util.Set;
 
 public record MonsterModelDetail(

@@ -1,7 +1,6 @@
 package co.simplon.dnd_heroic_battle_api.dtos.battle;
 
 import co.simplon.dnd_heroic_battle_api.dtos.monsters.MonsterFightDto;
-import co.simplon.dnd_heroic_battle_api.entities.Monster;
 
 import java.util.Set;
 

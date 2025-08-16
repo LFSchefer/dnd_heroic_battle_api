@@ -47,7 +47,7 @@ public final class BattleMapper {
     }
 
     public static BattleModel entityToBattleModel(Battle battle) {
-        return new BattleModel(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getCampaign().getId(),
+        return new BattleModel(battle.getBattleId(), battle.getBattleName(), battle.getTurn(), battle.getCampaign().getCampaignId(),
                 MonstersMapper.setEntitiesToSetPreviewDto(battle.getBattleMonsters()));
     }
 

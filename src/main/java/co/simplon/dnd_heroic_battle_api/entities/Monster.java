@@ -56,6 +56,7 @@ public class Monster {
         return monsterId;
     }
 
+    @SuppressWarnings("unused")
     private void setMonsterId(Long monsterId) {
         this.monsterId = monsterId;
     }

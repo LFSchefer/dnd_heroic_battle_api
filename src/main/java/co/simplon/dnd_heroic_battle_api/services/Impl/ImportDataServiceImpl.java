@@ -156,8 +156,6 @@ public class ImportDataServiceImpl implements ImportDataService {
     private void importFromMonster(RestClient restClient, List<String> monsterUrls) {
         Set<String> sizes = new HashSet<>();
         Set<String> monsterTypes = new HashSet<>();
-        Set<Pair<Integer, String>> senses = new HashSet<>();
-        Set<Map<String, Short>> speeds = new HashSet<>();
         Set<String> armorClasses = new HashSet<>();
         Set<Pair<String, Integer>> usages = new HashSet<>();
         Set<Map<String, Object>> dcs = new HashSet<>();
@@ -325,34 +323,34 @@ public class ImportDataServiceImpl implements ImportDataService {
             ArmorType armorType1 = armorTypeRepository.findByArmorType(armorType);
             // Damage immunities
             List<String> immunitiesList = (List<String>) monstersImport.get("damage_immunities");
-            Set<DamageType> immunities = new HashSet<DamageType>();
+            Set<DamageType> immunities = new HashSet<>();
             immunitiesList.forEach(i -> immunities.add(damageTypeRepository.findByDamageTypeNameIgnoreCase(i.split(",")[0])));
             // Damage resistance
             List<String> resistanceList = (List<String>) monstersImport.get("damage_resistances");
-            Set<DamageType> resistances = new HashSet<DamageType>();
+            Set<DamageType> resistances = new HashSet<>();
             resistanceList.forEach(r -> resistances.add(damageTypeRepository.findByDamageTypeNameIgnoreCase(r.split(",")[0])));
             // Damage vulnerabilities
             List<String> vulnarabilitiesList = (List<String>) monstersImport.get("damage_vulnerabilities");
-            Set<DamageType> vulnerabilities = new HashSet<DamageType>();
+            Set<DamageType> vulnerabilities = new HashSet<>();
             vulnarabilitiesList.forEach(v -> vulnerabilities.add(damageTypeRepository.findByDamageTypeNameIgnoreCase(v.split(",")[0])));
             // Languages
             String languages = (String) monstersImport.get("languages");
             String[] languagesList = languages.split(",");
-            Set<Language> langSet = new HashSet<Language>();
+            Set<Language> langSet = new HashSet<>();
             for (int j = 0; j < languagesList.length; j++) {
                 langSet.add(languageRepository.findByLanguagesName(languagesList[j].trim()));
             }
             // Condition immunities
             List<Map<String, String>> conditionImport = (List<Map<String, String>>) monstersImport.get("condition_immunities");
             List<String> conditionList = conditionImport.stream().map(condMap -> condMap.get("name")).toList();
-            Set<Condition> conditions = new HashSet<Condition>();
+            Set<Condition> conditions = new HashSet<>();
             conditionList.forEach(c -> conditions.add(conditionRepository.findByConditionName(c)));
             // Special abilities
             List<Map<String, Object>> specialAbilitiesApi = (List<Map<String, Object>>) monstersImport.get("special_abilities");
             Set<Map<String, String>> specialAbilities = new HashSet<>();
             if (specialAbilitiesApi.size() != 0) {
                 specialAbilitiesApi.forEach(specialAbility -> {
-                    Map<String, String> specialAbilityMap = new HashMap<String, String>();
+                    Map<String, String> specialAbilityMap = new HashMap<>();
                     specialAbilityMap.put("specialAbilityName", (String) specialAbility.get("name"));
                     specialAbilityMap.put("specialAbilityDescription", (String) specialAbility.get("desc"));
                     specialAbilities.add(specialAbilityMap);

@@ -34,7 +34,7 @@ class BattleMapperTest {
         var battleCreate = new BattleCreate("battle name", 45L);
         var actual = assertDoesNotThrow(() -> BattleMapper.battleCreateToEntity(battleCreate));
         assertEquals(battleCreate.battleName(), actual.getBattleName());
-        assertEquals(battleCreate.campaignId(), actual.getCampaign().getId());
+        assertEquals(battleCreate.campaignId(), actual.getCampaign().getCampaignId());
     }
 
     @Test
@@ -45,7 +45,7 @@ class BattleMapperTest {
         assertEquals(battleUpdate.id(), actual.getBattleId());
         assertEquals(battleUpdate.battleName(), actual.getBattleName());
         assertEquals(battleUpdate.turn(), actual.getTurn());
-        assertEquals(id, actual.getCampaign().getId());
+        assertEquals(id, actual.getCampaign().getCampaignId());
     }
 
     @Test

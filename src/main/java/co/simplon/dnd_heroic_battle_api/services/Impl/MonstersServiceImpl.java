@@ -11,7 +11,6 @@ import co.simplon.dnd_heroic_battle_api.repositories.MonsterRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonstersService;
 import jakarta.transaction.Transactional;
 import org.hibernate.ResourceClosedException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,14 +20,16 @@ import java.util.Set;
 @Transactional
 public class MonstersServiceImpl implements MonstersService {
 
-    @Autowired
-    private MonsterRepository repo;
 
-    @Autowired
-    private DiceRoller diceRoller;
+    private final MonsterRepository repo;
+    private final DiceRoller diceRoller;
+    private final DamageTypeRepository damageTypeRepository;
 
-    @Autowired
-    private DamageTypeRepository damageTypeRepository;
+    public MonstersServiceImpl(MonsterRepository repo, DiceRoller diceRoller, DamageTypeRepository damageTypeRepository) {
+        this.repo = repo;
+        this.diceRoller = diceRoller;
+        this.damageTypeRepository = damageTypeRepository;
+    }
 
     @Override
     public void create(MonsterCreateDto input) {
@@ -105,7 +106,7 @@ public class MonstersServiceImpl implements MonstersService {
         if (input.damageTypeId() == null) {
             updatedHp = monster.getCurrentHitPoints() - input.amount();
         } else {
-            DamageType damageType = damageTypeRepository.findById(Long.valueOf(input.damageTypeId()))
+            DamageType damageType = damageTypeRepository.findById(input.damageTypeId())
                     .orElseThrow(() -> new ResourceClosedException("damage type with id " + input.damageTypeId() + " not found"));
             if (monster.getMonster().getMonsterImunities().contains(damageType)) {
                 updatedHp = monster.getCurrentHitPoints();

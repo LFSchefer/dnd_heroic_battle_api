@@ -1,26 +1,28 @@
 package co.simplon.dnd_heroic_battle_api.services.Impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelCreationPro;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelDetail;
-import co.simplon.dnd_heroic_battle_api.mappers.MonsterModelMapper;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelPreviewPro;
 import co.simplon.dnd_heroic_battle_api.dtos.monster_model.MonsterModelSearchDto;
+import co.simplon.dnd_heroic_battle_api.mappers.MonsterModelMapper;
 import co.simplon.dnd_heroic_battle_api.repositories.MonsterModelRepository;
 import co.simplon.dnd_heroic_battle_api.services.MonsterModelService;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
 public class MonsterModelServiceImpl implements MonsterModelService {
 
-    @Autowired
-    private MonsterModelRepository repo;
+
+    private final MonsterModelRepository repo;
+
+    public MonsterModelServiceImpl(MonsterModelRepository repo) {
+        this.repo = repo;
+    }
 
     @Override
     public MonsterModelSearchDto get(String name, Integer limit, Integer page) {
@@ -40,7 +42,7 @@ public class MonsterModelServiceImpl implements MonsterModelService {
 
     @Override
     public MonsterModelCreationPro getOne(long id) {
-        return repo.findByMonsterModelCreationDto(id).orElseThrow( () ->
+        return repo.findByMonsterModelCreationDto(id).orElseThrow(() ->
                 new IllegalArgumentException(String.format("MonsterModel with id: %s does not exist", id)));
     }
 

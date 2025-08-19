@@ -35,9 +35,6 @@
         <sonar.coverage.jacoco.xmlReportPaths>
             ${project.basedir}/target/site/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
-        <sonar.coverage.exclusion>
-            **/dnd_heroic_battle_api/**/dtos/**/*.java
-        </sonar.coverage.exclusion>
     </properties>
     <dependencies>
         <dependency>

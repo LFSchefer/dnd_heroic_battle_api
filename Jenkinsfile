@@ -64,19 +64,7 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh """#!/bin/bash
-                checkServer(){
-                    response=\$(curl --silent --output /dev/null --write-out "%{http_code}" http://localhost:8089/api/import-data/ping)
-
-                    if [ "\$response" = "200" ]; then
-                        echo "\$(date "+%Y-%m-%d %H:%M:%S") - Server is healthy, up and running"
-                        return 0
-                    else
-                        echo "\$(date "+%Y-%m-%d %H:%M:%S") - Server is not healthy (response code - \$response )"
-                        return 1
-                    fi
-                }
-
-                echo "Cleaning .old files"
+                echo "###Cleaning .old files###"
 
                 if [ ! -d /srv/readresolve.tech/eucalyptus/api ]; then
                     mkdir -p /srv/readresolve.tech/eucalyptus/api
@@ -88,26 +76,25 @@ pipeline {
                 if [ -e "\$files" ]; then
                     rm -r /srv/readresolve.tech/eucalyptus/api/*.old
                 else
-                    echo "no file .old found."
+                    echo "###no file .old found###"
                 fi
 
-                echo "clean done"
+                echo "###clean done###"
 
-                echo "killing old app"
+                echo "###killing old app###"
 
                 process_pid=\$(lsof -t -i :8089)
 
                 if [ -n "\$process_pid" ]; then
                     kill -9 "\$process_pid"
-                    echo "Process \$process_pid kill."
+                    echo "###Process \$process_pid kill###"
                 else
-                    echo "no process on port 8089."
+                    echo "###no process on port 8089###"
                 fi
 
-                echo "kill done"
+                echo "###kill done###"
 
-
-                echo "achiving old app"
+                echo "###achiving old app###"
 
                 old_file=\$(find . -maxdepth 1 -type f -name "*.jar" | head -n 1)
 
@@ -115,53 +102,37 @@ pipeline {
                     mv "\$old_file" "\${old_file}.old"
                 fi
 
-                echo "archiving done"
+                echo "###archiving done###"
 
-
-                echo "copying .jar files from 'target' to 'api'"
+                echo "###copying .jar files from 'target' to 'api'###"
 
                 cp -r /home/eucalyptus-jenkins-node/workspace/eucalyptus-folder/API_pipeline/dnd_heroic_battle_api/target/*.jar /srv/readresolve.tech/eucalyptus/api
 
-                echo "copying done"
+                echo "###copying done###"
 
-
-                echo "launching new app"
+                echo "###launching new app###"
 
                 new_file=\$(find . -maxdepth 1 -type f -name "*.jar" | head -n 1)
 
                 echo "\$new_file"
-                echo "###########################"
-                echo "Starting Spring Boot application..."
-                echo "###########################"
+                echo "###Starting Spring Boot application...###"
 
                 JENKINS_NODE_COOKIE=dontKillMe nohup java -Dspring.config.import=/srv/readresolve.tech/eucalyptus/secrets/secrets.properties -jar "\$new_file" >/dev/null &
 
-                echo "###########################"
-                echo "########  PID  ############"
                 APP_PID=\$!
-                echo "Application started with PID: \$APP_PID"
+                echo "###Application started with PID: \$APP_PID###"
 
-                TIMEOUT=120 # seconds
-                ELAPSED_TIME=0
+                sleep 30
 
-                until checkServer; do
-                    if [ "\$ELAPSED_TIME" -ge "\$TIMEOUT" ]; then
-                        echo "###########################"
-                        echo "Server did not become healthy within \$TIMEOUT seconds. Exiting."
-                        echo "###########################"
+                response=\$(curl --silent --output /dev/null --write-out "%{http_code}" http://localhost:8089/api/import-data/ping)
 
-                        kill \$APP_PID
-                        exit 1
-                    fi
-                    echo "Waiting for server to become healthy... (Elapsed: \$ELAPSED_TIME/\$TIMEOUT seconds)"
-                    sleep 2
-                    ELAPSED_TIME=\$((ELAPSED_TIME + 2))
-                done
-
-                echo "###########################"
-                echo "Server is healthy! Build successful."
-                echo "###########################"
-                echo "########  CURL  ###########"
+                if [ "\$response" = "200" ]; then
+                    echo "###Server up and running###"
+                    return 0
+                else
+                    echo "###Server fail to start (response code - \$response )###"
+                    return 1
+                fi
                 """
             }
         }

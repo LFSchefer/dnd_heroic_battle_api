@@ -128,7 +128,6 @@ pipeline {
 
                 if [ "\$response" = "200" ]; then
                     echo "###Server up and running###"
-                    return 0
                 else
                     echo "###Server fail to start (response code - \$response )###"
                     return 1

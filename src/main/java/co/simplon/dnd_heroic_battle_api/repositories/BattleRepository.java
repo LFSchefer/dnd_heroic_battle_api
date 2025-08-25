@@ -17,11 +17,10 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
             """;
     String BATTLE_NAME_DONT_EXIST_FOR_THIS_CAMPAIGN = """
             SELECT CASE WHEN EXISTS (
-                SELECT *
-                FROM battles b
+                SELECT * FROM battles b
+                JOIN campaigns c ON c.campaign_id = b.campaign_id
                 WHERE battle_name = :battleName
                 AND battle_id <> :id
-                AND campaign_id = (SELECT campaign_id FROM battles WHERE battle_id = :id)
             )
             THEN FALSE
             ELSE TRUE END
@@ -32,13 +31,14 @@ public interface BattleRepository extends JpaRepository<Battle, Long> {
             ORDER BY battle_id DESC;
             """;
 
+    @NativeQuery(value = BATTLE_NAME_DONT_EXIST_FOR_THIS_CAMPAIGN)
+    boolean battleNameNotExistForCampaign(@Param("id") long id, @Param("battleName") String battleName);
+
     @NativeQuery(value = FIND_CAMPAIGN_ID_BY_BATTLE_ID)
     long findcampaignIdByBattleId(@Param("id") long id);
 
     boolean existsByBattleNameAndCampaignCampaignId(String battleName, Long campaignId);
 
-    @NativeQuery(value = BATTLE_NAME_DONT_EXIST_FOR_THIS_CAMPAIGN)
-    boolean battleNameNotExistForCampaign(@Param("id") long id, @Param("battleName") String battleName);
 
     @NativeQuery(value = FIND_ALL_BY_CAMPAIGN_ID)
     List<Battle> findAllByCampaignId(@Param("id") Long id);

@@ -17,8 +17,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @SpringBootTest(classes = DndHeroicBattleApiApplication.class)
 @AutoConfigureMockMvc
-//@ActiveProfiles(value = "test")
-//@ContextConfiguration
 @TestPropertySource({"/test/application-test.properties"})
 public class MvcTestHelper {
 

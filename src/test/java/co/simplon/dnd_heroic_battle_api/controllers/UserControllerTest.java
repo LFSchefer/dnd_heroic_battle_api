@@ -15,7 +15,7 @@ class UserControllerTest extends MvcTestHelper {
     private UserRepository userRepository;
 
     @Test
-    public void shouldCreate() throws Exception {
+    void shouldCreate() throws Exception {
         String json = "{\"userName\":\"John Doe\", \"email\":\"john@doe.com\", \"password\": \"Azerty!123\"}";
         perform("POST", "/api/users", null, json)
                 .andExpect(status().isCreated());
@@ -23,7 +23,7 @@ class UserControllerTest extends MvcTestHelper {
     }
 
     @Test
-    public void shouldThrowCreate() throws Exception {
+    void shouldThrowCreate() throws Exception {
         String json = "{\"userName\":\"Hutkelm\", \"email\":\"hutkelm@hotmail.fr\", \"password\": \"Azerty!123\"}";
         perform("POST", "/api/users", null, json)
                 .andExpect(status().isBadRequest());
@@ -31,7 +31,7 @@ class UserControllerTest extends MvcTestHelper {
     }
 
     @Test
-    public void shouldSignIn() throws Exception {
+    void shouldSignIn() throws Exception {
         String json = "{\"email\":\"hutkelm@hotmail.fr\", \"password\": \"Azerty!123\"}";
         perform("POST", "/api/users/sign-in", null, json)
                 .andExpect(status().isOk());
@@ -39,7 +39,7 @@ class UserControllerTest extends MvcTestHelper {
     }
 
     @Test
-    public void shouldThrowSignIn() throws Exception {
+    void shouldThrowSignIn() throws Exception {
         String json = "{\"email\":\"no@mail.mr\", \"password\": \"Azerty!123\"}";
         perform("POST", "/api/users/sign-in", null, json)
                 .andExpect(status().isBadRequest());

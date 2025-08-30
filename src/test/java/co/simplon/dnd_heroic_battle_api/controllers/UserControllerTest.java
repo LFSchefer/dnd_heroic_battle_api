@@ -1,51 +1,49 @@
 package co.simplon.dnd_heroic_battle_api.controllers;
 
-import co.simplon.dnd_heroic_battle_api.dtos.user.Tokens;
-import co.simplon.dnd_heroic_battle_api.dtos.user.UserCreateDto;
-import co.simplon.dnd_heroic_battle_api.dtos.user.UserLoginDto;
-import co.simplon.dnd_heroic_battle_api.services.UserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import jakarta.security.auth.message.AuthException;
+import co.simplon.dnd_heroic_battle_api.MvcTestHelper;
+import co.simplon.dnd_heroic_battle_api.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.nio.file.AccessDeniedException;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+class UserControllerTest extends MvcTestHelper {
 
-@ExtendWith(MockitoExtension.class)
-class UserControllerTest {
-
-    @InjectMocks
-    private UserController test;
-
-    @Mock
-    private UserService service;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
-    void create() {
-        var dto = new UserCreateDto("good name","good@email.com","good password");
-        assertDoesNotThrow(() -> test.create(dto));
-        verify(service, times(1)).create(dto);
+    public void shouldCreate() throws Exception {
+        String json = "{\"userName\":\"John Doe\", \"email\":\"john@doe.com\", \"password\": \"Azerty!123\"}";
+        perform("POST", "/api/users", null, json)
+                .andExpect(status().isCreated());
+        assertTrue(userRepository.existsByEmail("john@doe.com"));
     }
 
     @Test
-    void get() {
-        var dto = new UserLoginDto("email@mail.com", "password");
-        assertDoesNotThrow(() -> test.get(dto));
-        verify(service, times(1)).login(dto);
+    public void shouldThrowCreate() throws Exception {
+        String json = "{\"userName\":\"Hutkelm\", \"email\":\"hutkelm@hotmail.fr\", \"password\": \"Azerty!123\"}";
+        perform("POST", "/api/users", null, json)
+                .andExpect(status().isBadRequest());
+        assertTrue(userRepository.existsByEmail("hutkelm@hotmail.fr"));
     }
 
     @Test
-    void tokenRenewal() throws AccessDeniedException, AuthException, JsonProcessingException {
-        var token = new Tokens("token", "refresh token", 123L);
-        assertDoesNotThrow(() -> test.tokenRenewal(token));
-        verify(service, times(1)).renewalToken(token);
+    public void shouldSignIn() throws Exception {
+        String json = "{\"email\":\"hutkelm@hotmail.fr\", \"password\": \"Azerty!123\"}";
+        perform("POST", "/api/users/sign-in", null, json)
+                .andExpect(status().isOk());
+        assertTrue(userRepository.existsByEmail("hutkelm@hotmail.fr"));
+    }
+
+    @Test
+    public void shouldThrowSignIn() throws Exception {
+        String json = "{\"email\":\"no@mail.mr\", \"password\": \"Azerty!123\"}";
+        perform("POST", "/api/users/sign-in", null, json)
+                .andExpect(status().isBadRequest());
+        assertFalse(userRepository.existsByEmail("no@mail.mr"));
     }
 
 

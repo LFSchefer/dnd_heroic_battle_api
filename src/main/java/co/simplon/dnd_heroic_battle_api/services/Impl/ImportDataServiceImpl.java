@@ -3,15 +3,21 @@ package co.simplon.dnd_heroic_battle_api.services.Impl;
 import co.simplon.dnd_heroic_battle_api.entities.*;
 import co.simplon.dnd_heroic_battle_api.repositories.*;
 import co.simplon.dnd_heroic_battle_api.services.ImportDataService;
+import net.coobird.thumbnailator.Thumbnails;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 @Service
 public class ImportDataServiceImpl implements ImportDataService {
+
 
     private final static String BASE_URL = "https://www.dnd5eapi.co";
     private final DamageTypeRepository damageTypeRepository;
@@ -28,6 +34,10 @@ public class ImportDataServiceImpl implements ImportDataService {
     private final SpecialAbilityRepository specialAbilityRepository;
     private final DamageRepository damageRepository;
     private final MonsterRepository monsterRepository;
+    @Value("${dnd_heroic_battle.img.directory}")
+    private String imgDirectory;
+    @Value("${dnd_heroic_battle.img.access}")
+    private String imgAccess;
 
     public ImportDataServiceImpl(DamageTypeRepository damageTypeRepository, AlignmentRepository alignmentRepository, ConditionRepository conditionRepository,
                                  LanguageRepository languageRepository, ProficiencyRepository proficiencyRepository, SizeRepository sizeRepository,
@@ -63,6 +73,7 @@ public class ImportDataServiceImpl implements ImportDataService {
         importFromMonster(restClient, monsterUrls);
         importMonsters(restClient, monsterUrls);
     }
+
 
     private void deleteExisting() {
         monsterRepository.deleteAll();
@@ -291,6 +302,7 @@ public class ImportDataServiceImpl implements ImportDataService {
             }
             Integer xp = (Integer) monstersImport.get("xp");
             String imageUrl = (String) monstersImport.get("image");
+            String img = saveImg(restClient, name, imageUrl);
             // Sense
             Map<String, Object> apiSense = (Map<String, Object>) monstersImport.get("senses");
             Integer passivePerception = (Integer) apiSense.get("passive_perception");
@@ -361,7 +373,7 @@ public class ImportDataServiceImpl implements ImportDataService {
 
             monsters.add(MonsterModel.builder().monsterName(name).hitPoints(hitPoints).hitPointsRoll(hitPointsRoll).strength(strength)
                     .dexterity(dexterity).constitution(constitution).intelligence(intelligence).wisdom(wisdom).charisma(charisma)
-                    .challengeRating(challengeRating).xp(xp).imageUrl(imageUrl == null ? null : BASE_URL + imageUrl).dnd5Native(true).alignment(alignment)
+                    .challengeRating(challengeRating).xp(xp).imageUrl(img).dnd5Native(true).alignment(alignment)
                     .monsterType(monsterType).passivePerception(passivePerception).darkvision(darkvision1).size(size).walk(speed.get("walk")).swim(speed.get("swim"))
                     .fly(speed.get("fly")).armorClass(armorValue).armorType(armorType1).monsterImunities(immunities).monsterResistances(resistances)
                     .monsterVulnerabilities(vulnerabilities).languages(langSet).conditionsImmunities(conditions).specialAbilities(specAbil).build());
@@ -387,6 +399,26 @@ public class ImportDataServiceImpl implements ImportDataService {
             Thread.sleep(50);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String saveImg(RestClient client, String monsterName, String url) {
+        String fileName = monsterName.replaceAll("/", "-").replaceAll(" ", "_");
+        try {
+            byte[] data = client.get().uri(BASE_URL + url).exchange((request, response) -> {
+                if (response.getStatusCode().is2xxSuccessful()) {
+                    return response.bodyTo(byte[].class);
+                }
+                return null;
+            });
+            if (data == null) {
+                return null;
+            }
+            File file = Files.write(Path.of(imgDirectory + "/" + fileName + ".jpeg"), data).toFile();
+            Thumbnails.of(file).scale(0.5).outputQuality(0.8).toFile(imgDirectory + "/" + fileName + ".jpeg");
+            return imgAccess + "/" + fileName + ".jpeg";
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

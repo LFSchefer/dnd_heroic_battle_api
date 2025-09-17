@@ -103,7 +103,11 @@ public class BattleServiceImpl implements BattleService {
         });
         battle.setBattleMonsters(new HashSet<>(monsters));
         battle = repo.saveAndFlush(battle);
+        battle.getBattleMonsters().stream().filter(Monster::isHisTurn).findFirst().ifPresent(m -> {
+            if (m.getCurrentHitPoints() <= 0) {
+                nextTurn(battleId);
+            }
+        });
         return BattleMapper.entityToFightDto(battle);
-        //TODO check if monster have hp > 0
     }
 }

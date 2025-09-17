@@ -40,18 +40,22 @@ class BattleServiceImplTest {
                 Arguments.of(Battle.builder().battleId(1L).turn(5).build(),
                         Monster.builder().monsterId(1L).initiative(20).hisTurn(true)
                                 .havePlayThisRound(false).action(true).move(true).bonusAction(true)
+                                .currentHitPoints(10)
                                 .build(),
                         Monster.builder().monsterId(2L).initiative(15).hisTurn(false)
                                 .havePlayThisRound(false).action(true).move(true).bonusAction(true)
+                                .currentHitPoints(30)
                                 .build(), 5, 2L
                 ),
                 Arguments.of(Battle.builder().battleId(1L).turn(8).build(),
                         Monster.builder().monsterId(1L).initiative(20).hisTurn(false)
                                 .havePlayThisRound(true).action(true).move(true).bonusAction(true)
+                                .currentHitPoints(0)
                                 .build(),
                         Monster.builder().monsterId(2L).initiative(15).hisTurn(true)
                                 .havePlayThisRound(false).action(true).move(true).bonusAction(true)
-                                .build(), 9, 1L
+                                .currentHitPoints(40)
+                                .build(), 9, 2L
                 )
 
         );

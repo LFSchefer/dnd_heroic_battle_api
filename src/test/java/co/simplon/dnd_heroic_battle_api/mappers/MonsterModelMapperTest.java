@@ -68,4 +68,27 @@ class MonsterModelMapperTest {
         assertEquals(monsterModel.getArmorType().getArmorType(), actual.armorType());
         assertEquals(monsterModel.getSize().getSizeName(), actual.size());
     }
+
+    @Test
+    void entityToFightDto() {
+        var monsterModel = MonsterModel.builder()
+                .strength(20)
+                .dexterity(19)
+                .constitution(18)
+                .intelligence(17)
+                .wisdom(16)
+                .charisma(15)
+                .imageUrl("url")
+                .armorClass(15)
+                .build();
+        var actual = assertDoesNotThrow(() -> MonsterModelMapper.entityToFightDto(monsterModel));
+        assertEquals(monsterModel.getStrength(), actual.strength());
+        assertEquals(monsterModel.getDexterity(), actual.dexterity());
+        assertEquals(monsterModel.getCharisma(), actual.charisma());
+        assertEquals(monsterModel.getConstitution(), actual.constitution());
+        assertEquals(monsterModel.getIntelligence(), actual.intelligence());
+        assertEquals(monsterModel.getWisdom(), actual.wisdom());
+        assertEquals(monsterModel.getImageUrl(), actual.imageUrl());
+        assertEquals(monsterModel.getArmorClass(), actual.armorClass());
+    }
 }

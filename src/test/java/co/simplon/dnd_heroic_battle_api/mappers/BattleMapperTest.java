@@ -63,4 +63,20 @@ class BattleMapperTest {
         assertEquals(battle.getTurn(), actual.getTurn());
         assertEquals(battle.getCampaign().getCampaignId(), actual.getCampaignId());
     }
+
+    @Test
+    void entityToFightDto() {
+        var battle = Battle.builder()
+                .battleId(1L)
+                .battleName("name")
+                .turn(0)
+                .campaign(Campaign.builder().campaignId(2L).build())
+                .monsters(new HashSet<>())
+                .build();
+        var actual = assertDoesNotThrow(() -> BattleMapper.entityToFightDto(battle));
+        assertEquals(battle.getBattleId(), actual.battleId());
+        assertEquals(battle.getBattleName(), actual.battleName());
+        assertEquals(battle.getTurn(), actual.turn());
+        assertEquals(battle.getBattleMonsters(), actual.monsters());
+    }
 }

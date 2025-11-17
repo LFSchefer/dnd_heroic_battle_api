@@ -88,12 +88,9 @@ public class BattleServiceImpl implements BattleService {
         });
         if (monsters.stream().filter(m -> !m.isHavePlayThisRound()).toList().isEmpty()) {
             battle.setTurn(battle.getTurn() + 1);
-            monsters.forEach(m -> {
-                m.setHavePlayThisRound(false);
-                m.setAction(false);
-                m.setMove(false);
-                m.setBonusAction(false);
-            });
+            monsters.forEach(m ->
+                    m.setHavePlayThisRound(false)
+            );
         }
         monsters.stream().filter(m -> !m.isHavePlayThisRound()).findFirst().ifPresent(m -> {
             m.setHisTurn(true);

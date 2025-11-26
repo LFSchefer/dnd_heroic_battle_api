@@ -1,6 +1,7 @@
 package co.simplon.dnd_heroic_battle_api.config;
 
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,6 +40,12 @@ public class SecurityConfig {
     private int refreshExpire;
     @Value("${dnd_heroic_battle.jwt.issuer}")
     private String issuer;
+
+
+    @Bean
+    ObjectMapper mapper() {
+        return new ObjectMapper();
+    }
 
     @Bean
     @Profile("local")

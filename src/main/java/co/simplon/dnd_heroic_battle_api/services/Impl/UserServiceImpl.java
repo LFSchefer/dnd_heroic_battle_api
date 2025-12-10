@@ -10,12 +10,12 @@ import co.simplon.dnd_heroic_battle_api.mappers.UserMapper;
 import co.simplon.dnd_heroic_battle_api.repositories.UserRepository;
 import co.simplon.dnd_heroic_battle_api.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.time.Instant;
 import java.util.Base64;
@@ -30,9 +30,9 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repo;
     private final PasswordEncoder encoder;
     private final JwtProvider jwt;
-    private final ObjectMapper mapper;
+    private final JsonMapper mapper;
 
-    public UserServiceImpl(UserRepository repo, PasswordEncoder encoder, JwtProvider jwt, ObjectMapper mapper) {
+    public UserServiceImpl(UserRepository repo, PasswordEncoder encoder, JwtProvider jwt, JsonMapper mapper) {
         this.repo = repo;
         this.encoder = encoder;
         this.jwt = jwt;

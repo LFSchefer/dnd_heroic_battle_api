@@ -1,6 +1,5 @@
 package co.simplon.dnd_heroic_battle_api.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,6 +10,7 @@ import org.springframework.security.oauth2.jwt.JwtValidationException;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 import java.net.URI;
@@ -20,9 +20,9 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
 
     private final AuthenticationEntryPoint delegate = new BearerTokenAuthenticationEntryPoint();
 
-    private final ObjectMapper mapper;
+    private final JsonMapper mapper;
 
-    public CustomAuthenticationEntryPoint(ObjectMapper mapper) {
+    public CustomAuthenticationEntryPoint(JsonMapper mapper) {
         this.mapper = mapper;
     }
 

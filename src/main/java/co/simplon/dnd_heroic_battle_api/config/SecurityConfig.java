@@ -1,7 +1,6 @@
 package co.simplon.dnd_heroic_battle_api.config;
 
 import com.auth0.jwt.algorithms.Algorithm;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +20,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import tools.jackson.databind.json.JsonMapper;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -43,8 +43,8 @@ public class SecurityConfig {
 
 
     @Bean
-    ObjectMapper mapper() {
-        return new ObjectMapper();
+    JsonMapper mapper() {
+        return new JsonMapper();
     }
 
     @Bean

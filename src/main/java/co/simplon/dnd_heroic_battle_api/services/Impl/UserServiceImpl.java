@@ -9,7 +9,6 @@ import co.simplon.dnd_heroic_battle_api.entities.User;
 import co.simplon.dnd_heroic_battle_api.mappers.UserMapper;
 import co.simplon.dnd_heroic_battle_api.repositories.UserRepository;
 import co.simplon.dnd_heroic_battle_api.services.UserService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -58,7 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Tokens renewalToken(Tokens tokens) throws JsonProcessingException {
+    public Tokens renewalToken(Tokens tokens) {
         String token = tokens.token();
         String refreshToken = tokens.refreshToken();
         String tokenSplit = token.split("[.]")[1];

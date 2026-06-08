@@ -20,7 +20,6 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import tools.jackson.databind.json.JsonMapper;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -41,11 +40,6 @@ public class SecurityConfig {
     @Value("${dnd_heroic_battle.jwt.issuer}")
     private String issuer;
 
-
-    @Bean
-    JsonMapper mapper() {
-        return new JsonMapper();
-    }
 
     @Bean
     @Profile("local")
